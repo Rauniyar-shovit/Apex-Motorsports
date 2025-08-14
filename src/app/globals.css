@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* font-family: "Ubuntu", sans-serif; */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
 }
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --overlay: rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
@@ -17,6 +19,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
   --font-barlow: var(--font-barlow-condensed);
+  --color-overlay: var(--overlay);
 }
 
 @media (prefers-color-scheme: dark) {
