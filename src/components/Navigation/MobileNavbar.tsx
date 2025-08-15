@@ -10,13 +10,15 @@ import {
   linkVariants,
   overlayVariants,
 } from "@/animations/mobileNavbar";
+import { usePathname } from "next/navigation";
 
 const MobileNavbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
-      <nav className="absolute top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
+      <nav className="fixed top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
         <Link href={"/"}>
           <Image
             src="/logo.png"
@@ -40,7 +42,11 @@ const MobileNavbar = () => {
             >
               {/* Header reveals AFTER overlay, BEFORE links */}
               <div>
-                <Link href="/" className="absolute top-10 left-10 z-50">
+                <Link
+                  href="/"
+                  className="absolute top-10 left-10 z-50"
+                  onClick={() => setIsNavbarOpen(false)}
+                >
                   <Image
                     src="/logo.png"
                     width={120}
@@ -67,13 +73,19 @@ const MobileNavbar = () => {
                     key={navLink.link}
                     variants={linkVariants}
                     className="flex flex-col"
+                    onClick={() => setIsNavbarOpen(false)}
                   >
                     <Link
                       href={navLink.link}
-                      className="px-1 text-lg hover:scale-110 transition-all duration-300"
+                      className={` px-1 text-lg hover:scale-110 transition-all duration-300`}
                     >
                       {navLink.title.replace(/_/g, " ")}
                     </Link>
+                    <div
+                      className={`border-t-2 border-white ${
+                        pathname === navLink.link ? "w-full" : "w-0"
+                      }`}
+                    />
                   </motion.div>
                 ))}
               </motion.div>

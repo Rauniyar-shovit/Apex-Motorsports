@@ -1,9 +1,12 @@
 "use client";
 import Image from "next/image";
-import React, { use } from "react";
+import React from "react";
 import Navbar from "./Navigation/Navbar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileNavbar from "./Navigation/MobileNavbar";
+import AnimatedText from "./AnimatedText";
+import { HERO_TITLES } from "@/constants";
+import { motion } from "motion/react";
 
 const Hero = () => {
   const isMobile = useIsMobile();
@@ -22,12 +25,17 @@ const Hero = () => {
       </div>
       <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 transform z-20 whitespace-pre-line">
         <div>
-          <h3 className="font-barlow text-xl md:text-4xl">
+          <motion.h3
+            className="font-barlow text-xl md:text-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
             Australia&apos;s Premier FSAE Team
-          </h3>
+          </motion.h3>
 
-          <h1 className="font-barlow text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl ">
-            Driven by Passion {`\n`} Fueled by Innovation
+          <h1 className="font-barlow text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl min-h-30 ">
+            <AnimatedText titles={HERO_TITLES} />
           </h1>
         </div>
       </div>

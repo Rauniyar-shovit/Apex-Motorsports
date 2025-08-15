@@ -5,6 +5,7 @@ export default function Home() {
     <div>
       <main className="overflow-hidden">
         <Hero />
+        <div className="h-150"></div>
       </main>
     </div>
   );

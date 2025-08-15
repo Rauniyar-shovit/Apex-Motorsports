@@ -7,3 +7,12 @@ export const NAVBAR_LINKS = {
   ALUMNI: "alumni",
   CONTACT: "contact",
 };
+
+export const HERO_TITLES = [
+  "Driven by Passion \n Fueled by Innovation",
+  "Engineering Speed \n Inspiring Excellence",
+  "Where Innovation \n Meets the Track",
+  "Design. Drive. Dominate.",
+  "Turning Ideas into Velocity",
+  "Beyond Limits \n Into Victory",
+];
