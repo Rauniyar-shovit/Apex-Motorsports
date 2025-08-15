@@ -11,7 +11,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --overlay: rgba(0, 0, 0, 0.5);
+  --overlay: rgba(0, 0, 0, 0.32);
 }
 
 @theme inline {
@@ -26,6 +26,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --overlay: rgba(0, 0, 0, 0.32);
   }
 }
 
