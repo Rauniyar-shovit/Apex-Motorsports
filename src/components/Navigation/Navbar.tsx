@@ -18,12 +18,7 @@ const Navbar = () => {
       </Link>
       <div className="flex items-center justify-center gap-4 font-barlow uppercase 2xl:text-lg">
         {navBarLinks.map((navLink, index) => (
-          <NavbarLink
-            title={navLink.title}
-            link={navLink.link}
-            key={index}
-            index={index}
-          />
+          <NavbarLink title={navLink.title} link={navLink.link} key={index} />
         ))}
       </div>
     </nav>
