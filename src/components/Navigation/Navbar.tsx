@@ -7,7 +7,7 @@ import { navBarLinks } from "@/data/navbar";
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
+    <nav className="hidden absolute top-0 left-0  w-full h-20 z-30 md:flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
       <Link href={"/"}>
         <Image
           src="/logo.png"
