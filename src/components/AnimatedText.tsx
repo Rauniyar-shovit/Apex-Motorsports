@@ -9,13 +9,13 @@ const AnimatedText = ({ titles }: { titles: string | string[] }) => {
     <Typewriter
       options={
         {
-          delay: 55,
+          delay: 35,
           strings: titles,
           autoStart: true,
           pauseFor: 5000,
-          deleteSpeed: 35,
+          deleteSpeed: 20,
           loop: true,
-          cursor: "",
+          cursor: "|",
         } as MyTypewriterOptions
       }
     />
