@@ -34,7 +34,7 @@ const Hero = () => {
             Australia&apos;s Premier FSAE Team
           </motion.h3>
 
-          <h1 className="font-barlow text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl min-h-30 ">
+          <h1 className="font-barlow text-5xl md:text-7xl lg:text-8xl 2xl:text-[10rem] min-h-30 ">
             <AnimatedText titles={HERO_TITLES} />
           </h1>
         </div>
