@@ -38,7 +38,7 @@ const MobileNavbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute top-0 left-0 w-full h-screen bg-overlay z-40 flex items-center justify-center"
+              className="fixed top-0 left-0 w-full h-screen bg-overlay z-40 flex items-center justify-center"
             >
               {/* Header reveals AFTER overlay, BEFORE links */}
               <div>
