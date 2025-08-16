@@ -21,10 +21,10 @@ const Hero = () => {
           width={2880}
           height={1800}
         />
-        <div className="absolute h-full w-full z-20 bg-overlay" />
+        <div className="absolute h-full w-full z-20 bg-overlay opacity-30" />
       </div>
       <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 transform z-20 whitespace-pre-line">
-        <div>
+        <div className="text-white">
           <motion.h3
             className="font-barlow text-xl md:text-4xl"
             initial={{ opacity: 0, y: 20 }}

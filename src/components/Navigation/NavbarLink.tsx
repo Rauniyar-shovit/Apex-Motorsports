@@ -22,7 +22,7 @@ const NavbarLink = ({ link, title }: NavbarLinkProps) => {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      <Link href={link} className="px-1">
+      <Link href={link} className="px-1 text-white">
         {modifiedTitle}
       </Link>
       <div
