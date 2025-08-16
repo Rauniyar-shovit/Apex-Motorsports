@@ -1,12 +1,13 @@
 import Hero from "@/components/Hero";
+import Navbar from "@/components/Navigation/Navbar";
 
 export default function Home() {
   return (
-    <div>
-      <main className="overflow-hidden">
-        <Hero />
-        <div className="h-150"></div>
-      </main>
-    </div>
+    <main className="overflow-hidden">
+      <Navbar intersectingSectionId="hero" />
+      <Hero />
+      <div className="min-h-screen"> </div>
+      <div className="min-h-screen"> </div>
+    </main>
   );
 }

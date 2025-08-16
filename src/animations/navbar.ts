@@ -51,3 +51,17 @@ export const linkVariants = {
     transition: { duration: 0.25, ease: easeIn },
   },
 };
+
+export const stickyNavAnimation = {
+  initial: { y: -80, opacity: 0 }, // start above & hidden
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.25, ease: easeOut },
+  },
+  exit: {
+    y: -40,
+    opacity: 0,
+    transition: { duration: 0.2, ease: easeOut },
+  },
+};
