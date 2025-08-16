@@ -1,19 +1,13 @@
 "use client";
-import Image from "next/image";
-import React from "react";
-import Navbar from "./Navigation/Navbar";
-import { useIsMobile } from "@/hooks/use-mobile";
-import MobileNavbar from "./Navigation/MobileNavbar";
-import AnimatedText from "./AnimatedText";
 import { HERO_TITLES } from "@/constants";
 import { motion } from "motion/react";
+import Image from "next/image";
+import AnimatedText from "./AnimatedText";
 
 const Hero = () => {
-  const isMobile = useIsMobile();
   return (
-    <>
+    <section id="hero">
       <div className="relative w-full h-screen">
-        {isMobile ? <MobileNavbar /> : <Navbar />}
         <Image
           src={"/f1_cars.avif"}
           alt="formula one cars"
@@ -39,7 +33,7 @@ const Hero = () => {
           </h1>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

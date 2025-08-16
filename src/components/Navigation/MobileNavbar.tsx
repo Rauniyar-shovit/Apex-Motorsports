@@ -9,7 +9,7 @@ import {
   linksContainerVariants,
   linkVariants,
   overlayVariants,
-} from "@/animations/mobileNavbar";
+} from "@/animations/navbar";
 import { usePathname } from "next/navigation";
 
 const MobileNavbar = () => {

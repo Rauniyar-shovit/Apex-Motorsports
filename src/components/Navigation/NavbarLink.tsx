@@ -22,13 +22,13 @@ const NavbarLink = ({ link, title }: NavbarLinkProps) => {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      <Link href={link} className="px-1 text-white">
+      <Link href={link} className="px-1 text-lg text-white">
         {modifiedTitle}
       </Link>
       <div
         className={`border-t-2 border-white ${
           hovered || isActive ? "w-full" : "w-0"
-        } transition-all duration-300`}
+        } transition-all duration-200`}
       />
     </motion.div>
   );

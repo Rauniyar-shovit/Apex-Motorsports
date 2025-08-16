@@ -22,13 +22,13 @@
   --color-overlay: var(--overlay);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #171717;
     --foreground: #ededed;
     --overlay: #171717;
   }
-}
+} */
 
 body {
   background: var(--background);
