@@ -6,7 +6,7 @@ export default function Home() {
     <main className="overflow-hidden">
       <Navbar intersectingSectionId="hero" />
       <Hero />
-      <div className="min-h-screen"> </div>
+      <div id="next" className="min-h-screen"></div>
       <div className="min-h-screen"> </div>
     </main>
   );
