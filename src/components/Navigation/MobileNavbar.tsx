@@ -18,7 +18,7 @@ const MobileNavbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
+      <nav className="absolute top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
         <Link href={"/"}>
           <Image
             src="/logo.png"
@@ -29,7 +29,7 @@ const MobileNavbar = () => {
         </Link>
 
         <div onClick={() => setIsNavbarOpen(true)} className="cursor-pointer">
-          <IoMenuSharp className="h-8 w-8" />
+          <IoMenuSharp className="h-8 w-8 text-white" />
         </div>
         <AnimatePresence>
           {isNavbarOpen && (
@@ -38,13 +38,13 @@ const MobileNavbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute top-0 left-0 w-full h-screen bg-black z-40 flex items-center justify-center"
+              className="absolute top-0 left-0 w-full h-screen bg-overlay z-40 flex items-center justify-center"
             >
               {/* Header reveals AFTER overlay, BEFORE links */}
               <div>
                 <Link
                   href="/"
-                  className="absolute top-10 left-10 z-50"
+                  className="absolute top-8 left-8 z-50"
                   onClick={() => setIsNavbarOpen(false)}
                 >
                   <Image
@@ -56,10 +56,10 @@ const MobileNavbar = () => {
                 </Link>
                 <div
                   onClick={() => setIsNavbarOpen(false)}
-                  className="absolute flex gap-1 items-center top-10 right-10 z-50 group cursor-pointer"
+                  className="absolute flex gap-1 items-center top-8 right-8 z-50 group cursor-pointer text-white"
                 >
                   <span className="font-sans text-sm">Close</span>
-                  <IoCloseSharp className="h-8 w-8 group-hover:rotate-180 transition-all duration-300" />
+                  <IoCloseSharp className="h-8 w-8 group-hover:rotate-180 transition-all duration-300 " />
                 </div>
               </div>
 
@@ -72,7 +72,7 @@ const MobileNavbar = () => {
                   <motion.div
                     key={navLink.link}
                     variants={linkVariants}
-                    className="flex flex-col"
+                    className="flex flex-col text-white"
                     onClick={() => setIsNavbarOpen(false)}
                   >
                     <Link
