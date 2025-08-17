@@ -12,6 +12,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --overlay: #171717;
+  --muted-primary: #737373;
+  --muted-secondary: #d1d1c7;
 }
 
 @theme inline {
@@ -20,6 +22,8 @@
   --font-sans: var(--font-dm-sans);
   --font-barlow: var(--font-barlow-condensed);
   --color-overlay: var(--overlay);
+  --color-muted-primary: var(--muted-primary);
+  --color-muted-secondary: var(--muted-secondary);
 }
 
 /* @media (prefers-color-scheme: dark) {
