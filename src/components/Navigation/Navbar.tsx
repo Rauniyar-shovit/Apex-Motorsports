@@ -1,10 +1,10 @@
 "use client";
+import { stickyNavAnimation } from "@/animations/navbar";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { AnimatePresence, easeOut } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import AnimatedNavContainer from "./AnimatedNavContainer";
 import MobileNavbar from "./MobileNavbar";
-import { stickyNavAnimation } from "@/animations/navbar";
 
 type NavbarProps = {
   intersectingSectionId?: string;

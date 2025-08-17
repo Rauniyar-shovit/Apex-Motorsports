@@ -1,4 +1,3 @@
-import Values from "@/components/features/values/Values";
 import Values_1 from "@/components/features/values/Values_1";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/navigation/Navbar";

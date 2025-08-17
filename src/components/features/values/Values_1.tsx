@@ -52,11 +52,12 @@ const Values_1 = () => {
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
                 Wuismod tempor incidunt
               </p>
+
               <div className="my-4 md:my-10 ">
                 {values.map((item, index) => (
                   <p
                     key={index}
-                    className="font-bold text-xl md:text-2xl xl:text-[2.8rem]  font-barlow text-gray-500 uppercase mb-1 lg:mb-3"
+                    className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-[2.8rem]  font-barlow text-gray-500 uppercase mb-1 lg:mb-3"
                   >
                     {item}
                   </p>
