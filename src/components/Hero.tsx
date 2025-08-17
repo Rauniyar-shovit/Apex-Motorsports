@@ -33,7 +33,7 @@ const Hero = () => {
       </div>
       <a
         className="absolute bottom-10 right-10 md:bottom-20 md:right-20 z-20 whitespace-pre-line text-white cursor-pointer"
-        href="#next"
+        href="#values"
       >
         <div className="flex items-center justify-center gap-1">
           <h1 className="font-barlow text-xs lg:text-lg uppercase">
