@@ -24,6 +24,7 @@
   --color-overlay: var(--overlay);
   --color-muted-primary: var(--muted-primary);
   --color-muted-secondary: var(--muted-secondary);
+  --breakpoint-3xl: 120rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
