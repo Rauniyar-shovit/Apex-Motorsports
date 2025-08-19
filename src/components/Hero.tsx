@@ -5,6 +5,12 @@ import Image from "next/image";
 import AnimatedText from "./AnimatedText";
 import { IoArrowDown } from "react-icons/io5";
 const Hero = () => {
+  const handleScroll = () => {
+    const section = document.getElementById("values");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section id="hero">
       <div className="relative w-full h-screen">
@@ -31,9 +37,9 @@ const Hero = () => {
           <AnimatedText titles={HERO_TITLES} />
         </h1>
       </div>
-      <a
+      <div
         className="absolute bottom-10 right-10 md:bottom-20 md:right-20 z-20 whitespace-pre-line text-white cursor-pointer"
-        href="#values"
+        onClick={handleScroll}
       >
         <div className="flex items-center justify-center gap-1">
           <h1 className="font-barlow text-xs lg:text-lg uppercase">
@@ -47,7 +53,7 @@ const Hero = () => {
             <IoArrowDown className="h-4 w-4" />
           </motion.div>
         </div>
-      </a>
+      </div>
     </section>
   );
 };
