@@ -1,5 +1,6 @@
-import Values_1 from "@/components/features/values/Values";
+import Values from "@/components/features/values/Values";
 import Hero from "@/components/Hero";
+import InfiniteScrollText from "@/components/features/InfiniteScroll/InfiniteScrollText";
 import Navbar from "@/components/navigation/Navbar";
 
 export default function Home() {
@@ -7,7 +8,8 @@ export default function Home() {
     <main className="overflow-hidden">
       <Navbar intersectingSectionId="hero" />
       <Hero />
-      <Values_1 />
+      <Values />
+      <InfiniteScrollText />
       <div id="next" className="min-h-screen"></div>
       <div className="min-h-screen"> </div>
     </main>

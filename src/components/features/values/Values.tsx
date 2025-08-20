@@ -13,7 +13,7 @@ const Values = () => {
   return (
     <section id="values">
       <RevealWrapper>
-        <div className="pt-20 md:pt-24 xl:pt-32 w-[90%] xl:w-[78%] 2xl:w-[65%] 3xl:w-[55%] mx-auto">
+        <div className="wrapper">
           <div className=" flex flex-col md:flex-row lg:gap-6 md:h-[560px] xl:h-[695px]">
             <ValueShowcase
               valueTitle={value.title}

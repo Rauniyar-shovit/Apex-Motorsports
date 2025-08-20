@@ -65,3 +65,12 @@ export const VALUES = [
 
 export const VALUE_HEADING =
   "At Apex Motorsport, our values are the foundation of everything we do. They shape the way we work, collaborate, and push boundaries both on and off the track. Guided by these principles, we transform ambition into action and drive innovation for the future.";
+
+export const SCROLL_TEXT: string[] = [
+  "MADE",
+  "TO",
+  "LEARN",
+  "BUIlT",
+  "TO",
+  "WIN",
+];
