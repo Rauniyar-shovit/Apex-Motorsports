@@ -1,6 +1,6 @@
 import Values from "@/components/features/values/Values";
 import Hero from "@/components/Hero";
-import InfiniteScrollText from "@/components/features/InfiniteScroll/InfiniteScrollText";
+import InfiniteScrollText from "@/components/features/infiniteScroll/InfiniteScrollText";
 import Navbar from "@/components/navigation/Navbar";
 
 export default function Home() {
