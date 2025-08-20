@@ -4,7 +4,15 @@ import { motion, useAnimation, useInView } from "motion/react";
 import React, { ReactNode, useEffect, useRef } from "react";
 motion;
 
-const RevealWrapper = ({ children }: { children: ReactNode }) => {
+const RevealWrapper = ({
+  children,
+  styles,
+  index,
+}: {
+  children: ReactNode;
+  styles?: string;
+  index?: number;
+}) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const variants = {
     hidden: { opacity: 0, y: 75 },
@@ -26,7 +34,11 @@ const RevealWrapper = ({ children }: { children: ReactNode }) => {
       variants={variants}
       initial="hidden"
       animate={mainControls}
-      transition={{ duration: 0.6, delay: 0.25 }}
+      transition={{
+        duration: 0.6,
+        delay: index !== undefined ? index * 0.25 : 0.25,
+      }}
+      className={styles}
     >
       {children}
     </motion.div>

@@ -12,3 +12,10 @@ export type Value = {
   icon: IconType;
   description: string;
 };
+
+export type Achievement = {
+  title: string;
+  ranking?: string;
+  description?: string;
+  icon: IconType;
+};
