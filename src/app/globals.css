@@ -14,6 +14,8 @@
   --overlay: #171717;
   --muted-primary: #737373;
   --muted-secondary: #d1d1c7;
+  --primary: #5f3cff;
+  --secondary: #1d0029;
 }
 
 @theme inline {
@@ -24,19 +26,17 @@
   --color-overlay: var(--overlay);
   --color-muted-primary: var(--muted-primary);
   --color-muted-secondary: var(--muted-secondary);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --breakpoint-3xl: 120rem;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #171717;
-    --foreground: #ededed;
-    --overlay: #171717;
-  }
-} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans, --font-barlow);
+}
+
+.wrapper {
+  @apply pt-20 md:pt-24 xl:pt-32 w-[90%] xl:w-[78%] 2xl:w-[65%] 3xl:w-[55%] mx-auto;
 }

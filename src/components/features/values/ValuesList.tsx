@@ -31,7 +31,7 @@ const ValuesList = ({
               onClick={() => handleSelect(index)}
               key={index}
               className={`font-bold text-2xl md:text-3xl lg:text-4xl xl:text-[2.8rem] font-barlow uppercase mb-1 lg:mb-3 cursor-pointer transition-colors ${
-                selected === index ? "text-foreground" : "text-gray-500"
+                selected === index ? "text-[#1D0029]" : "text-gray-500"
               }`}
             >
               {value.title}

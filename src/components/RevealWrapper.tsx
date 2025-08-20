@@ -5,7 +5,7 @@ import React, { ReactNode, useEffect, useRef } from "react";
 motion;
 
 const RevealWrapper = ({ children }: { children: ReactNode }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const variants = {
     hidden: { opacity: 0, y: 75 },
     visible: { opacity: 1, y: 0 },
