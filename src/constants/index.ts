@@ -1,9 +1,14 @@
+import { Achievement, Value } from "@/models";
 import {
   IoChatbubblesOutline,
   IoTrendingUpOutline,
   IoBulbOutline,
   IoPeopleOutline,
   IoSpeedometerOutline,
+  IoConstructOutline,
+  IoCheckmarkCircleOutline,
+  IoPersonCircleOutline,
+  IoBriefcaseOutline,
 } from "react-icons/io5";
 
 export const NAVBAR_LINKS = {
@@ -25,7 +30,7 @@ export const HERO_TITLES = [
   "Beyond Limits \n Into Victory",
 ];
 
-export const VALUES = [
+export const VALUES: Value[] = [
   {
     title: "Communication",
     icon: IoChatbubblesOutline,
@@ -73,4 +78,29 @@ export const SCROLL_TEXT: string[] = [
   "BUIlT",
   "TO",
   "WIN",
+];
+
+export const ACHIEVEMENTS: Achievement[] = [
+  {
+    title: "Formula SAE-Australasia Design ",
+    icon: IoConstructOutline,
+    ranking: "2nd",
+    description: "",
+  },
+  {
+    title: "Check-In Champion of the Year 2024",
+    icon: IoCheckmarkCircleOutline,
+    description: "",
+  },
+  {
+    title: "Club Leader of the Year 2024",
+    icon: IoPersonCircleOutline,
+    description: "",
+  },
+  {
+    title: "Formula SAE-Australasia Business Presentation ",
+    icon: IoBriefcaseOutline,
+    ranking: "3rd",
+    description: "",
+  },
 ];

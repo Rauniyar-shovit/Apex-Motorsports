@@ -2,7 +2,7 @@ import Values from "@/components/features/values/Values";
 import Hero from "@/components/Hero";
 import InfiniteScrollText from "@/components/features/infiniteScroll/InfiniteScrollText";
 import Navbar from "@/components/navigation/Navbar";
-import Results from "@/components/features/results/Results";
+import Achievements from "@/components/features/achievements/Achievements";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <Values />
       <InfiniteScrollText />
-      <Results />
+      <Achievements />
       <div id="next" className="min-h-screen"></div>
       <div className="min-h-screen"> </div>
     </main>
