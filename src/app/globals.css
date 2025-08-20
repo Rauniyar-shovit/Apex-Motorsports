@@ -38,5 +38,8 @@ body {
 }
 
 .wrapper {
-  @apply pt-20 md:pt-24 xl:pt-32 w-[90%] xl:w-[78%] 2xl:w-[65%] 3xl:w-[55%] mx-auto;
+  @apply w-[90%] xl:w-[78%] 2xl:w-[65%] 3xl:w-[55%] mx-auto;
+}
+.section-padding {
+  @apply pt-20 md:pt-24 xl:pt-32;
 }

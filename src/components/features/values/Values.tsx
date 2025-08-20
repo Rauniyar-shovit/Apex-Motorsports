@@ -13,7 +13,7 @@ const Values = () => {
   return (
     <section id="values">
       <RevealWrapper>
-        <div className="wrapper">
+        <div className="wrapper section-padding">
           <div className=" flex flex-col md:flex-row lg:gap-6 md:h-[560px] xl:h-[695px]">
             <ValueShowcase
               valueTitle={value.title}
