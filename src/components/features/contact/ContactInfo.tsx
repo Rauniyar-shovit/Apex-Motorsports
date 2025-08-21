@@ -1,39 +1,7 @@
 "use client";
+import { SOCAILS } from "@/data";
 import Link from "next/link";
 import React from "react";
-import {
-  FaDiscord,
-  FaFacebookF,
-  FaInstagram,
-  FaXTwitter,
-} from "react-icons/fa6";
-
-const socials = [
-  {
-    title: "facebook",
-    icon: FaFacebookF,
-    link: "",
-    color: "#3a5694",
-  },
-  {
-    title: "discord",
-    icon: FaDiscord,
-    link: "",
-    color: "#5c69f2",
-  },
-  {
-    title: "instagram",
-    icon: FaInstagram,
-    link: "",
-    color: "#fc08af",
-  },
-  {
-    title: "x",
-    icon: FaXTwitter,
-    link: "",
-    color: "#249ef0",
-  },
-];
 
 const ContactInfo = () => {
   return (
@@ -67,7 +35,7 @@ const ContactInfo = () => {
         </p>
 
         <div className="flex gap-2">
-          {socials.map(({ title, icon: Icon, link, color }) => (
+          {SOCAILS.map(({ title, icon: Icon, link, color }) => (
             <Link
               key={title}
               href={link}

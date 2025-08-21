@@ -1,24 +1,13 @@
-import { Achievement, Value } from "@/models";
-import {
-  IoChatbubblesOutline,
-  IoTrendingUpOutline,
-  IoBulbOutline,
-  IoPeopleOutline,
-  IoSpeedometerOutline,
-  IoConstructOutline,
-  IoCheckmarkCircleOutline,
-  IoPersonCircleOutline,
-  IoBriefcaseOutline,
-} from "react-icons/io5";
+export const BRAND_NAME = "Apex Motorsports";
 
-export const NAVBAR_LINKS = {
+export const LINKS = {
   HOME: "home",
-  PUBLICATIONS: "publications",
+  BLOGS: "blogs",
   TEAM: "team",
   OUR_CARS: "our_cars",
   SPONSORS: "sponsors",
   ALUMNI: "alumni",
-  CONTACT: "contact",
+  CONTACTS: "contacts",
 };
 
 export const HERO_TITLES = [
@@ -28,44 +17,6 @@ export const HERO_TITLES = [
   "Design. Drive. Dominate.",
   "Turning Ideas into Velocity",
   "Beyond Limits \n Into Victory",
-];
-
-export const VALUES: Value[] = [
-  {
-    title: "Communication",
-    icon: IoChatbubblesOutline,
-    image: "/values/communication.avif",
-    description:
-      "Open communication builds trust and keeps our team connected. It ensures everyone works together with clarity and purpose.",
-  },
-  {
-    title: "Growth",
-    icon: IoTrendingUpOutline,
-    image: "/values/growth.jpg",
-    description:
-      "We embrace growth as a continuous journey of learning and improvement. Every challenge helps us evolve and become stronger.",
-  },
-  {
-    title: "Innovation",
-    icon: IoBulbOutline,
-    image: "/values/innovation.jpg",
-    description:
-      "Innovation drives us to think differently and break boundaries. We design solutions that go beyond convention and inspire progress.",
-  },
-  {
-    title: "Collaboration",
-    icon: IoPeopleOutline,
-    image: "/values/collaboration.jpg",
-    description:
-      "Collaboration unites diverse skills and ideas to achieve shared success. Working together allows us to reach greater heights.",
-  },
-  {
-    title: "Ambition",
-    icon: IoSpeedometerOutline,
-    image: "/values/ambition.avif",
-    description:
-      "Ambition fuels our pursuit of excellence in everything we do. It motivates us to push limits and deliver outstanding results.",
-  },
 ];
 
 export const VALUE_HEADING =
@@ -78,29 +29,4 @@ export const SCROLL_TEXT: string[] = [
   "BUIlT",
   "TO",
   "WIN",
-];
-
-export const ACHIEVEMENTS: Achievement[] = [
-  {
-    title: "Formula SAE-Australasia Design ",
-    icon: IoConstructOutline,
-    ranking: "2nd",
-    description: "",
-  },
-  {
-    title: "Check-In Champion of the Year 2024",
-    icon: IoCheckmarkCircleOutline,
-    description: "",
-  },
-  {
-    title: "Club Leader of the Year 2024",
-    icon: IoPersonCircleOutline,
-    description: "",
-  },
-  {
-    title: "Formula SAE-Australasia Business Presentation ",
-    icon: IoBriefcaseOutline,
-    ranking: "3rd",
-    description: "",
-  },
 ];
