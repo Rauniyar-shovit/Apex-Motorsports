@@ -1,12 +1,13 @@
 import React from "react";
 import ContactForm from "./ContactForm";
+import ContactInfo from "./ContactInfo";
 
 const Contact = () => {
   return (
     <section className="wrapper section-padding">
-      <div className="flex items-center justify-center">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8  ">
         <ContactForm />
-        <div className="flex-1">Quesrtion</div>
+        <ContactInfo />
       </div>
     </section>
   );

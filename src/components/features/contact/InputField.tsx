@@ -1,9 +1,17 @@
 "use client";
 import { motion } from "motion/react";
 import React, { useState } from "react";
-import { FaRegUser } from "react-icons/fa";
+import { IconType } from "react-icons";
 
-const InputField = () => {
+const InputField = ({
+  icon: Icon,
+  label,
+  multiline = false,
+}: {
+  icon: IconType;
+  label: string;
+  multiline?: boolean;
+}) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -12,12 +20,28 @@ const InputField = () => {
       onMouseLeave={() => setHovered(false)}
       className="w-full"
     >
-      <div className="flex text-gray-700 items-center py-3 gap-4 relative">
-        <FaRegUser className="text-muted-primary text-xl" />
-        <input
-          className="font-sans w-full focus:outline-none"
-          placeholder="Name"
+      <div className="flex text-gray-700 items-center  gap-4 relative">
+        <Icon
+          className={`text-muted-primary text-xl ${
+            multiline ? "self-start mt-3" : ""
+          } `}
         />
+
+        {!multiline && (
+          <input
+            type="text"
+            className="font-sans w-full focus:outline-none py-3"
+            placeholder={label}
+          />
+        )}
+
+        {multiline && (
+          <textarea
+            rows={3}
+            className="font-sans w-full focus:outline-none py-3"
+            placeholder={label}
+          />
+        )}
       </div>
 
       {/* Bottom border layer */}
