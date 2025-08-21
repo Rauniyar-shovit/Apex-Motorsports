@@ -1,4 +1,4 @@
-import { navBarLinks } from "@/data";
+import { navbarLinks } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -68,7 +68,7 @@ const MobileNavbar = () => {
                 variants={linksContainerVariants}
                 className="flex flex-col items-center justify-center gap-4 font-barlow uppercase"
               >
-                {navBarLinks.map((navLink) => (
+                {navbarLinks.map((navLink) => (
                   <motion.div
                     key={navLink.link}
                     variants={linkVariants}
