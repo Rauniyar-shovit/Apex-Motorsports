@@ -23,7 +23,7 @@ const InputField = ({
       <div className="flex text-gray-700 items-center  gap-4 relative">
         <Icon
           className={`text-muted-primary text-xl ${
-            multiline ? "self-start mt-3" : ""
+            multiline ? "self-start mt-3.5" : ""
           } `}
         />
 

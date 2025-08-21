@@ -19,3 +19,10 @@ export type Achievement = {
   description?: string;
   icon: IconType;
 };
+
+export type Social = {
+  title: string;
+  color: string;
+  link: string;
+  icon: IconType;
+};

@@ -1,4 +1,10 @@
-import { Achievement, Value } from "@/models";
+import { Achievement, Social, Value } from "@/models";
+import {
+  FaDiscord,
+  FaFacebookF,
+  FaInstagram,
+  FaXTwitter,
+} from "react-icons/fa6";
 import {
   IoChatbubblesOutline,
   IoTrendingUpOutline,
@@ -102,5 +108,32 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: IoBriefcaseOutline,
     ranking: "3rd",
     description: "",
+  },
+];
+
+export const SOCIALS: Social[] = [
+  {
+    title: "facebook",
+    icon: FaFacebookF,
+    link: "",
+    color: "#3a5694",
+  },
+  {
+    title: "discord",
+    icon: FaDiscord,
+    link: "",
+    color: "#5c69f2",
+  },
+  {
+    title: "instagram",
+    icon: FaInstagram,
+    link: "",
+    color: "#fc08af",
+  },
+  {
+    title: "x",
+    icon: FaXTwitter,
+    link: "",
+    color: "#249ef0",
   },
 ];
