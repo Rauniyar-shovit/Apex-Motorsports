@@ -1,4 +1,20 @@
-export const BRAND_NAME = "Apex Motorsports";
+import { BrandDetails } from "@/models";
+
+export const BRAND_DETAILS: BrandDetails = {
+  name: "Apex Motorsports",
+  address: {
+    buildingNumber: "Office 458",
+    streetName: "785 15h Street",
+    shuburb: "Paramatta",
+    postcode: 2000,
+    state: "NSW",
+    country: "Australia",
+  },
+  email: "info@email.com",
+  phone: "+61 80055525 69",
+  motto: "Made to learn, Built to win",
+  logo: "/logo.png",
+};
 
 export const LINKS = {
   HOME: "home",
