@@ -16,6 +16,7 @@
   --muted-secondary: #d1d1c7;
   --primary: #5f3cff;
   --secondary: #1d0029;
+  --form-background: #f7f9fa;
 }
 
 @theme inline {
@@ -28,6 +29,7 @@
   --color-muted-secondary: var(--muted-secondary);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-form-background: var(--form-background);
   --breakpoint-3xl: 120rem;
 }
 
