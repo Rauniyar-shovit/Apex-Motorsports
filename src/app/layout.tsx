@@ -3,6 +3,7 @@ import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
+  weight: ["400", "600", "700"],
   variable: "--font-dm-sans",
   subsets: ["latin"],
 });
