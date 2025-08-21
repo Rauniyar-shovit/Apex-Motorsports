@@ -1,6 +1,5 @@
-import { AnyResolvedKeyframe, motion, MotionValue } from "motion/react";
+import { motion, MotionValue } from "motion/react";
 import Image from "next/image";
-import React from "react";
 
 type ParallaxBackgroundProps = {
   y: MotionValue<string>;
