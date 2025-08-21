@@ -4,6 +4,7 @@ import InfiniteScrollText from "@/components/features/infiniteScroll/InfiniteScr
 import Navbar from "@/components/navigation/Navbar";
 import Achievements from "@/components/features/achievements/Achievements";
 import Contact from "@/components/features/contact/Contact";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   return (
@@ -14,8 +15,7 @@ export default function Home() {
       <InfiniteScrollText />
       <Achievements />
       <Contact />
-      <div id="next" className="min-h-screen"></div>
-      <div className="min-h-screen"> </div>
+      <Footer />
     </main>
   );
 }

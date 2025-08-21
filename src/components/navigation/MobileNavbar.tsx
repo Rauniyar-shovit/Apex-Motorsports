@@ -1,4 +1,4 @@
-import { navBarLinks } from "@/data/navbar";
+import { navBarLinks } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";

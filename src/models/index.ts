@@ -1,8 +1,8 @@
-import { NAVBAR_LINKS } from "@/constants";
+import { LINKS } from "@/constants";
 import { IconType } from "react-icons";
 
-export type NavbarLink = {
-  title: (typeof NAVBAR_LINKS)[keyof typeof NAVBAR_LINKS];
+export type Link = {
+  title: (typeof LINKS)[keyof typeof LINKS];
   link: string;
 };
 
@@ -18,4 +18,11 @@ export type Achievement = {
   ranking?: string;
   description?: string;
   icon: IconType;
+};
+
+export type Social = {
+  title: string;
+  icon: IconType;
+  link: string;
+  color: string;
 };

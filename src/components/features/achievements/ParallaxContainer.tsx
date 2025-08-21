@@ -2,8 +2,8 @@ import { useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Card from "./Card";
 
-import { ACHIEVEMENTS } from "@/constants";
 import ParallaxBackground from "./ParallaxBackground";
+import { ACHIEVEMENTS } from "@/data";
 
 const ParallaxContainer = () => {
   const container = useRef(null);
