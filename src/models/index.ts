@@ -26,3 +26,21 @@ export type Social = {
   link: string;
   color: string;
 };
+
+export type BrandDetails = {
+  name: string;
+  phone: string;
+  email: string;
+  address: Address;
+  motto?: string;
+  logo: string;
+};
+
+type Address = {
+  buildingNumber: string;
+  streetName: string;
+  shuburb?: string;
+  postcode: number;
+  state: string;
+  country: string;
+};

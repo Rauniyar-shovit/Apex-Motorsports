@@ -11,6 +11,7 @@ import {
   overlayVariants,
 } from "@/animations/navbar";
 import { usePathname } from "next/navigation";
+import { BRAND_DETAILS } from "@/constants";
 
 const MobileNavbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -48,10 +49,10 @@ const MobileNavbar = () => {
                   onClick={() => setIsNavbarOpen(false)}
                 >
                   <Image
-                    src="/logo.png"
+                    src={BRAND_DETAILS.logo}
                     width={120}
                     height={120}
-                    alt="apex motosport logo"
+                    alt={`${BRAND_DETAILS.name}-logo`}
                   />
                 </Link>
                 <div

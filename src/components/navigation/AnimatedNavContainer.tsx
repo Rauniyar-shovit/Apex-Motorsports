@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavbarLink from "./NavbarLink";
+import { BRAND_DETAILS } from "@/constants";
 
 type AnimatedNavContainerProps = {
   motionProps?: Pick<
@@ -25,10 +26,10 @@ const AnimatedNavContainer = ({
     >
       <Link href={"/"}>
         <Image
-          src="/logo.png"
+          src={BRAND_DETAILS.logo}
           width={120}
           height={120}
-          alt="apex motosport logo"
+          alt={`${BRAND_DETAILS.name}-logo`}
         />
       </Link>
       <div className="flex items-center justify-center gap-4 font-barlow uppercase 2xl:text-lg">

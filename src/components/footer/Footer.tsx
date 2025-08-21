@@ -1,18 +1,10 @@
 // src/components/layout/Footer.tsx
 
-import { BRAND_NAME } from "@/constants";
-import { footerLinks, navbarLinks, SOCAILS } from "@/data";
+import { BRAND_DETAILS } from "@/constants";
+import { footerLinks, SOCAILS } from "@/data";
 import Link from "next/link";
 import { CSSProperties } from "react";
 import { FaRegCopyright } from "react-icons/fa6";
-
-const LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "About Us", href: "/about" },
-  { label: "Shop", href: "/shop" },
-  { label: "Contacts", href: "/contact" },
-];
 
 export default function Footer() {
   return (
@@ -23,10 +15,10 @@ export default function Footer() {
             {/* 1) Blurb */}
             <div>
               <h4 className="uppercase font-barlow tracking-wide text-lg md:text-xl mb-4">
-                {BRAND_NAME}
+                {BRAND_DETAILS.name}
               </h4>
               <p className="font-sans text-muted-secondary leading-relaxed">
-                Made to learn, Built to win
+                {BRAND_DETAILS.motto}
               </p>
             </div>
 
@@ -37,11 +29,13 @@ export default function Footer() {
               </h4>
 
               <p className="font-sans text-muted-secondary leading-relaxed mb-6">
-                Germany —
+                {BRAND_DETAILS.address.country} —
                 <br />
-                785 15h Street, Office 478
+                {BRAND_DETAILS.address.streetName},{" "}
+                {BRAND_DETAILS.address.buildingNumber}
                 <br />
-                Berlin, De 81566
+                {BRAND_DETAILS.address.shuburb},{" "}
+                {BRAND_DETAILS.address.postcode}
               </p>
 
               {/* Email with center-growing underline */}
@@ -53,12 +47,10 @@ export default function Footer() {
              after:origin-left after:duration-300 after:ease-out
              after:transition-all hover:after:w-0"
               >
-                info@email.com
+                {BRAND_DETAILS.email}
               </Link>
 
-              <p className="font-barlow text-lg md:text-xl font-[700] mt-6">
-                +1 800 555 25 69
-              </p>
+              <p className="font-barlow text-lg md:text-xl font-[700] mt-6"></p>
             </div>
 
             {/* 3) Links */}
@@ -114,7 +106,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-12 border-t-[1px] border-muted-primary pt-6  text-muted-secondary flex gap-1 items-center font-sans ">
-            {BRAND_NAME} <FaRegCopyright />
+            {BRAND_DETAILS.name} <FaRegCopyright />
             {new Date().getFullYear()}. All rights reserved.
           </div>
         </div>
