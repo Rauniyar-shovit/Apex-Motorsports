@@ -50,7 +50,9 @@ export default function Footer() {
                 {BRAND_DETAILS.email}
               </Link>
 
-              <p className="font-barlow text-lg md:text-xl font-[700] mt-6"></p>
+              <p className="font-barlow text-lg md:text-xl font-[700] mt-6">
+                {BRAND_DETAILS.phone}
+              </p>
             </div>
 
             {/* 3) Links */}

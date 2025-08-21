@@ -1,4 +1,5 @@
 "use client";
+import { BRAND_DETAILS } from "@/constants";
 import { SOCAILS } from "@/data";
 import Link from "next/link";
 import React from "react";
@@ -16,9 +17,10 @@ const ContactInfo = () => {
           Get in Touch!
         </p>
         <p className="font-sans  mb-6 text-muted-primary">
-          785 15h Street, Office 478
+          {BRAND_DETAILS.address.streetName},{" "}
+          {BRAND_DETAILS.address.buildingNumber}
           <br />
-          Berlin, De 81566
+          {BRAND_DETAILS.address.shuburb}, {BRAND_DETAILS.address.postcode}
         </p>
 
         <p
@@ -27,11 +29,11 @@ const ContactInfo = () => {
    after:h-[1.5px] after:w-0  after:bg-black after:-translate-x-1/2
    after:transition-all after:duration-300 hover:after:w-full"
         >
-          info@email.com
+          {BRAND_DETAILS.email}
         </p>
 
         <p className="font-barlow text-xl lg:text-2xl text-foreground mb-10 ">
-          +1 840 841 25 69
+          {BRAND_DETAILS.phone}
         </p>
 
         <div className="flex gap-2">
