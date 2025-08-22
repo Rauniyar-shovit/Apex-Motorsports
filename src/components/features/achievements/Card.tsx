@@ -1,4 +1,4 @@
-import RevealWrapper from "@/components/RevealWrapper";
+import RevealWrapper from "@/components/Reusable/RevealWrapper";
 import { Achievement } from "@/models";
 import React from "react";
 

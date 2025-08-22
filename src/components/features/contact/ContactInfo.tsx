@@ -1,5 +1,5 @@
 "use client";
-import RevealWrapper from "@/components/RevealWrapper";
+import RevealWrapper from "@/components/Reusable/RevealWrapper";
 import { BRAND_DETAILS } from "@/constants";
 import { SOCAILS } from "@/data";
 import Link from "next/link";
