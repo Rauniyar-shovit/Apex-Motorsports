@@ -6,6 +6,7 @@ import Contact from "@/components/features/contact/Contact";
 import Footer from "@/components/footer/Footer";
 import MarqueeText from "@/components/features/marquee/MarqueeText";
 import MarqueePartners from "@/components/features/marquee/MarqueePartners";
+import FormulaSAE from "../components/features/competition/FormulaSAE";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar intersectingSectionId="hero" />
       <Hero />
       <Values />
+      <FormulaSAE />
       <MarqueeText />
       <Achievements />
       <Contact />

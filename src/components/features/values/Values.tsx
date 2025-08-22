@@ -3,7 +3,7 @@ import { VALUE_HEADING } from "@/constants";
 import ValueShowcase from "./ValueShowcase";
 import ValuesList from "./ValuesList";
 import { useState } from "react";
-import RevealWrapper from "@/components/RevealWrapper";
+import RevealWrapper from "@/components/Reusable/RevealWrapper";
 import { VALUES } from "@/data";
 
 const Values = () => {

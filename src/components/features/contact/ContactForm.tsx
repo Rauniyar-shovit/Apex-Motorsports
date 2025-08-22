@@ -4,7 +4,7 @@ import React from "react";
 import InputField from "./InputField";
 import { BsSend } from "react-icons/bs";
 import { FaEnvelope, FaPencil, FaUser } from "react-icons/fa6";
-import RevealWrapper from "@/components/RevealWrapper";
+import RevealWrapper from "@/components/Reusable/RevealWrapper";
 
 const ContactForm = () => {
   return (
