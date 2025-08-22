@@ -1,7 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import CompetitionInfo from "./CompetitionInfo";
+import CountUp from "@/components/CountUp";
 
 export default function FormulaSAE() {
   return (
@@ -23,10 +23,10 @@ export default function FormulaSAE() {
               />
             </div>
 
-            <div className="absolute bottom-3 -left-16 bg-primary  px-10 py-10 shadow-xl font-barlow">
+            <div className="absolute bottom-3 -left-16 bg-primary  px-10 py-10 shadow-xl font-barlow min-w-[190px]">
               <p className="uppercase text-xl tracking-wider">Teams</p>
               <p className="mt-2 text-6xl font-extrabold leading-none font-barlow">
-                700+
+                <CountUp from={0} to={700} />+
               </p>
             </div>
 
@@ -36,27 +36,6 @@ export default function FormulaSAE() {
                 60+
               </p>
             </div>
-
-            {/* <div className="absolute -bottom-10 left-6 bg-primary text-white px-8 py-6 shadow-xl">
-              <p className="uppercase text-sm tracking-wide text-white/80 font-sans">
-                Teams
-              </p>
-              <p className="mt-2 text-5xl font-extrabold leading-none font-barlow">
-                700+
-              </p>
-               <p className="mt-2 text-white/80 text-sm">
-                Adipiscing elit, do eiusmod.
-              </p> 
-            </div> */}
-
-            {/* floating stat card — dark */}
-            {/* <div className="absolute -bottom-10 right-6 bg-[#1b1b1b] px-8 py-6 w-[300px] shadow-xl">
-              <p className="uppercase text-sm tracking-wide text-white/80">
-                Runners registered
-              </p>
-              <p className="mt-2 text-5xl font-extrabold leading-none">400+</p>
-              <p className="mt-2 text-white/70 text-sm">Sed eiusmod tempor.</p>
-            </div> */}
           </div>
         </div>
 
