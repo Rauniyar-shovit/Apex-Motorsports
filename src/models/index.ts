@@ -36,7 +36,7 @@ export type BrandDetails = {
   logo: string;
 };
 
-type Address = {
+export type Address = {
   buildingNumber: string;
   streetName: string;
   shuburb?: string;
