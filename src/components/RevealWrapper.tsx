@@ -1,23 +1,39 @@
 "use client";
 
-import { motion, useAnimation, useInView } from "motion/react";
-import React, { ReactNode, useEffect, useRef } from "react";
-motion;
+import {
+  easeInOut,
+  motion,
+  useAnimation,
+  useInView,
+  Variants,
+} from "motion/react";
+import { ReactNode, useEffect, useRef } from "react";
+
+type RequiredVariants = {
+  hidden: NonNullable<Variants[string]>;
+  visible: NonNullable<Variants[string]>;
+};
+
+type RevealWrapperProps = {
+  children: ReactNode;
+  styles?: string;
+  index?: number;
+  variants?: RequiredVariants;
+};
+
+const defaultVariants: RequiredVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const RevealWrapper = ({
   children,
   styles,
   index,
-}: {
-  children: ReactNode;
-  styles?: string;
-  index?: number;
-}) => {
+  variants = defaultVariants,
+}: RevealWrapperProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const variants = {
-    hidden: { opacity: 0, y: 75 },
-    visible: { opacity: 1, y: 0 },
-  };
+
   const isInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
@@ -35,6 +51,7 @@ const RevealWrapper = ({
       initial="hidden"
       animate={mainControls}
       transition={{
+        ease: easeInOut,
         duration: 0.6,
         delay: index !== undefined ? index * 0.25 : 0.25,
       }}
