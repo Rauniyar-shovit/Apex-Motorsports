@@ -1,10 +1,8 @@
-// src/components/layout/Footer.tsx
-
 import { BRAND_DETAILS } from "@/constants";
-import { footerLinks, SOCAILS } from "@/data";
-import Link from "next/link";
-import { CSSProperties } from "react";
 import { FaRegCopyright } from "react-icons/fa6";
+import FooterLinks from "./FooterLinks";
+import OfficeInfo from "./OfficeInfo";
+import Socials from "./Socials";
 
 export default function Footer() {
   return (
@@ -23,88 +21,15 @@ export default function Footer() {
             </div>
 
             {/* 2) Office */}
-            <div>
-              <h4 className="uppercase font-barlow font-[700] tracking-wide text-lg mb-6 md:text-xl">
-                Office
-              </h4>
-
-              <p className="font-sans text-muted-secondary leading-relaxed mb-6">
-                {BRAND_DETAILS.address.country} —
-                <br />
-                {BRAND_DETAILS.address.streetName},{" "}
-                {BRAND_DETAILS.address.buildingNumber}
-                <br />
-                {BRAND_DETAILS.address.shuburb},{" "}
-                {BRAND_DETAILS.address.postcode}
-              </p>
-
-              {/* Email with center-growing underline */}
-              <Link
-                href="mailto:info@email.com"
-                className="group font-sans inline-block relative text-white mb-6
-             after:content-[''] after:absolute after:left-0 after:-bottom-1
-             after:h-[1px] after:w-full after:bg-white
-             after:origin-left after:duration-300 after:ease-out
-             after:transition-all hover:after:w-0"
-              >
-                {BRAND_DETAILS.email}
-              </Link>
-
-              <p className="font-barlow text-lg md:text-xl font-[700] mt-6">
-                {BRAND_DETAILS.phone}
-              </p>
-            </div>
-
+            <OfficeInfo
+              address={BRAND_DETAILS.address}
+              phone={BRAND_DETAILS.phone}
+              email={BRAND_DETAILS.email}
+            />
             {/* 3) Links */}
-            <div>
-              <h4 className="uppercase font-barlow font-[700] tracking-wide text-lg mb-6 md:text-xl md:px-4">
-                Links
-              </h4>
-              <ul className="space-y-4">
-                {footerLinks.map(({ title, link }, index) => (
-                  <li
-                    key={index}
-                    className="group relative transition-transform duration-300 ease-out hover:translate-x-3 cursor-pointer  md:px-4"
-                  >
-                    <Link
-                      href={link}
-                      className=" capitalize relative inline-block font-sans text-white transition-colors duration-300 group-hover:text-white
-               after:content-[''] after:absolute after:left-0 after:bottom-[-4px]
-               after:h-[1px] after:w-0 after:bg-white after:transition-[width] after:duration-300 after:ease-out
-               group-hover:after:w-full"
-                    >
-                      {title.replace("_", " ")}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+            <FooterLinks />
             {/* 4) Socials */}
-            <div>
-              <h4 className="uppercase font-barlow font-[700] tracking-wide text-lg mb-6 md:text-xl">
-                Get in touch
-              </h4>
-              <ul className="space-y-4">
-                {SOCAILS.map(({ title, link, icon: Icon, color }) => (
-                  <li key={title}>
-                    <Link
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={title}
-                      style={{ "--hover-color": color } as CSSProperties}
-                      className=" capitalize group inline-flex items-center gap-3"
-                    >
-                      <Icon className="h-5 w-5 text-white/80 transition-colors group-hover:[color:var(--hover-color)]" />
-                      <span className="font-sans text-white/80 group-hover:text-white transition-colors">
-                        {title}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Socials />
           </div>
 
           <div className="mt-12 border-t-[1px] border-muted-primary pt-6  text-muted-secondary flex gap-1 items-center font-sans ">
