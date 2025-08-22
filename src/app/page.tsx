@@ -5,7 +5,6 @@ import Navbar from "@/components/navigation/Navbar";
 import Achievements from "@/components/features/achievements/Achievements";
 import Contact from "@/components/features/contact/Contact";
 import Footer from "@/components/footer/Footer";
-import Partners1 from "@/components/features/partners/Partners1";
 import Partners from "@/components/features/partners/Partners";
 
 export default function Home() {
