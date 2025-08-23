@@ -2,8 +2,21 @@
 import { useEffect, useRef } from "react";
 import { useInView, useMotionValue, useSpring } from "motion/react";
 
+type CountUpProps = {
+  to: number;
+  from?: number;
+  direction?: "up" | "down";
+  delay?: number; // seconds
+  duration?: number; // seconds (used to tune spring)
+  className?: string;
+  startWhen?: boolean; // gate start (e.g., when a parent condition is met)
+  separator?: string; // e.g., ",", " ", "." — empty string disables grouping
+  onStart?: () => void;
+  onEnd?: () => void;
+};
+
 export default function CountUp({
-  to,
+  to = 0,
   from = 0,
   direction = "up",
   delay = 0,
@@ -13,8 +26,8 @@ export default function CountUp({
   separator = "",
   onStart,
   onEnd,
-}) {
-  const ref = useRef(null);
+}: CountUpProps) {
+  const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === "down" ? to : from);
 
   const damping = 20 + 40 * (1 / duration);
@@ -27,7 +40,7 @@ export default function CountUp({
 
   const isInView = useInView(ref, { once: true, margin: "0px" });
 
-  const getDecimalPlaces = (num) => {
+  const getDecimalPlaces = (num: number) => {
     const str = num.toString();
 
     if (str.includes(".")) {
@@ -103,5 +116,9 @@ export default function CountUp({
     return () => unsubscribe();
   }, [springValue, separator, maxDecimals]);
 
-  return <span className={className} ref={ref} />;
+  return (
+    <span className={className} ref={ref}>
+      {direction === "down" ? to : from}
+    </span>
+  );
 }
