@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import InputField from "./InputField";
+import Button from "@/components/Reusable/Button";
+import RevealWrapper from "@/components/Reusable/RevealWrapper";
 import { BsSend } from "react-icons/bs";
 import { FaEnvelope, FaPencil, FaUser } from "react-icons/fa6";
-import RevealWrapper from "@/components/Reusable/RevealWrapper";
-import Button from "@/components/Reusable/Button";
+import InputField from "./InputField";
 
 const ContactForm = () => {
   return (
@@ -32,6 +31,7 @@ const ContactForm = () => {
         </div>
 
         <Button
+          handleClick={() => {}}
           title={"Get in touch"}
           icon={BsSend}
           btnStyles="px-8 py-3 md:px-9 md:py-4  bg-secondary  hover:shadow-primary text-white"
