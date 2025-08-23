@@ -1,46 +1,43 @@
 "use client";
 import Image from "next/image";
 import CompetitionInfo from "./CompetitionInfo";
-import CountUp from "@/components/CountUp";
+import FloatingCard from "./FloatingCard";
+import { FORMULA_SAE_DETAILS } from "@/constants";
 
 export default function FormulaSAE() {
   return (
     <section className="relative section-padding">
       <div className="bg-foreground text-white">
         <div className="wrapper  max-w-7xl py-16 lg:py-24 grid lg:grid-cols-2 gap-20 items-center">
-          {/* LEFT: copy */}
+          {/* formula sae info */}
           <CompetitionInfo />
 
-          {/* RIGHT: image + floating stat cards */}
+          {/*  image and floating stats*/}
           <div className="relative ">
             <div className="relative aspect-[16/11] w-full overflow-hidden ">
               <Image
-                src="/formula-sae.jpg" // put your image here
-                alt="Runner"
+                src={FORMULA_SAE_DETAILS.image} // put your image here
+                alt={FORMULA_SAE_DETAILS.name}
                 fill
                 className="object-cover"
                 priority
               />
             </div>
 
-            <div className="absolute bottom-3 -left-16 bg-primary  px-10 py-10 shadow-xl font-barlow min-w-[190px]">
-              <p className="uppercase text-xl tracking-wider">Teams</p>
-              <p className="mt-2 text-6xl font-extrabold leading-none font-barlow">
-                <CountUp from={0} to={700} />+
-              </p>
-            </div>
+            <FloatingCard
+              containerStyle={`-bottom-15 lg:bottom-3 lg:-left-16 bg-${FORMULA_SAE_DETAILS.stats.teams.accent}`}
+              number={FORMULA_SAE_DETAILS.stats.teams.value}
+              title={FORMULA_SAE_DETAILS.stats.teams.title}
+            />
 
-            <div className="absolute bottom-3 left-40 bg-foreground  px-10 py-10 shadow-xl font-barlow min-w-[180px]">
-              <p className="uppercase text-xl tracking-wider">Countries</p>
-              <p className="mt-2 text-6xl font-extrabold leading-none font-barlow">
-                60+
-              </p>
-            </div>
+            <FloatingCard
+              containerStyle={`-bottom-15 left-50 lg:bottom-3 lg:left-40 border border-muted-primary lg:border-none bg-${FORMULA_SAE_DETAILS.stats.countries.accent}`}
+              number={FORMULA_SAE_DETAILS.stats.countries.value}
+              title={FORMULA_SAE_DETAILS.stats.countries.title}
+            />
           </div>
         </div>
-
-        {/* mobile spacing so floating cards don’t overlap next section */}
-        <div className="h-24 lg:hidden" />
+        <div className="pt-16"></div>
       </div>
     </section>
   );

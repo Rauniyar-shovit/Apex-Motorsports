@@ -1,4 +1,4 @@
-import { BrandDetails } from "@/models";
+import { BrandDetails, FormulaSaeDetails } from "@/models";
 
 export const BRAND_DETAILS: BrandDetails = {
   name: "Apex Motorsports",
@@ -14,6 +14,34 @@ export const BRAND_DETAILS: BrandDetails = {
   phone: "+61 80055525 69",
   motto: "Made to learn, Built to win",
   logo: "/logo.png",
+};
+
+export const FORMULA_SAE_DETAILS: FormulaSaeDetails = {
+  name: "Formula SAE",
+  link: "https://www.fsaeonline.com/",
+  description:
+    "Formula SAE is an international competition where students design, build, and race Formula-style cars. Since 2000 it has brought together 35+ teams each December, helping students gain technical, leadership, and business skills valued by industry. With Combustion, Electric, and Driverless classes tested in Static and Dynamic events, it is the ultimate showcase of engineering education and innovation.",
+  motto: {
+    text: "Bringing industry\ninto the classroom",
+    highlights: ["industry", "classroom"],
+  },
+  image: "/formula-sae.jpg",
+  stats: {
+    teams: {
+      key: "teams",
+      title: "Teams",
+      value: 700,
+      suffix: "+",
+      accent: "primary",
+    },
+    countries: {
+      key: "countries",
+      title: "Countries",
+      value: 60,
+      suffix: "+",
+      accent: "foreground",
+    },
+  },
 };
 
 export const LINKS = {

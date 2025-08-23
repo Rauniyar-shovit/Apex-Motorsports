@@ -5,6 +5,7 @@ import InputField from "./InputField";
 import { BsSend } from "react-icons/bs";
 import { FaEnvelope, FaPencil, FaUser } from "react-icons/fa6";
 import RevealWrapper from "@/components/Reusable/RevealWrapper";
+import Button from "@/components/Reusable/Button";
 
 const ContactForm = () => {
   return (
@@ -30,12 +31,12 @@ const ContactForm = () => {
           />
         </div>
 
-        <button className="relative flex h-[50px] px-8 py-3 md:px-9 md:py-4 items-center justify-center overflow-hidden bg-secondary text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-primary before:duration-200 before:ease-out hover:shadow-primary hover:before:h-56 hover:before:w-56 cursor-pointer">
-          <span className="relative z-10 flex font-sans gap-3 items-center justify-center uppercase text-xs lg:text-sm font-[600] tracking-wider">
-            <BsSend className="text-lg" />
-            <p>Get in touch</p>
-          </span>
-        </button>
+        <Button
+          title={"Get in touch"}
+          icon={BsSend}
+          btnStyles="px-8 py-3 md:px-9 md:py-4  bg-secondary  hover:shadow-primary text-white"
+          beforeStyles="before:bg-primary"
+        />
       </div>
     </div>
   );

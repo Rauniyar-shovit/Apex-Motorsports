@@ -44,3 +44,26 @@ export type Address = {
   state: string;
   country: string;
 };
+
+export type StatKey = "teams" | "countries";
+
+export type Stat = {
+  key: StatKey;
+  title: string;
+  value: number; // numeric part for CountUp
+  suffix?: string; // e.g. "+", "k", etc.
+  prefix?: string; // e.g. "~", "≈"
+  accent?: "primary" | "foreground";
+};
+
+export type FormulaSaeDetails = {
+  name: string;
+  link: string;
+  description: string;
+  motto: {
+    text: string;
+    highlights?: string[];
+  };
+  image: string;
+  stats: Record<StatKey, Stat>;
+};
