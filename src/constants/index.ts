@@ -22,7 +22,7 @@ export const FORMULA_SAE_DETAILS: FormulaSaeDetails = {
   description:
     "Formula SAE is an international competition where students design, build, and race Formula-style cars. Since 2000 it has brought together 35+ teams each December, helping students gain technical, leadership, and business skills valued by industry. With Combustion, Electric, and Driverless classes tested in Static and Dynamic events, it is the ultimate showcase of engineering education and innovation.",
   motto: {
-    text: "Bringing industry\ninto the classroom",
+    text: "Bringing industry \n into the classroom",
     highlights: ["industry", "classroom"],
   },
   image: "/formula-sae.jpg",
