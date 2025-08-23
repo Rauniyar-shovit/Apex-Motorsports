@@ -1,6 +1,5 @@
 import Button from "@/components/Reusable/Button";
 import { FORMULA_SAE_DETAILS } from "@/constants";
-import React from "react";
 
 const CompetitionInfo = () => {
   return (
@@ -27,6 +26,7 @@ const CompetitionInfo = () => {
       </p>
 
       <Button
+        handleClick={() => window.open(FORMULA_SAE_DETAILS.link, "_blank")}
         btnStyles={
           "border border-white bg-foreground hover:text-foreground px-8 py-4 mt-10 tracking-widest text-white "
         }

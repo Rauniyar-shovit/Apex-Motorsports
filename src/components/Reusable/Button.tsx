@@ -6,17 +6,20 @@ const Button = ({
   btnStyles,
   beforeStyles,
   title,
+  handleClick,
 }: {
   icon?: IconType;
   btnStyles?: string;
   title: string;
   beforeStyles?: string;
+  handleClick: () => void;
 }) => {
   const defaultBeforeStyles =
     "before:absolute before:h-0 before:w-0 before:rounded-full  before:duration-200 before:ease-out hover:before:h-56 hover:before:w-56 ";
   return (
     <button
       className={`relative flex items-center justify-center overflow-hidden  shadow-2xl transition-all cursor-pointer ${defaultBeforeStyles} ${btnStyles} ${beforeStyles}`}
+      onClick={handleClick}
     >
       <span className="relative z-10 flex font-sans gap-3 items-center justify-center uppercase text-xs lg:text-sm font-[600] tracking-wider">
         {Icon && <Icon className="text-lg" />}
