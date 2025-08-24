@@ -1,5 +1,5 @@
 import { LINKS } from "@/constants";
-import { Achievement, Link, Social, Value } from "@/models";
+import { AboutUs, Achievement, Link, Social, Value } from "@/models";
 import {
   FaDiscord,
   FaFacebookF,
@@ -125,3 +125,28 @@ export const footerLinks: Link[] = [
   { title: LINKS.OUR_CARS, link: `/${LINKS.OUR_CARS}` },
   { title: LINKS.CONTACTS, link: `/${LINKS.CONTACTS}` },
 ];
+
+export const ABOUT_US: AboutUs = {
+  primaryTile: {
+    eyebrow: "Beyond Racing",
+    title: "From Concept to Competition, We Engineer the Future",
+    description:
+      "Apex Motorsports turns student ambition into real-world engineering by designing, building, and racing formula-style cars. Through innovation and collaboration, we prepare future engineers to compete today and lead tomorrow.",
+    image: "/model.avif",
+  },
+  secondaryTile: {
+    info: [
+      {
+        title: "What We Do",
+        description:
+          "We design, build, and race formula-style cars, turning classroom learning into real engineering experience.",
+      },
+      {
+        title: "The Opportunities",
+        description:
+          "  The competition lets us innovate, collaborate, and gain industry-ready skills in engineering, leadership, and teamwork.",
+      },
+    ],
+    image: "/engineering-kart.avif",
+  },
+};
