@@ -67,3 +67,25 @@ export type FormulaSaeDetails = {
   image: string;
   stats: Record<StatKey, Stat>;
 };
+
+export type InfoItem = {
+  title: string;
+  description: string;
+};
+
+export type PrimaryTile = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type SecondaryTile = {
+  info: InfoItem[];
+  image: string;
+};
+
+export type AboutUs = {
+  primaryTile: PrimaryTile;
+  secondaryTile: SecondaryTile;
+};
