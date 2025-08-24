@@ -3,6 +3,7 @@ import { ABOUT_US } from "@/data";
 import Image from "next/image";
 import PrimaryPanel from "./PrimaryPanel";
 import SecondaryPanel from "./SecondaryPanel";
+import WhoWeAreQuote from "./WhoWeAreQuote";
 
 const AboutUs = () => {
   return (
@@ -39,6 +40,8 @@ const AboutUs = () => {
           </div>
         </div>
       </RevealWrapper>
+
+      <WhoWeAreQuote />
     </section>
   );
 };
