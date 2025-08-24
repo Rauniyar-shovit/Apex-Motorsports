@@ -18,6 +18,7 @@ type RevealWrapperProps = {
   children: ReactNode;
   styles?: string;
   index?: number;
+  duration?: number;
   variants?: RequiredVariants;
 };
 
@@ -30,6 +31,7 @@ const RevealWrapper = ({
   children,
   styles,
   index,
+  duration = 0.6,
   variants = defaultVariants,
 }: RevealWrapperProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -52,7 +54,7 @@ const RevealWrapper = ({
       animate={mainControls}
       transition={{
         ease: easeInOut,
-        duration: 0.6,
+        duration: duration,
         delay: index !== undefined ? index * 0.25 : 0.25,
       }}
       className={styles}
