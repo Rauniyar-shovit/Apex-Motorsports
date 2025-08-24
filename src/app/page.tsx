@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import MarqueeText from "@/components/features/marquee/MarqueeText";
 import MarqueePartners from "@/components/features/marquee/MarqueePartners";
 import FormulaSAE from "../components/features/competition/FormulaSAE";
+import WhoAreWe from "@/components/features/whoAreWe/WhoAreWe";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
       <Hero />
       <Values />
       <FormulaSAE />
-      <MarqueeText />
+      {/* <MarqueeText /> */}
+      <WhoAreWe />
       <Achievements />
       <Contact />
       <MarqueePartners />
