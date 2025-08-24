@@ -149,4 +149,11 @@ export const ABOUT_US: AboutUs = {
     ],
     image: "/engineering-kart.avif",
   },
+
+  quoteInfo: {
+    quote:
+      "students who engineer, collaborate, and compete to define the future of motorsport.",
+    author: "Bowen Fucile",
+    position: "Team Principal",
+  },
 };

@@ -7,7 +7,7 @@ import WhoWeAreQuote from "./WhoWeAreQuote";
 
 const AboutUs = () => {
   return (
-    <section className="relative section-padding">
+    <section className="relatives sm:pt-10 md:pt-24 xl:pt-32;">
       <RevealWrapper
         variants={{
           hidden: { opacity: 0 },
@@ -41,7 +41,7 @@ const AboutUs = () => {
         </div>
       </RevealWrapper>
 
-      <WhoWeAreQuote />
+      <WhoWeAreQuote {...ABOUT_US.quoteInfo} />
     </section>
   );
 };

@@ -25,15 +25,17 @@ export default function FormulaSAE() {
             </div>
 
             <FloatingCard
-              containerStyle={`-bottom-15 lg:bottom-3 lg:-left-16 bg-${FORMULA_SAE_DETAILS.stats.teams.accent}`}
+              containerStyle={`-bottom-15 lg:bottom-3 lg:-left-16`}
               number={FORMULA_SAE_DETAILS.stats.teams.value}
               title={FORMULA_SAE_DETAILS.stats.teams.title}
+              backgroundColor={FORMULA_SAE_DETAILS.stats.teams.accent}
             />
 
             <FloatingCard
-              containerStyle={`-bottom-15 left-50 lg:bottom-3 lg:left-40 border border-muted-primary lg:border-none bg-${FORMULA_SAE_DETAILS.stats.countries.accent}`}
+              containerStyle={`-bottom-15 left-50 lg:bottom-3 lg:left-40 border border-muted-primary lg:border-none`}
               number={FORMULA_SAE_DETAILS.stats.countries.value}
               title={FORMULA_SAE_DETAILS.stats.countries.title}
+              backgroundColor={FORMULA_SAE_DETAILS.stats.countries.accent}
             />
           </div>
         </div>
