@@ -1,4 +1,4 @@
-import CountUp from "@/components/CountUp";
+import CountUp from "@/components/utils/CountUp";
 import React from "react";
 
 const FloatingCard = ({
