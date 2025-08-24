@@ -32,14 +32,14 @@ export const FORMULA_SAE_DETAILS: FormulaSaeDetails = {
       title: "Teams",
       value: 700,
       suffix: "+",
-      accent: "primary",
+      accent: "#5f3cff",
     },
     countries: {
       key: "countries",
       title: "Countries",
       value: 60,
       suffix: "+",
-      accent: "foreground",
+      accent: "#171717",
     },
   },
 };

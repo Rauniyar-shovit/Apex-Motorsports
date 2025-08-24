@@ -1,5 +1,6 @@
-// components/WhoWeAreQuote.tsx
-export default function WhoWeAreQuote() {
+import { QuoteInfo } from "@/models";
+
+export default function WhoWeAreQuote({ quote, author, position }: QuoteInfo) {
   return (
     <div className="wrapper text-center section-padding font-sans">
       {/* Eyebrow */}
@@ -15,21 +16,15 @@ export default function WhoWeAreQuote() {
             max-w-[900px] mx-auto
           "
       >
-        {/* Training, races, and charity
-        <br className="hidden md:block" />
-        marathons for professional athletes
-        <br className="hidden md:block" />
-        and active amateur runners. */}
-        students who engineer, collaborate, and compete to define the future of
-        motorsport.
+        {quote}
       </h1>
 
       {/* Author / role */}
-      <div className="mt-10">
-        <p className="text-xl font-semibold tracking-wide font-barlow uppercase">
-          Peter Bowman
+      <div className="mt-10 text-primary">
+        <p className="text-xl font-semibold tracking-wide font-barlow uppercase ">
+          {author}
         </p>
-        <p className="mt-2 text-sm text-gray-500">Team Principal</p>
+        <p className="mt-2 text-sm text-muted-primary">{position}</p>
       </div>
     </div>
   );

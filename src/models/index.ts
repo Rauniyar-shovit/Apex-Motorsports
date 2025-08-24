@@ -53,7 +53,7 @@ export type Stat = {
   value: number; // numeric part for CountUp
   suffix?: string; // e.g. "+", "k", etc.
   prefix?: string; // e.g. "~", "≈"
-  accent?: "primary" | "foreground";
+  accent?: string;
 };
 
 export type FormulaSaeDetails = {
@@ -85,7 +85,14 @@ export type SecondaryTile = {
   image: string;
 };
 
+export type QuoteInfo = {
+  quote: string;
+  author: string;
+  position?: string;
+};
+
 export type AboutUs = {
   primaryTile: PrimaryTile;
   secondaryTile: SecondaryTile;
+  quoteInfo: QuoteInfo;
 };
