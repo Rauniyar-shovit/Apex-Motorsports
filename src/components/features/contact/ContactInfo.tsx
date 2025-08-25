@@ -24,8 +24,7 @@ const ContactInfo = () => {
             Get in Touch!
           </p>
           <p className="font-sans  mb-6 text-muted-primary">
-            {BRAND_DETAILS.address.streetName},{" "}
-            {BRAND_DETAILS.address.buildingNumber}
+            {BRAND_DETAILS.address.streetName}, {BRAND_DETAILS.address.building}
             <br />
             {BRAND_DETAILS.address.shuburb}, {BRAND_DETAILS.address.postcode}
           </p>

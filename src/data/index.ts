@@ -4,7 +4,7 @@ import {
   FaDiscord,
   FaFacebookF,
   FaInstagram,
-  FaXTwitter,
+  FaLinkedinIn,
 } from "react-icons/fa6";
 import {
   IoBriefcaseOutline,
@@ -95,25 +95,25 @@ export const SOCAILS: Social[] = [
   {
     title: "facebook",
     icon: FaFacebookF,
-    link: "",
+    link: "https://www.facebook.com/wsformulasae#",
     color: "#3a5694",
   },
   {
     title: "discord",
     icon: FaDiscord,
-    link: "",
+    link: "https://discord.gg/Jpn7uWwBQ4",
     color: "#5c69f2",
   },
   {
     title: "instagram",
     icon: FaInstagram,
-    link: "",
+    link: "https://www.instagram.com/apxmotorsport?igsh=dWU3eWRkNGk4ejN6 ",
     color: "#fc08af",
   },
   {
-    title: "twitter",
-    icon: FaXTwitter,
-    link: "",
+    title: "linkedin",
+    icon: FaLinkedinIn,
+    link: "https://www.linkedin.com/company/wsu-apex-motorsport/",
     color: "#249ef0",
   },
 ];
