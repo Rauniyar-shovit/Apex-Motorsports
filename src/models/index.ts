@@ -37,7 +37,7 @@ export type BrandDetails = {
 };
 
 export type Address = {
-  buildingNumber: string;
+  building: string;
   streetName: string;
   shuburb?: string;
   postcode: number;
