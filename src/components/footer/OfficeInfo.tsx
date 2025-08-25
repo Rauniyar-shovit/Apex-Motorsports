@@ -1,8 +1,5 @@
-import { BRAND_DETAILS } from "@/constants";
 import { Address } from "@/models";
-import { address } from "motion/react-client";
 import Link from "next/link";
-import React from "react";
 
 type OfficeInfoProps = {
   address: Address;
