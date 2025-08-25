@@ -31,7 +31,7 @@ const ValueShowcase = ({
         </div>
 
         {/* overlay card div */}
-        <div className="absolute bottom-0 md:right-0 md:w-[80%] lg:w-[75%] bg-foreground  p-4 md:p-6 text-white shadow-2xl group">
+        <div className="absolute bottom-0 md:right-0 md:w-[80%] lg:w-[75%] bg-foreground  p-4 md:p-6 text-white shadow-2xl group md:h-[385px] lg:h-[410px] 2xl:h-[455px]">
           <div className="p-4 lg:p-6 2xl:p-10 flex flex-col justify-between cursor-pointer">
             <Icon className="h-15 w-15 mb-8 lg:mb-10 xl:mb-14 " />
             <p className="font-sans text-muted-secondary  lg:text-lg mb-6 lg:mb-6">
