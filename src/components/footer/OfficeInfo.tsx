@@ -11,7 +11,7 @@ type OfficeInfoProps = {
 };
 
 const OfficeInfo = ({ email, phone, address }: OfficeInfoProps) => {
-  const { country, streetName, buildingNumber, shuburb, postcode } = address;
+  const { country, streetName, building, shuburb, postcode } = address;
   return (
     <div>
       <h4 className="uppercase font-barlow font-[700] tracking-wide text-lg mb-6 md:text-xl">
@@ -21,7 +21,7 @@ const OfficeInfo = ({ email, phone, address }: OfficeInfoProps) => {
       <p className="font-sans text-muted-secondary leading-relaxed mb-6">
         {country} —
         <br />
-        {streetName}, {buildingNumber}
+        {streetName}, {building}
         <br />
         {shuburb}, {postcode}
       </p>
