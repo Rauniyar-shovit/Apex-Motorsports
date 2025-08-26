@@ -14,7 +14,7 @@ const Button = ({
   title: string;
   beforeStyles?: string;
   handleClick?: () => void;
-  btnType: "button" | "submit" | "reset";
+  btnType?: "button" | "submit" | "reset";
 }) => {
   const defaultBeforeStyles =
     "before:absolute before:h-0 before:w-0 before:rounded-full  before:duration-200 before:ease-out hover:before:h-56 hover:before:w-56 ";
