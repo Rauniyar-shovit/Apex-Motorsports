@@ -24,7 +24,7 @@ const MobileNavbar = ({ containerStyles = "" }: MobileNavbarProps) => {
   return (
     <>
       <nav
-        className={`w-full z-30 flex items-center justify-between px-6 lg:px-20 md:mt-4  h-20 ${containerStyles}`}
+        className={`w-full z-30 flex items-center justify-between px-6 lg:px-20  h-20 ${containerStyles}`}
       >
         <Link href={"/"}>
           <Image
