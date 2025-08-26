@@ -4,10 +4,14 @@ import React, { useState } from "react";
 import { IconType } from "react-icons";
 
 const InputField = ({
+  inputStyles,
   icon: Icon,
+  iconStyles = "",
   label,
   multiline = false,
 }: {
+  inputStyles?: string;
+  iconStyles?: string;
   icon: IconType;
   label: string;
   multiline?: boolean;
@@ -20,9 +24,9 @@ const InputField = ({
       onMouseLeave={() => setHovered(false)}
       className="w-full"
     >
-      <div className="flex text-gray-700 items-center  gap-4 relative">
+      <div className="flex text-foreground items-center  gap-4 relative">
         <Icon
-          className={`text-muted-primary text-xl ${
+          className={`w-6 h-6 text-muted-primary ${iconStyles} ${
             multiline ? "self-start mt-3" : ""
           } `}
         />
@@ -30,7 +34,7 @@ const InputField = ({
         {!multiline && (
           <input
             type="text"
-            className="font-sans w-full focus:outline-none py-3"
+            className={`font-sans w-full focus:outline-none py-3  ${inputStyles}`}
             placeholder={label}
           />
         )}
@@ -38,7 +42,7 @@ const InputField = ({
         {multiline && (
           <textarea
             rows={3}
-            className="font-sans w-full focus:outline-none py-3"
+            className={`font-sans w-full focus:outline-none py-3  ${inputStyles}`}
             placeholder={label}
           />
         )}

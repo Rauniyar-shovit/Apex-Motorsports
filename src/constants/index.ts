@@ -12,7 +12,7 @@ export const BRAND_DETAILS: BrandDetails = {
     lat: -33.768313,
     lng: 150.729995,
   },
-  email: "info@email.com",
+  email: "wsformula@student.westernsydney.edu.au",
   phone: "",
   motto: "Made to learn, Built to win",
   logo: "/logo.png",
