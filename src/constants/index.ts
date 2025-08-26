@@ -1,4 +1,5 @@
 import { BrandDetails, FormulaSaeDetails } from "@/models";
+import { sub } from "motion/react-client";
 
 export const BRAND_DETAILS: BrandDetails = {
   name: "Apex Motorsports",
@@ -76,3 +77,31 @@ export const SCROLL_TEXT: string[] = [
   "TO",
   "WIN",
 ];
+
+export const FORM_FIELDS = {
+  name: {
+    id: "name",
+    label: "Name",
+    placeholder: "Name",
+  },
+  email: {
+    id: "email",
+    label: "Email",
+    placeholder: "Email",
+  },
+  phone: {
+    id: "phone",
+    label: "Phone",
+    placeholder: "Phone",
+  },
+  subject: {
+    id: "subject",
+    label: "Subject",
+    placeholder: "Subject",
+  },
+  message: {
+    id: "message",
+    label: "Message",
+    placeholder: "How can we help you? Feel free to get in touch!",
+  },
+} as const;

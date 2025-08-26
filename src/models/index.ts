@@ -1,5 +1,6 @@
 import { LINKS } from "@/constants";
 import { IconType } from "react-icons";
+import { FORM_FIELDS } from "@/constants";
 
 export type Link = {
   title: (typeof LINKS)[keyof typeof LINKS];
@@ -98,3 +99,11 @@ export type AboutUs = {
   secondaryTile: SecondaryTile;
   quoteInfo: QuoteInfo;
 };
+
+export type FieldKey = keyof typeof FORM_FIELDS;
+
+export type ContactFormValues = {
+  [K in FieldKey]: string;
+};
+
+export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
