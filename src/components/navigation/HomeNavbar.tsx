@@ -10,7 +10,7 @@ type NavbarProps = {
   intersectingSectionId?: string;
 };
 
-const Navbar = ({ intersectingSectionId = "" }: NavbarProps) => {
+const HomeNavbar = ({ intersectingSectionId = "" }: NavbarProps) => {
   const [isSticky, setIsSticky] = useState(false);
   const isMobile = useIsMobile();
 
@@ -25,7 +25,10 @@ const Navbar = ({ intersectingSectionId = "" }: NavbarProps) => {
     return () => observer.disconnect();
   }, [intersectingSectionId]);
 
-  if (isMobile) return <MobileNavbar />;
+  if (isMobile)
+    return (
+      <MobileNavbar containerStyles="absolute top-0 left-0 bg-transparent" />
+    );
 
   return (
     <AnimatePresence>
@@ -34,7 +37,7 @@ const Navbar = ({ intersectingSectionId = "" }: NavbarProps) => {
 
         <AnimatedNavContainer
           key="sticky"
-          navStyles="fixed top-0 bg-foreground backdrop-blur shadow-sm z-50"
+          navStyles="fixed top-0 bg-foreground backdrop-blur shadow-sm z-50 h-20"
           motionProps={stickyNavAnimation}
         />
       ) : (
@@ -42,11 +45,11 @@ const Navbar = ({ intersectingSectionId = "" }: NavbarProps) => {
 
         <AnimatedNavContainer
           key="floating"
-          navStyles="absolute top-0 bg-transparent mt-3"
+          navStyles="absolute top-0 bg-transparent mt-3 h-20"
         />
       )}
     </AnimatePresence>
   );
 };
 
-export default Navbar;
+export default HomeNavbar;

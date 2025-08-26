@@ -1,18 +1,18 @@
 import AboutUs from "@/components/features/about/AboutUs";
 import Achievements from "@/components/features/achievements/Achievements";
+import FormulaSAE from "@/components/features/competition/FormulaSAE";
 import Contact from "@/components/features/contact/Contact";
+import Hero from "@/components/features/Hero";
 import MarqueePartners from "@/components/features/marquee/MarqueePartners";
+import MarqueeText from "@/components/features/marquee/MarqueeText";
 import Values from "@/components/features/values/Values";
 import Footer from "@/components/footer/Footer";
-import Hero from "@/components/features/Hero";
-import Navbar from "@/components/navigation/Navbar";
-import FormulaSAE from "../components/features/competition/FormulaSAE";
-import MarqueeText from "@/components/features/marquee/MarqueeText";
+import HomeNavbar from "@/components/navigation/HomeNavbar";
 
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <Navbar intersectingSectionId="hero" />
+      <HomeNavbar intersectingSectionId="hero" />
       <Hero />
       <Values />
       <FormulaSAE />
