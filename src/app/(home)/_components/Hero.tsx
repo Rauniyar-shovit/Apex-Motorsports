@@ -1,8 +1,8 @@
 "use client";
+import AnimatedText from "@/components/utils/AnimatedText";
 import { HERO_TITLES } from "@/constants";
 import { motion } from "motion/react";
 import Image from "next/image";
-import AnimatedText from "../utils/AnimatedText";
 import { IoArrowDown } from "react-icons/io5";
 const Hero = () => {
   const handleScroll = () => {

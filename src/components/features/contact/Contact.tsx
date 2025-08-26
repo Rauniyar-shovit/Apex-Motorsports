@@ -1,13 +1,10 @@
-import React from "react";
-import ContactForm from "./ContactForm";
-import ContactInfo from "./ContactInfo";
+import { ReactNode } from "react";
 
-const Contact = () => {
+const Contact = ({ children }: { children: ReactNode }) => {
   return (
     <section className="wrapper section-padding">
       <div className="flex flex-col md:flex-row items-center justify-center gap-8  ">
-        <ContactForm />
-        <ContactInfo />
+        {children}
       </div>
     </section>
   );

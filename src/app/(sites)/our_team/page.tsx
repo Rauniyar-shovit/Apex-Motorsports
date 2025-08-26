@@ -1,4 +1,4 @@
-import { BreadCrumbs } from "@/components/Reusable/BreadCrumbs";
+import { BreadCrumbs } from "@/components/reusable/BreadCrumbs";
 import React from "react";
 
 const page = () => {
