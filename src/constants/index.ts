@@ -47,7 +47,7 @@ export const FORMULA_SAE_DETAILS: FormulaSaeDetails = {
 export const LINKS = {
   HOME: "home",
   BLOGS: "blogs",
-  TEAM: "team",
+  OUR_TEAM: "our_team",
   OUR_CARS: "our_cars",
   SPONSORS: "sponsors",
   ALUMNI: "alumni",

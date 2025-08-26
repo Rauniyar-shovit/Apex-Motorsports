@@ -3,6 +3,7 @@ import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "../globals.css";
 import Footer from "@/components/footer/Footer";
 import SitesNavbar from "@/components/navigation/SitesNavbar";
+import { BreadCrumbs } from "@/components/Reusable/BreadCrumbs";
 
 const dmSans = DM_Sans({
   weight: ["400", "600", "700"],
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${dmSans.variable} ${barlowCondensed.variable} antialiased`}
       >
         <SitesNavbar />
+        <BreadCrumbs />
 
         {children}
         <Footer />
