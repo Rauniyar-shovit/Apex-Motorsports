@@ -1,3 +1,4 @@
+"use client";
 import { navbarLinks } from "@/data";
 import { motion, MotionProps } from "motion/react";
 import Image from "next/image";
@@ -21,7 +22,7 @@ const AnimatedNavContainer = ({
   return (
     <motion.nav
       key="sticky"
-      className={`hidden md:flex left-0 w-full h-20 z-30 items-center justify-between px-6 lg:px-20 will-change-transform ${navStyles}`}
+      className={`hidden md:flex left-0 w-full z-30 items-center justify-between px-6 lg:px-20 will-change-transform ${navStyles}`}
       {...motionProps}
     >
       <Link href={"/"}>

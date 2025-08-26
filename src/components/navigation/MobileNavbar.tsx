@@ -13,13 +13,19 @@ import {
 import { usePathname } from "next/navigation";
 import { BRAND_DETAILS } from "@/constants";
 
-const MobileNavbar = () => {
+type MobileNavbarProps = {
+  containerStyles?: string;
+};
+
+const MobileNavbar = ({ containerStyles = "" }: MobileNavbarProps) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <>
-      <nav className="absolute top-0 left-0  w-full h-20 z-30 flex items-center justify-between bg-transparent px-6 lg:px-20 md:mt-4">
+      <nav
+        className={`w-full z-30 flex items-center justify-between px-6 lg:px-20 md:mt-4  h-20 ${containerStyles}`}
+      >
         <Link href={"/"}>
           <Image
             src="/logo.png"
