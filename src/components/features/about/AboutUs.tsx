@@ -1,4 +1,4 @@
-import RevealWrapper from "@/components/Reusable/RevealWrapper";
+import RevealWrapper from "@/components/reusable/RevealWrapper";
 import { ABOUT_US } from "@/data";
 import Image from "next/image";
 import PrimaryPanel from "./PrimaryPanel";

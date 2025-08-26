@@ -43,6 +43,8 @@ export type Address = {
   postcode: number;
   state: string;
   country: string;
+  lat: number;
+  lng: number;
 };
 
 export type StatKey = "teams" | "countries";
