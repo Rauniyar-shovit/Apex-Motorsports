@@ -20,8 +20,8 @@ import {
 
 export const navbarLinks: Link[] = [
   { title: LINKS.HOME, link: `/` },
-  { title: LINKS.TEAM, link: `/${LINKS.TEAM}` },
   { title: LINKS.BLOGS, link: `/${LINKS.BLOGS}` },
+  { title: LINKS.OUR_TEAM, link: `/${LINKS.OUR_TEAM}` },
   { title: LINKS.OUR_CARS, link: `/${LINKS.OUR_CARS}` },
   { title: LINKS.SPONSORS, link: `/${LINKS.SPONSORS}` },
   { title: LINKS.ALUMNI, link: `/${LINKS.ALUMNI}` },
@@ -120,8 +120,8 @@ export const SOCAILS: Social[] = [
 
 export const footerLinks: Link[] = [
   { title: LINKS.HOME, link: `/` },
-  { title: LINKS.TEAM, link: `/${LINKS.TEAM}` },
   { title: LINKS.BLOGS, link: `/${LINKS.BLOGS}` },
+  { title: LINKS.OUR_TEAM, link: `/${LINKS.OUR_TEAM}` },
   { title: LINKS.OUR_CARS, link: `/${LINKS.OUR_CARS}` },
   { title: LINKS.CONTACTS, link: `/${LINKS.CONTACTS}` },
 ];
