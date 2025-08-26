@@ -27,7 +27,7 @@ const HomeNavbar = ({ intersectingSectionId = "" }: NavbarProps) => {
 
   if (isMobile)
     return (
-      <MobileNavbar containerStyles="absolute top-0 left-0 bg-transparent" />
+      <MobileNavbar containerStyles="absolute top-0 left-0 bg-transparent md:mt-4 " />
     );
 
   return (

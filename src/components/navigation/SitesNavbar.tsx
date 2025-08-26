@@ -7,11 +7,14 @@ import AnimatedNavContainer from "./AnimatedNavContainer";
 const SitesNavbar = () => {
   const isMobile = useIsMobile();
 
-  if (isMobile) return <MobileNavbar containerStyles="bg-foreground " />;
+  if (isMobile)
+    return (
+      <MobileNavbar containerStyles="bg-foreground border-muted-primary border-b" />
+    );
   return (
     <AnimatedNavContainer
       key="floating"
-      navStyles=" top-0 bg-foreground h-30 "
+      navStyles=" top-0 bg-foreground h-30  border-muted-primary border-b"
     />
   );
 };
