@@ -25,7 +25,7 @@ const OfficeInfo = ({ email, phone, address }: OfficeInfoProps) => {
 
       {/* Email with center-growing underline */}
       <Link
-        href={`"mailto:${email}`}
+        href={`mailto:${email}`}
         className="group font-sans inline-block relative text-white mb-6
                after:content-[''] after:absolute after:left-0 after:-bottom-1
                after:h-[1px] after:w-full after:bg-white
