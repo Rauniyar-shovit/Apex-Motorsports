@@ -9,6 +9,8 @@ export const BRAND_DETAILS: BrandDetails = {
     postcode: 2747,
     state: "NSW",
     country: "Australia",
+    lat: -33.768313,
+    lng: 150.729995,
   },
   email: "info@email.com",
   phone: "",

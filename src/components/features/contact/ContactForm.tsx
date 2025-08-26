@@ -1,7 +1,7 @@
 "use client";
 
-import Button from "@/components/Reusable/Button";
-import RevealWrapper from "@/components/Reusable/RevealWrapper";
+import Button from "@/components/reusable/Button";
+import RevealWrapper from "@/components/reusable/RevealWrapper";
 import { BsSend } from "react-icons/bs";
 import { FaEnvelope, FaPencil, FaUser } from "react-icons/fa6";
 import InputField from "./InputField";

@@ -14,7 +14,7 @@ const SitesNavbar = () => {
   return (
     <AnimatedNavContainer
       key="floating"
-      navStyles=" top-0 bg-foreground h-30  border-muted-primary border-b"
+      navStyles=" top-0 bg-foreground h-20 lg:h-30 border-muted-primary border-b"
     />
   );
 };
