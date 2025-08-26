@@ -1,4 +1,4 @@
-import Button from "@/components/Reusable/Button";
+import Button from "@/components/reusable/Button";
 import { FORMULA_SAE_DETAILS } from "@/constants";
 
 const CompetitionInfo = () => {
