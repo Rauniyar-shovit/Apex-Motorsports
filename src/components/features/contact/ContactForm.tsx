@@ -2,31 +2,52 @@
 
 import Button from "@/components/reusable/Button";
 import RevealWrapper from "@/components/reusable/RevealWrapper";
+import { CircleAlert, Mail, Pencil, Smartphone, User } from "lucide-react";
 import { BsSend } from "react-icons/bs";
-import { FaEnvelope, FaPencil, FaUser } from "react-icons/fa6";
 import InputField from "./InputField";
 
-const ContactForm = () => {
+type ContactFormProps = {
+  containerStyles?: string;
+  showFormTitle?: boolean;
+  formContainerStyles?: string;
+};
+
+const ContactForm = ({
+  containerStyles,
+  showFormTitle = true,
+  formContainerStyles,
+}: ContactFormProps) => {
   return (
-    <div className="flex-1 bg-form-background 2xl:mx-10 w-full">
-      <div className="px-6 py-16 md:px-8 md:py-24 lg:px-14 lg:py-28 2xl:px-18">
+    <div className={`flex-1  2xl:mx-10 w-full  ${containerStyles}`}>
+      <div className={`${formContainerStyles}`}>
         <RevealWrapper
           variants={{
             hidden: { opacity: 0, x: -75 },
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-barlow uppercase mb-10">
+          <h2
+            className={` ${
+              showFormTitle ? "" : "block md:hidden"
+            } mt-5 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-barlow uppercase mb-10`}
+          >
             Contact Form
           </h2>
         </RevealWrapper>
-        <div className="flex flex-col gap-4 md:gap-8 mb-16 ">
-          <InputField label={"Name"} icon={FaUser} />
-          <InputField label={"Email Address"} icon={FaEnvelope} />
+
+        <div className="flex flex-col  gap-4 md:gap-8 mb-16">
+          <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 md:gap-8">
+            <InputField label={"Name"} icon={User} />
+            <InputField label={"Email Address"} icon={Mail} />
+          </div>
+          <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row  gap-6 md:gap-8">
+            <InputField label={"Phone"} icon={Smartphone} />
+            <InputField label={"Email Address"} icon={CircleAlert} />
+          </div>
           <InputField
             multiline={true}
             label={"How can we help you? Feel free to get in touch!"}
-            icon={FaPencil}
+            icon={Pencil}
           />
         </div>
 
