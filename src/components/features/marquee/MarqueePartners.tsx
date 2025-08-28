@@ -3,10 +3,10 @@ import Image from "next/image";
 import MarqueeContent from "./MarqueeContent";
 
 const PARTNERS = [
-  { name: "Mizuno", logo: "/sponsors/1.webp" },
-  { name: "Asics", logo: "/sponsors/2.webp" },
-  { name: "Adidas", logo: "/sponsors/3.webp" },
-  { name: "Puma", logo: "/sponsors/4.webp" },
+  { name: "Adidas", logo: "/sponsors/wsu.png" },
+  { name: "Mizuno", logo: "/sponsors/ptc.png" },
+  { name: "Puma", logo: "/sponsors/altium.png" },
+  { name: "Asics", logo: "/sponsors/student-community.png" },
 ];
 
 const MarqueePartners = () => {
@@ -14,14 +14,15 @@ const MarqueePartners = () => {
     item: { name: string; logo: string },
     index: number
   ) => (
-    <Image
-      className="pr-12 "
-      width={160}
-      height={160}
-      src={`${item.logo}`}
-      key={index}
-      alt="logo"
-    />
+    <div className="relative w-[180px] h-[180px]">
+      <Image
+        src={`${item.logo}`}
+        key={index}
+        className="absolute top-0 left-0 w-full h-full object-contain pr-12"
+        fill
+        alt="logo"
+      />
+    </div>
   );
 
   return (
