@@ -113,5 +113,7 @@ export type Sponsor = {
   logoAlt: string;
   name: string;
   href?: string;
-  description: string;
+  description?: string;
 };
+
+export type DiamondSponsor = Sponsor & { description: string };
