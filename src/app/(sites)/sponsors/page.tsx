@@ -1,9 +1,10 @@
-import React from "react";
+"use client";
 import Banner from "@/components/reusable/Banner";
 import { DIAMOND_SPONSORS, GOLD_SPONSORS, SILVER_SPONSORS } from "@/data";
 import DiamondSponsor from "./_components/DiamondSponsor";
+import SponsorBrand from "./_components/SponsorBrand";
 import Image from "next/image";
-import GoldSponsor from "./_components/GoldSponsor";
+import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 
 const page = () => {
   return (
@@ -24,38 +25,52 @@ const page = () => {
         <div className="mt-6 border-b-2 border-primary w-40 mx-auto" />
       </section>
 
-      <Banner bannerText="Diamond Tier sponsors " />
-      <div className="section-padding wrapper  ">
-        {DIAMOND_SPONSORS.map((sponsor, index) => (
-          <DiamondSponsor
-            key={index}
-            logoSrc={sponsor.logoSrc}
-            logoAlt={sponsor.logoAlt}
-            name={sponsor.name}
-            href={sponsor.href}
-            description={sponsor.description}
-            index={index}
-          />
-        ))}
-      </div>
+      <ParallaxContainer />
 
-      <Banner bannerText="Gold Tier Sponsors" />
-      <div className="section-padding wrapper mb-20">
-        <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
-          {GOLD_SPONSORS.map((sponsor, index) => (
-            <GoldSponsor {...sponsor} key={index} />
+      <section>
+        <Banner bannerText="Diamond Tier sponsors " />
+        <div className="section-padding wrapper  ">
+          {DIAMOND_SPONSORS.map((sponsor, index) => (
+            <DiamondSponsor
+              key={index}
+              logoSrc={sponsor.logoSrc}
+              logoAlt={sponsor.logoAlt}
+              name={sponsor.name}
+              href={sponsor.href}
+              description={sponsor.description}
+              index={index}
+            />
           ))}
         </div>
-      </div>
+      </section>
 
-      <Banner bannerText="Silver Tier Sponsors" />
-      <div className="section-padding wrapper mb-20">
-        <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
-          {SILVER_SPONSORS.map((sponsor, index) => (
-            <GoldSponsor {...sponsor} key={index} />
-          ))}
+      <ParallaxContainer />
+
+      <section className="mt-20">
+        <Banner bannerText="Gold Tier Sponsors" />
+        <div className="section-padding wrapper mb-20">
+          <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
+            {GOLD_SPONSORS.map((sponsor, index) => (
+              <SponsorBrand {...sponsor} key={index} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <ParallaxContainer />
+
+      <section className="mt-20">
+        <Banner bannerText="Silver Tier Sponsors" />
+        <div className="section-padding wrapper mb-20">
+          <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
+            {SILVER_SPONSORS.map((sponsor, index) => (
+              <SponsorBrand {...sponsor} key={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ParallaxContainer />
     </main>
   );
 };
