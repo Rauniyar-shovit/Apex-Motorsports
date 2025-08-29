@@ -45,3 +45,13 @@ body {
 .section-padding {
   @apply pt-20 md:pt-24 xl:pt-32;
 }
+
+.background-image {
+  background-image: linear-gradient(
+    to right,
+    #171717 0%,
+    #171717 30%,
+    #ffffff 30%,
+    #ffffff 100%
+  );
+}
