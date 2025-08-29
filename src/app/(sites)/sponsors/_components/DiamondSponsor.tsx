@@ -1,25 +1,19 @@
 "use client";
+import { Sponsor } from "@/models";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type SponsorFeatureProps = {
-  logoSrc: string;
-  logoAlt: string;
-  name?: string;
-  description: string;
-  href?: string;
-  index?: number; // <-- add index
-};
+type DiamondSponsorProps = Sponsor & { index: number };
 
-export default function SponsorFeature({
+export default function DiamondSponsor({
   logoSrc,
   logoAlt,
   name,
   description,
   href,
   index = 0,
-}: SponsorFeatureProps) {
+}: DiamondSponsorProps) {
   const isReversed = index % 2 === 1; // odd = reverse on lg+
 
   const Logo = (
