@@ -9,12 +9,14 @@ type ParallaxContainerProps = {
   children?: React.ReactNode;
   bgImagePath: string;
   bgImageTitle: string;
+  containerStyles?: string;
 };
 
 const ParallaxContainer = ({
   children,
   bgImagePath,
   bgImageTitle,
+  containerStyles,
 }: ParallaxContainerProps) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,7 +28,7 @@ const ParallaxContainer = ({
   return (
     <div
       ref={container}
-      className="relative flex items-center justify-center  overflow-hidden"
+      className={`relative flex items-center justify-center  overflow-hidden ${containerStyles}`}
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <div className="relative z-10 text-white w-full h-full flex flex-col py-10 md:py-18 lg:py-24  xl:py-36 3xl:py-60 ">

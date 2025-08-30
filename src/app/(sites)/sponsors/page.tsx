@@ -94,6 +94,7 @@ const SponsorsPage = () => {
       <ParallaxContainer
         bgImagePath="/bg-parallax.jpg"
         bgImageTitle="f1 sponsored"
+        containerStyles={"-mb-20 md:-mb-24 xl:-mb-32"}
       >
         <section className="font-sans">
           <div className="flex flex-col items-center justify-center text-center max-w-3xl  px-4 py-12 bg-foreground wrapper gap-5">
