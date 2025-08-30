@@ -43,7 +43,7 @@ body {
   @apply w-[90%] xl:w-[78%] 2xl:w-[65%] 3xl:w-[55%] mx-auto;
 }
 .section-padding {
-  @apply pt-20 md:pt-24 xl:pt-32;
+  @apply mt-20 md:mt-24 xl:mt-32;
 }
 
 .background-image {
