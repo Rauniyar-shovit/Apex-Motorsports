@@ -283,4 +283,30 @@ export const SILVER_SPONSORS: Sponsor[] = [
     name: "Haltech",
     href: "https://www.haltech.com/",
   },
+  {
+    logoSrc: "/sponsors/nvidia.png",
+    logoAlt: "Nvidia",
+    name: "Nvidia",
+    href: "https://www.nvidia.com/en-au/",
+  },
+
+  {
+    logoSrc: "/sponsors/cooldrive.png",
+    logoAlt: "Cool Drive",
+    name: "Cool Drive",
+    href: "https://ishop.cooldrive.com.au/",
+  },
+  {
+    logoSrc: "/sponsors/engineers-au.png",
+    logoAlt: "Engineers Australia",
+    name: "Engineers Australia",
+    href: "https://www.engineersaustralia.org.au/",
+  },
+
+  {
+    logoSrc: "/sponsors/haltech.png",
+    logoAlt: "Haltech",
+    name: "Haltech",
+    href: "https://www.haltech.com/",
+  },
 ];
