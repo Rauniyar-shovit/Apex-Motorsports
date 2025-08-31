@@ -1,11 +1,26 @@
+"use client";
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Banner from "@/components/reusable/Banner";
 import { DIAMOND_SPONSORS, GOLD_SPONSORS, SILVER_SPONSORS } from "@/data";
 import DiamondSponsor from "./_components/DiamondSponsor";
 import PartnershipBanner from "./_components/PartnershipBanner";
 import SponsorBrand from "./_components/SponsorBrand";
+import { useEffect } from "react";
+import Lenis from "lenis";
 
 const SponsorsPage = () => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <main>
       <section className="px-6 py-16">
