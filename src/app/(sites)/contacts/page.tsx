@@ -4,7 +4,7 @@ import ContactInfo from "@/components/features/contact/ContactInfo";
 import ContactForm from "@/components/features/contact/ContactForm";
 import ContactSection from "@/components/features/contact/Contact";
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <main>
       <MapEmbed
@@ -23,4 +23,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;
