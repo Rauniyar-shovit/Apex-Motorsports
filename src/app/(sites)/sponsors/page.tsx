@@ -1,11 +1,9 @@
-"use client";
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Banner from "@/components/reusable/Banner";
 import { DIAMOND_SPONSORS, GOLD_SPONSORS, SILVER_SPONSORS } from "@/data";
 import DiamondSponsor from "./_components/DiamondSponsor";
+import PartnershipBanner from "./_components/PartnershipBanner";
 import SponsorBrand from "./_components/SponsorBrand";
-import Button from "@/components/reusable/Button";
-import { BRAND_DETAILS } from "@/constants";
 
 const SponsorsPage = () => {
   return (
@@ -44,7 +42,7 @@ const SponsorsPage = () => {
       </section>
 
       <ParallaxContainer
-        bgImagePath="/bg-parallax.jpg"
+        bgImagePath="/race-track.jpg"
         bgImageTitle="f1 sponsored"
       />
 
@@ -60,7 +58,7 @@ const SponsorsPage = () => {
       </section>
 
       <ParallaxContainer
-        bgImagePath="/bg-parallax.jpg"
+        bgImagePath="/mclaren-f1-car.webp"
         bgImageTitle="f1 sponsored"
       />
 
@@ -76,7 +74,7 @@ const SponsorsPage = () => {
       </section>
 
       <ParallaxContainer
-        bgImagePath="/bg-parallax.jpg"
+        bgImagePath="/race-finish.jpg"
         bgImageTitle="f1 sponsored"
       />
 
@@ -92,33 +90,11 @@ const SponsorsPage = () => {
       </section>
 
       <ParallaxContainer
-        bgImagePath="/bg-parallax.jpg"
+        bgImagePath="/mercedes-team.jpg"
         bgImageTitle="f1 sponsored"
         containerStyles={"-mb-20 md:-mb-24 xl:-mb-32"}
       >
-        <section className="font-sans">
-          <div className="flex flex-col items-center justify-center text-center max-w-3xl  px-4 py-12 bg-foreground wrapper gap-5">
-            <p className="uppercase text-sm font-[600] tracking-wider  ">
-              Support {BRAND_DETAILS.name}
-            </p>
-
-            {/* Headline */}
-            <h1 className=" font-barlow font-extrabold uppercase leading-[1.05] text-4xl md:text-5xl ">
-              <span className="text-primary"> HELP US </span>
-              FUEL OUR JOURNEY
-            </h1>
-
-            {/* CTA */}
-            <Button
-              handleClick={() => {}}
-              btnStyles={
-                "border border-white bg-foreground hover:text-foreground px-8 py-4  tracking-widest text-white "
-              }
-              beforeStyles={"before:bg-background "}
-              title={"Partner With Us"}
-            />
-          </div>
-        </section>
+        <PartnershipBanner />
       </ParallaxContainer>
     </main>
   );
