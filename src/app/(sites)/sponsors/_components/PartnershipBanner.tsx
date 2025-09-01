@@ -1,9 +1,10 @@
 "use client";
 import Button from "@/components/reusable/Button";
 import { BRAND_DETAILS } from "@/constants";
+import { useRouter } from "next/navigation";
 import React from "react";
-
 const PartnershipBanner = () => {
+  const router = useRouter();
   return (
     <div className="font-sans">
       <div className="flex flex-col items-center justify-center text-center max-w-3xl  px-12 md:px-4 py-12 bg-foreground wrapper gap-5   [clip-path:polygon(6%_0,100%_0,94%_100%,0_100%)]">
@@ -19,7 +20,9 @@ const PartnershipBanner = () => {
 
         {/* CTA */}
         <Button
-          handleClick={() => {}}
+          handleClick={() => {
+            router.push("/contacts");
+          }}
           btnStyles={
             "border border-white bg-foreground hover:text-foreground px-8 py-4  tracking-widest text-white md:mt-6"
           }

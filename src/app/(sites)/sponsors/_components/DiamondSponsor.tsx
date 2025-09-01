@@ -1,11 +1,10 @@
 "use client";
+import { Sponsor } from "@/models";
 import { urlFor } from "@/sanity/lib/image";
-import { DIAMOND_SPONSORS_QUERYResult as Sponsors } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type Sponsor = Sponsors[number];
 type DiamondSponsorProps = Sponsor & { index: number };
 
 export default function DiamondSponsor({

@@ -1,17 +1,27 @@
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Banner from "@/components/reusable/Banner";
-import { GOLD_SPONSORS, SILVER_SPONSORS } from "@/data";
+import { Sponsor } from "@/models";
+import { client } from "@/sanity/lib/client";
+import { TIER_SPONSORS_QUERY } from "@/sanity/lib/queries";
 import DiamondSponsor from "./_components/DiamondSponsor";
 import PartnershipBanner from "./_components/PartnershipBanner";
-import SponsorBrand from "./_components/SponsorBrand";
-import { DIAMOND_SPONSORS_QUERY } from "@/sanity/lib/queries";
 import SmoothScroll from "./_components/SmoothScroll";
-import { client } from "@/sanity/lib/client";
-import { Sponsor } from "@/sanity/types";
+import SponsorBrand from "./_components/SponsorBrand";
 
 const SponsorsPage = async () => {
-  const DIAMOND_SPONSORS = await client.fetch(DIAMOND_SPONSORS_QUERY);
-  console.log(DIAMOND_SPONSORS);
+  const diamondSponsors: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
+    tier: "diamond",
+  });
+  const goldSponsors: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
+    tier: "gold",
+  });
+  const silverSponsors: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
+    tier: "silver",
+  });
+  const supporters: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
+    tier: "supporter",
+  });
+
   return (
     <>
       <SmoothScroll />
@@ -35,7 +45,7 @@ const SponsorsPage = async () => {
         <section className="mt-20">
           <Banner bannerText="Diamond Tier sponsors " />
           <div className="section-padding wrapper  ">
-            {DIAMOND_SPONSORS.map((sponsor: Sponsor, index: number) => (
+            {diamondSponsors.map((sponsor: Sponsor, index) => (
               <DiamondSponsor {...sponsor} index={index} key={sponsor._id} />
             ))}
           </div>
@@ -50,7 +60,7 @@ const SponsorsPage = async () => {
           <Banner bannerText="Gold Tier Sponsors" />
           <div className="section-padding wrapper mb-20">
             <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
-              {GOLD_SPONSORS.map((sponsor, index) => (
+              {goldSponsors.map((sponsor: Sponsor, index) => (
                 <SponsorBrand {...sponsor} key={index} />
               ))}
             </div>
@@ -66,7 +76,7 @@ const SponsorsPage = async () => {
           <Banner bannerText="Silver Tier Sponsors" />
           <div className="section-padding wrapper mb-20">
             <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
-              {SILVER_SPONSORS.map((sponsor, index) => (
+              {silverSponsors.map((sponsor, index) => (
                 <SponsorBrand {...sponsor} key={index} />
               ))}
             </div>
@@ -82,7 +92,7 @@ const SponsorsPage = async () => {
           <Banner bannerText="Supporters" />
           <div className="section-padding wrapper mb-20">
             <div className="flex  flex-wrap   items-center justify-center gap-16 justify-items-center ">
-              {SILVER_SPONSORS.map((sponsor, index) => (
+              {supporters.map((sponsor, index) => (
                 <SponsorBrand {...sponsor} key={index} />
               ))}
             </div>
