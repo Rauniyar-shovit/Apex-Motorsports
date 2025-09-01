@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity:extract": "sanity schema extract --path ./src/sanity/extract.json",
+    "sanity:typegen": "npx sanity@latest typegen generate",
+    "typegen": "npm run sanity:extract && npm run sanity:typegen"
   },
   "dependencies": {
     "@sanity/image-url": "^1.2.0",

@@ -9,7 +9,7 @@ export default defineType({
   fields: [
     defineField({
       name: "name",
-      title: "Name",
+      title: "Sponsor Name",
       type: "string",
       validation: (Rule) => Rule.required().min(2),
     }),
@@ -23,7 +23,6 @@ export default defineType({
           { title: "Diamond", value: "diamond" },
           { title: "Gold", value: "gold" },
           { title: "Silver", value: "silver" },
-          { title: "Bronze", value: "bronze" },
           { title: "Supporter", value: "supporter" },
         ],
         layout: "radio",
@@ -81,7 +80,7 @@ export default defineType({
       title: "Order",
       type: "number",
       description: "Lower numbers appear first.",
-      validation: (Rule) => Rule.min(0),
+      validation: (Rule) => Rule.min(0).integer(),
     }),
   ],
 
@@ -91,12 +90,19 @@ export default defineType({
       media: "logo",
       tier: "tier",
       href: "href",
+      slug: "sponsorId.current",
     },
-    prepare({ title, media, tier, href }) {
-      const subtitle = [tier && tier.toUpperCase(), href && "↗"]
-        .filter(Boolean)
-        .join(" ");
-      return { title, media, subtitle };
+    prepare({ title, media, tier, href, slug }) {
+      const bits = [
+        slug ? `id:${slug}` : null,
+        tier ? tier.toUpperCase() : null,
+        href ? "↗" : null,
+      ].filter(Boolean);
+      return {
+        title,
+        media,
+        subtitle: bits.join(" • "),
+      };
     },
   },
 });
