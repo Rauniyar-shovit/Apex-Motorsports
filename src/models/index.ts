@@ -1,6 +1,7 @@
 import { LINKS } from "@/constants";
 import { IconType } from "react-icons";
 import { FORM_FIELDS } from "@/constants";
+import { TIER_SPONSORS_QUERYResult } from "@/sanity/types";
 
 export type Link = {
   title: (typeof LINKS)[keyof typeof LINKS];
@@ -108,13 +109,4 @@ export type ContactFormValues = {
 
 export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
 
-export type Sponsor = {
-  _id: string;
-  logoSrc: string;
-  logoAlt: string;
-  name: string;
-  href?: string;
-  description?: string;
-};
-
-export type DiamondSponsor = Sponsor & { description: string };
+export type Sponsor = TIER_SPONSORS_QUERYResult[number];

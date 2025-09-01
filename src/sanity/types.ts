@@ -157,12 +157,24 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes =
+  | Sponsor
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageHotspot
+  | SanityImageCrop
+  | SanityFileAsset
+  | SanityImageAsset
+  | SanityImageMetadata
+  | Geopoint
+  | Slug
+  | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
-// Variable: DIAMOND_SPONSORS_QUERY
-// Query: *[_type == "sponsor" && tier == "diamond"]| order(coalesce(order, 999), name asc) {  _id,  name,  tier,  "logoSrc": logo.asset->url,  "logoAlt": logo.alt,  href,  description,  order}
-export type DIAMOND_SPONSORS_QUERYResult = Array<{
+// Variable: TIER_SPONSORS_QUERY
+// Query: *[_type == "sponsor" && tier == $tier]  | order(coalesce(order, 999), name asc) {    _id,    name,    tier,    "logoSrc": logo.asset->url,    "logoAlt": logo.alt,    href,    description,    order  }
+export type TIER_SPONSORS_QUERYResult = Array<{
   _id: string;
   name: string | null;
   tier: "diamond" | "gold" | "silver" | "supporter" | null;
@@ -177,6 +189,6 @@ export type DIAMOND_SPONSORS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"sponsor\" && tier == \"diamond\"]\n| order(coalesce(order, 999), name asc) {\n  _id,\n  name,\n  tier,\n  \"logoSrc\": logo.asset->url,\n  \"logoAlt\": logo.alt,\n  href,\n  description,\n  order\n}": DIAMOND_SPONSORS_QUERYResult;
+    '\n  *[_type == "sponsor" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    "logoSrc": logo.asset->url,\n    "logoAlt": logo.alt,\n    href,\n    description,\n    order\n  }\n': TIER_SPONSORS_QUERYResult;
   }
 }
