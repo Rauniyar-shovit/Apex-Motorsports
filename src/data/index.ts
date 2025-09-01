@@ -166,43 +166,6 @@ export const ABOUT_US: AboutUs = {
   },
 };
 
-// data/sponsors.ts
-
-export const DIAMOND_SPONSORS: DiamondSponsor[] = [
-  {
-    logoSrc: "/sponsors/wsu.png",
-    logoAlt: "Western Sydney University",
-    name: "Western Sydney University",
-    href: "https://www.westernsydney.edu.au/",
-    description:
-      "Western Sydney University provides support and collaboration opportunities, empowering innovation and student success in engineering projects. Their commitment ensures students gain real-world experience while contributing to groundbreaking initiatives.",
-  },
-  {
-    logoSrc: "/sponsors/ptc.png",
-    logoAlt: "PTC",
-    name: "PTC (Parametric Technology Corporation)",
-    href: "https://www.ptc.com/en",
-    description:
-      "PTC is a global software company that provides digital transformation solutions for industrial and manufacturing companies, enabling them to design, manufacture, and service physical products. With tools like Creo and Windchill, they accelerate innovation worldwide.",
-  },
-  {
-    logoSrc: "/sponsors/student-community.png",
-    logoAlt: "Student Community",
-    name: "Student Community",
-    href: "https://example.com", //add link
-    description:
-      "Our student community partners play a vital role in supporting collaboration, creativity, and innovation within the team environment. Their involvement fosters leadership skills, teamwork, and a strong culture of growth.",
-  },
-  {
-    logoSrc: "/sponsors/altium.png",
-    logoAlt: "Altium",
-    name: "Altium",
-    href: "https://www.altium.com/",
-    description:
-      "Altium provides advanced PCB design software solutions, empowering engineers and teams to innovate faster and bring ideas to life. Their technology is shaping the future of electronics development and manufacturing.",
-  },
-];
-
 export const GOLD_SPONSORS: Sponsor[] = [
   {
     logoSrc: "/sponsors/sydney-motorsports-park.png",
