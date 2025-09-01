@@ -1,19 +1,17 @@
 import { Sponsor } from "@/models";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import React from "react";
 
-const SponsorBrand = ({
-  logoSrc,
-  logoAlt,
-
-  href,
-}: Sponsor) => {
+const SponsorBrand = ({ logoSrc, logoAlt, href }: Sponsor) => {
   const width = 320;
   const height = 160;
 
-  const Logo = (
+  const imageLogo = logoSrc ? urlFor(logoSrc).url() : undefined;
+
+  const Logo = imageLogo && logoAlt && (
     <Image
-      src={logoSrc}
+      src={imageLogo}
       alt={logoAlt}
       width={width}
       height={height}
