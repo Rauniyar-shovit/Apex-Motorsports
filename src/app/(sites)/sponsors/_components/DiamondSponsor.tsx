@@ -1,29 +1,35 @@
 "use client";
-import { Sponsor } from "@/models";
+import { urlFor } from "@/sanity/lib/image";
+import { DIAMOND_SPONSORS_QUERYResult as Sponsors } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+type Sponsor = Sponsors[number];
 type DiamondSponsorProps = Sponsor & { index: number };
 
 export default function DiamondSponsor({
+  description,
+  index,
   logoSrc,
   logoAlt,
-  name,
-  description,
   href,
-  index = 0,
+  name,
 }: DiamondSponsorProps) {
   const isReversed = index % 2 === 1; // odd = reverse on lg+
 
+  const imageLogo = logoSrc ? urlFor(logoSrc).url() : undefined;
+
   const Logo = (
     <div className="relative w-full h-32 md:h-40 lg:h-48 xl:h-56 2xl:h-64">
-      <Image
-        src={logoSrc}
-        alt={logoAlt}
-        fill
-        className="h-auto object-contain"
-      />
+      {imageLogo && logoAlt && (
+        <Image
+          src={imageLogo}
+          alt={logoAlt}
+          fill
+          className="h-auto object-contain"
+        />
+      )}
     </div>
   );
 
@@ -33,7 +39,7 @@ export default function DiamondSponsor({
       <div className={`relative ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
         <div className="relative w-full">
           {href ? (
-            <Link href={href} aria-label={name ?? logoAlt}>
+            <Link href={href} aria-label={name ?? logoAlt ?? ""}>
               {Logo}
             </Link>
           ) : (

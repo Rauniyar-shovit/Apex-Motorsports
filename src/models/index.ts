@@ -109,6 +109,7 @@ export type ContactFormValues = {
 export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
 
 export type Sponsor = {
+  _id: string;
   logoSrc: string;
   logoAlt: string;
   name: string;
