@@ -2,7 +2,7 @@ import React from "react";
 
 function Banner({ bannerText }: { bannerText?: string }) {
   return (
-    <section className="background-image">
+    <div className="background-image">
       <div className="wrapper">
         <div
           className="
@@ -15,7 +15,7 @@ function Banner({ bannerText }: { bannerText?: string }) {
           {bannerText}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
