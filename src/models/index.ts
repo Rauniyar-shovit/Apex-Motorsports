@@ -110,3 +110,10 @@ export type ContactFormValues = {
 export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
 
 export type Sponsor = TIER_SPONSORS_QUERYResult[number];
+
+export type TeamMemberProfile = {
+  name: string;
+  role: string;
+  bio: string;
+  photo: string;
+};

@@ -1,39 +1,36 @@
-import Image from "next/image";
-import ProfileCard from "./_components/ProfileCard";
+import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
+import Values from "@/components/features/values/Values";
 import SitesNavbar from "@/components/navigation/SitesNavbar";
 import { BreadCrumbs } from "@/components/reusable/BreadCrumbs";
-import Values from "@/components/features/values/Values";
-import ParallaxBackground from "@/components/features/achievements/ParallaxBackground";
-import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import SmoothScroll from "../../(shared-layout)/sponsors/_components/SmoothScroll";
+import TeamsMembers from "./_components/TeamsMembers";
 
 const people = [
   {
     name: "Sienna Hewitt",
     role: "Founder & CEO",
-    image: "/team/sienna.jpg",
+    photo: "/team-model.avif",
     bio: "Former co-founder of Opendoor. Early staff at Spotify and Clearbit.",
   },
   {
     name: "Ashwin Santiago",
     role: "Engineering Manager",
-    image: "/team/ashwin.jpg",
+    photo: "/team-model.avif",
     bio: "Lead engineering teams at Netflix, Pitch, and Protocol Labs.",
   },
   {
     name: "Caitlyn King",
     role: "Product Designer",
-    image: "/team/caitlyn.jpg",
+    photo: "/team-model.avif",
     bio: "Founding design team at Figma. Former Pleo, Stripe, and Tile.",
   },
   {
     name: "Owen Garcia",
     role: "Frontend Developer",
-    image: "/team/owen.jpg",
+    photo: "/team-model.avif",
     bio: "Former frontend dev for Linear, Coinbase, and Postscript.",
   },
 ];
-
 const TeamsPage = () => {
   return (
     <main>
@@ -83,12 +80,26 @@ const TeamsPage = () => {
       <ParallaxContainer
         bgImagePath="/race-track.jpg"
         bgImageTitle="f1 sponsored"
-        containerStyles="h-[60vh]"
+        containerStyles="h-[40vh] 3xl:h-[35vh]"
       >
         <div className="wrapper flex items-center justify-center text-center uppercase text-6xl font-barlow h-full">
           Meet Our Team
         </div>
       </ParallaxContainer>
+
+      <TeamsMembers members={people} departmentName="Upper Management" />
+      <TeamsMembers members={people} departmentName="Aerodynamics" />
+      <TeamsMembers members={people} departmentName="Business Team" />
+      <TeamsMembers members={people} departmentName="Electronics" />
+      <TeamsMembers members={people} departmentName="E-powerTrain" />
+      <TeamsMembers members={people} departmentName="Autonomous System" />
+      <TeamsMembers members={people} departmentName="Chassis Design" />
+      <TeamsMembers members={people} departmentName="Vehicle Performance" />
+      <TeamsMembers
+        members={people}
+        departmentName="Ancillary Managers
+"
+      />
     </main>
   );
 };
