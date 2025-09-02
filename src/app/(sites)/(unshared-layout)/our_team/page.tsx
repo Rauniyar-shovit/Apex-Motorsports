@@ -49,27 +49,6 @@ const TeamsPage = () => {
             creativity, and provide the support to design, build, and race at
             the highest level of Formula SAE.
           </p>
-
-          {/* People grid
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-            {people.map((person) => (
-              <div key={person.name} className="text-left">
-                <div className="relative w-full h-56 rounded-lg overflow-hidden mb-4">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {person.name}
-                </h3>
-                <p className="text-sm text-gray-700">{person.role}</p>
-                <p className="text-sm text-gray-500 mt-2">{person.bio}</p>
-              </div>
-            ))}
-          </div> */}
         </div>
       </section>
 
@@ -88,8 +67,18 @@ const TeamsPage = () => {
       </ParallaxContainer>
 
       <TeamsMembers members={people} departmentName="Upper Management" />
-      <TeamsMembers members={people} departmentName="Aerodynamics" />
-      <TeamsMembers members={people} departmentName="Business Team" />
+      <TeamsMembers
+        members={people}
+        departmentName="Aerodynamics"
+        departmentImage={"/aerodynamics.png"}
+        departmentDescription="The Aerodynamics department is aimed at maximising on track performance through utilising aerodynamic devices to produce downforce. This consists of the advanced design, CFD simulation, composite manufacturing and on track validation of the vehicle’s aerodynamic package."
+      />
+      <TeamsMembers
+        members={people}
+        departmentName="Business Team"
+        departmentImage={"/quill.png"}
+        departmentDescription="The Aerodynamics department is aimed at maximising on track performance through utilising aerodynamic devices to produce downforce. This consists of the advanced design, CFD simulation, composite manufacturing and on track validation of the vehicle’s aerodynamic package."
+      />
       <TeamsMembers members={people} departmentName="Electronics" />
       <TeamsMembers members={people} departmentName="E-powerTrain" />
       <TeamsMembers members={people} departmentName="Autonomous System" />
