@@ -1,9 +1,9 @@
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Values from "@/components/features/values/Values";
-import SitesNavbar from "@/components/navigation/SitesNavbar";
-import { BreadCrumbs } from "@/components/reusable/BreadCrumbs";
-import SmoothScroll from "../../(shared-layout)/sponsors/_components/SmoothScroll";
+import SmoothScroll from "../sponsors/_components/SmoothScroll";
 import TeamsMembers from "./_components/TeamsMembers";
+import PartnershipBanner from "../sponsors/_components/PartnershipBanner";
+import JoinUsBanner from "./_components/JoinUsBanner";
 
 const people = [
   {
@@ -11,32 +11,35 @@ const people = [
     role: "Founder & CEO",
     photo: "/team-model.avif",
     bio: "Former co-founder of Opendoor. Early staff at Spotify and Clearbit.",
+    email: "sienna.hewitt@example.com",
   },
   {
     name: "Ashwin Santiago",
     role: "Engineering Manager",
     photo: "/team-model.avif",
     bio: "Lead engineering teams at Netflix, Pitch, and Protocol Labs.",
+    email: "ashwin.santiago@example.com",
   },
   {
     name: "Caitlyn King",
     role: "Product Designer",
     photo: "/team-model.avif",
     bio: "Founding design team at Figma. Former Pleo, Stripe, and Tile.",
+    email: "caitlyn.king@example.com",
   },
   {
     name: "Owen Garcia",
     role: "Frontend Developer",
     photo: "/team-model.avif",
     bio: "Former frontend dev for Linear, Coinbase, and Postscript.",
+    email: "owen.garcia@example.com",
   },
 ];
+
 const TeamsPage = () => {
   return (
     <main>
       <SmoothScroll />
-      <SitesNavbar />
-      <BreadCrumbs />
 
       <section className="section-padding wrapper">
         <div className="flex flex-col items-center text-center gap-4 ">
@@ -79,6 +82,15 @@ const TeamsPage = () => {
         departmentName="Ancillary Managers
 "
       />
+      <div className="mt-24">
+        <ParallaxContainer
+          bgImagePath="/mercedes-team.jpg"
+          bgImageTitle="f1 sponsored"
+          containerStyles={"-mb-20 md:-mb-24 xl:-mb-32"}
+        >
+          <JoinUsBanner />
+        </ParallaxContainer>
+      </div>
     </main>
   );
 };
