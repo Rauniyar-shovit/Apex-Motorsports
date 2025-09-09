@@ -7,6 +7,7 @@ const Button = ({
   beforeStyles,
   title,
   handleClick,
+  btnTextStyles,
   btnType = "button",
 }: {
   icon?: IconType;
@@ -14,6 +15,7 @@ const Button = ({
   title: string;
   beforeStyles?: string;
   handleClick?: () => void;
+  btnTextStyles?:string
   btnType?: "button" | "submit" | "reset";
 }) => {
   const defaultBeforeStyles =
@@ -26,7 +28,7 @@ const Button = ({
     >
       <span className="relative z-10 flex font-sans gap-3 items-center justify-center uppercase text-xs lg:text-sm font-[600] tracking-wider">
         {Icon && <Icon className="text-lg" />}
-        <p>{title}</p>
+        <p className={`${btnTextStyles}`}>{title}</p>
       </span>
     </button>
   );

@@ -67,18 +67,8 @@ const TeamsPage = () => {
       </ParallaxContainer>
 
       <TeamsMembers members={people} departmentName="Upper Management" />
-      <TeamsMembers
-        members={people}
-        departmentName="Aerodynamics"
-        departmentImage={"/aerodynamics.png"}
-        departmentDescription="The Aerodynamics department is aimed at maximising on track performance through utilising aerodynamic devices to produce downforce. This consists of the advanced design, CFD simulation, composite manufacturing and on track validation of the vehicle’s aerodynamic package."
-      />
-      <TeamsMembers
-        members={people}
-        departmentName="Business Team"
-        departmentImage={"/quill.png"}
-        departmentDescription="The Aerodynamics department is aimed at maximising on track performance through utilising aerodynamic devices to produce downforce. This consists of the advanced design, CFD simulation, composite manufacturing and on track validation of the vehicle’s aerodynamic package."
-      />
+      <TeamsMembers members={people} departmentName="Aerodynamics" />
+      <TeamsMembers members={people} departmentName="Business Team" />
       <TeamsMembers members={people} departmentName="Electronics" />
       <TeamsMembers members={people} departmentName="E-powerTrain" />
       <TeamsMembers members={people} departmentName="Autonomous System" />

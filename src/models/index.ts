@@ -116,4 +116,5 @@ export type TeamMemberProfile = {
   role: string;
   bio: string;
   photo: string;
+  email:string
 };
