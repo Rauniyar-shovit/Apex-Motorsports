@@ -22,7 +22,7 @@ const ProfileCard = ({ name, photo, role, bio, email }: TeamMemberProfile) => {
               btnType="submit"
               title={"Email"}
               icon={IoMailOutline}
-              btnStyles="px-6 py-2 md:px-6 md:py-4  bg-foreground  text-white mt-16 hover:text-foreground "
+              btnStyles="px-6 py-4  bg-foreground  text-white mt-16 hover:text-foreground "
               beforeStyles="before:bg-white"
               btnTextStyles="text-xs"
             />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, DM_Sans } from "next/font/google";
-import "../../globals.css";
+import "../globals.css";
 import Footer from "@/components/footer/Footer";
 import SitesNavbar from "@/components/navigation/SitesNavbar";
 import { BreadCrumbs } from "@/components/reusable/BreadCrumbs";
