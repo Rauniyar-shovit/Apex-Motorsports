@@ -134,7 +134,7 @@ export default function CarProfileCard({
               btnStyles={
                 "border border-white bg-foreground hover:text-foreground px-8 py-3  tracking-widest text-white  !mt-6 "
               }
-              beforeStyles={"before:bg-background "}
+              beforeStyles={"before:bg-background"}
             />
           </div>
         </div>
