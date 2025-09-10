@@ -96,13 +96,7 @@ export default function CarProfileCard({
             {title}
           </h3>
 
-          {subtitle && (
-            <p
-              className={`mt-1 text-xs ${isDark ? "text-neutral-300" : "text-neutral-600"}`}
-            >
-              {subtitle}
-            </p>
-          )}
+          {subtitle && <p className={` !text-xs `}>{subtitle}</p>}
 
           {/* Tags */}
           {tags.length > 0 && (
