@@ -67,9 +67,9 @@ const CarProfileCard = () => {
           {/* View Details Button */}
 
           <Button
-            btnTextStyles="!m-0  !font-[600] !text-xs"
+            btnTextStyles=" !m-0  !font-[600] !text-xs"
             btnStyles={
-              "border border-white bg-foreground hover:text-foreground px-8 py-3  tracking-widest text-white md:mt-6"
+              "border border-white bg-foreground hover:text-foreground px-8 py-3  tracking-widest text-white  !mt-6 "
             }
             beforeStyles={"before:bg-background "}
             title={"View Details"}
