@@ -1,9 +1,8 @@
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Values from "@/components/features/values/Values";
 import SmoothScroll from "../sponsors/_components/SmoothScroll";
-import TeamsMembers from "./_components/TeamsMembers";
-import PartnershipBanner from "../sponsors/_components/PartnershipBanner";
 import JoinUsBanner from "./_components/JoinUsBanner";
+import TeamsMembers from "./_components/TeamsMembers";
 
 const people = [
   {
