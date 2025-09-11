@@ -9,6 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Specs from "./_components/Specs";
+import Banner from "@/components/reusable/Banner";
 
 export default function Page() {
   return (
@@ -68,6 +70,13 @@ export default function Page() {
             </div>
           </Carousel>
         </div>
+      </section>
+
+      <section>
+        <div className="mt-10">
+          <Banner bannerText="Specifications" />
+        </div>
+        <Specs />
       </section>
     </main>
   );
