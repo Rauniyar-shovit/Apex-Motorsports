@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import Button from "@/components/reusable/Button";
+import { useRouter } from "next/navigation";
 
 type Spec = { label: string; value: string };
 
@@ -52,7 +53,7 @@ export default function CarProfileCard({
   theme = "dark",
   className = "",
 }: CarProfileCardProps) {
-  const isDark = theme === "dark";
+  const router = useRouter();
 
   return (
     <VerticalTimelineElement
@@ -135,6 +136,7 @@ export default function CarProfileCard({
                 "border border-white bg-foreground hover:text-foreground px-8 py-3  tracking-widest text-white  !mt-6 "
               }
               beforeStyles={"before:bg-background"}
+              handleClick={() => router.push("/our_cars/id")}
             />
           </div>
         </div>
