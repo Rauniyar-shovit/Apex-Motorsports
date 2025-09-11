@@ -91,7 +91,7 @@ const specsData = [
     ],
   },
   {
-    title: "M18-C Powertrain",
+    title: "M22 Powertrain",
     data: [
       { label: "Engine", value: "2017 KTM 690 Duke-R" },
       { label: "Bore", value: "102 mm" },

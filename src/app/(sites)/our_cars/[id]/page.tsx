@@ -15,6 +15,21 @@ import Banner from "@/components/reusable/Banner";
 export default function Page() {
   return (
     <main>
+      <section className="px-6 pt-16">
+        <div className="font-sans max-w-4xl 2xl:max-w-5xl mx-auto text-center">
+          <p className=" font-sans text-center  text-base md:text-lg leading-relaxed">
+            The M22 is a lightweight, high-performance Formula SAE race car
+            engineered with a carbon fibre monocoque chassis and advanced
+            aerodynamic package for maximum downforce and efficiency. It runs on
+            a Fischer Elektromotoren PMSM electric motor with a custom
+            accumulator system, delivering strong continuous torque for
+            competitive acceleration. With finely tuned suspension,
+            driver-focused controls, and optimized mass distribution, the car is
+            built to balance agility, speed, and reliability on track.
+          </p>
+        </div>
+        <div className="mt-6 border-b-2 border-primary w-40 mx-auto" />
+      </section>
       <section className="section-padding wrapper">
         <div>
           <Carousel className="sm:mx-12 md:mx-20 lg:mx-40">
