@@ -8,6 +8,11 @@ import PartnershipBanner from "./_components/PartnershipBanner";
 import SmoothScroll from "./_components/SmoothScroll";
 import SponsorBrand from "./_components/SponsorBrand";
 
+import raceTrack from "../../../../public/race-track.jpg";
+import mercedesTeam from "../../../../public/mercedes-team.jpg";
+import maclarenF1Car from "../../../../public/mclaren-f1-car.webp";
+import raceFinish from "../../../../public/race-finish.jpg";
+
 const SponsorsPage = async () => {
   const diamondSponsors: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
     tier: "diamond",
@@ -52,8 +57,8 @@ const SponsorsPage = async () => {
         </section>
 
         <ParallaxContainer
-          bgImagePath="/race-track.jpg"
-          bgImageTitle="f1 sponsored"
+          bgImagePath={raceTrack}
+          bgImageTitle={"race track"}
         />
 
         <section className="mt-20">
@@ -68,8 +73,8 @@ const SponsorsPage = async () => {
         </section>
 
         <ParallaxContainer
-          bgImagePath="/mclaren-f1-car.webp"
-          bgImageTitle="f1 sponsored"
+          bgImagePath={maclarenF1Car}
+          bgImageTitle={"mclaren f1 car"}
         />
 
         <section className="mt-20">
@@ -84,8 +89,8 @@ const SponsorsPage = async () => {
         </section>
 
         <ParallaxContainer
-          bgImagePath="/race-finish.jpg"
-          bgImageTitle="f1 sponsored"
+          bgImagePath={raceFinish}
+          bgImageTitle="race finish"
         />
 
         <section className="mt-20">
@@ -100,8 +105,8 @@ const SponsorsPage = async () => {
         </section>
 
         <ParallaxContainer
-          bgImagePath="/mercedes-team.jpg"
-          bgImageTitle="f1 sponsored"
+          bgImagePath={mercedesTeam}
+          bgImageTitle={"mercedes team"}
           containerStyles={"-mb-20 md:-mb-24 xl:-mb-32"}
         >
           <PartnershipBanner />

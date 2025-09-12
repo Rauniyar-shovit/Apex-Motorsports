@@ -2,10 +2,11 @@
 import { useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import ParallaxBackground from "./ParallaxBackground";
+import { StaticImageData } from "next/image";
 
 type ParallaxContainerProps = {
   children?: React.ReactNode;
-  bgImagePath: string;
+  bgImagePath: StaticImageData;
   bgImageTitle: string;
   containerStyles?: string;
 };

@@ -1,9 +1,9 @@
 import { motion, MotionValue } from "motion/react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 type ParallaxBackgroundProps = {
   y: MotionValue<string>;
-  image: string;
+  image: StaticImageData;
   imgTitle: string;
 };
 
@@ -14,7 +14,13 @@ const ParallaxBackground = ({
 }: ParallaxBackgroundProps) => {
   return (
     <motion.div style={{ y }} className="relative w-full h-full">
-      <Image src={image} fill alt={imgTitle} style={{ objectFit: "cover" }} />
+      <Image
+        src={image}
+        fill
+        alt={imgTitle}
+        style={{ objectFit: "cover" }}
+        placeholder="blur"
+      />
       <div className="absolute h-full w-full z-20 bg-overlay opacity-30" />
     </motion.div>
   );

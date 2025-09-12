@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import ParallaxContainer from "./ParallaxContainer";
 import { ACHIEVEMENTS } from "@/data";
 import Card from "./Card";
-
+import raceTrack from "../../../../public/race-track.jpg";
 const Achievements = () => {
   useEffect(() => {
     const lenis = new Lenis();
@@ -20,10 +20,7 @@ const Achievements = () => {
 
   return (
     <section className="pt-12 lg:pt-20">
-      <ParallaxContainer
-        bgImagePath={"/race-track.jpg"}
-        bgImageTitle={"race track"}
-      >
+      <ParallaxContainer bgImagePath={raceTrack} bgImageTitle={"race track"}>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 items-center justify-between gap-5 md:gap-8 xl:gap-5 h-full  wrapper ">
           {ACHIEVEMENTS.map((item, index) => (
             <Card

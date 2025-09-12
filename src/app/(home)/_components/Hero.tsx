@@ -4,6 +4,8 @@ import { HERO_TITLES } from "@/constants";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { IoArrowDown } from "react-icons/io5";
+import hero from "../../../../public/f1_cars.avif";
+
 const Hero = () => {
   const handleScroll = () => {
     const section = document.getElementById("values");
@@ -11,16 +13,28 @@ const Hero = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <section id="hero">
       <div className="relative w-full h-screen">
-        <Image
+        {/* <Image
           src={"/f1_cars.avif"}
           alt="formula one cars"
           className="absolute w-full h-full object-cover"
+         
+        /> */}
+
+        <Image
+          src={hero}
+          alt="Formula One cars"
           width={2880}
           height={1800}
+          priority // preloads as LCP
+          fetchPriority="high" // browser hint
+          placeholder="blur" // perceived speed ↑
+          className=" absolute w-full h-full object-cover"
         />
+
         <div className="absolute h-full w-full z-20 bg-overlay opacity-30" />
       </div>
       <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20 whitespace-pre-line text-white">

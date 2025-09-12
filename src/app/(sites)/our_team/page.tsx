@@ -3,6 +3,8 @@ import Values from "@/components/features/values/Values";
 import SmoothScroll from "../sponsors/_components/SmoothScroll";
 import JoinUsBanner from "./_components/JoinUsBanner";
 import TeamsMembers from "./_components/TeamsMembers";
+import raceTrack from "../../../../public/race-track.jpg";
+import mercedesTeam from "../../../../public/mercedes-team.jpg";
 
 const people = [
   {
@@ -59,8 +61,8 @@ const TeamsPage = () => {
       </div>
 
       <ParallaxContainer
-        bgImagePath="/race-track.jpg"
-        bgImageTitle="f1 sponsored"
+        bgImagePath={raceTrack}
+        bgImageTitle={"race track"}
         containerStyles="h-[40vh] 3xl:h-[35vh]"
       >
         <div className="wrapper flex items-center justify-center text-center uppercase text-6xl font-barlow h-full">
@@ -83,8 +85,8 @@ const TeamsPage = () => {
       />
       <div className="mt-24">
         <ParallaxContainer
-          bgImagePath="/mercedes-team.jpg"
-          bgImageTitle="f1 sponsored"
+          bgImagePath={mercedesTeam}
+          bgImageTitle={"mercedes team"}
           containerStyles={"-mb-20 md:-mb-24 xl:-mb-32"}
         >
           <JoinUsBanner />
