@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "../globals.css";
+import SmoothScroll from "@/components/reusable/SmoothScroll";
 
 const dmSans = DM_Sans({
   weight: ["400", "600", "700"],
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${barlowCondensed.variable} antialiased`}
       >
+        <SmoothScroll />
         {children}
       </body>
     </html>

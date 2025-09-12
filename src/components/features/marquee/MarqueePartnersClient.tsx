@@ -1,29 +1,26 @@
 "use client";
 import Image from "next/image";
 import MarqueeContent from "./MarqueeContent";
+import { Sponsor } from "@/models";
+import { urlFor } from "@/sanity/lib/image";
 
-const PARTNERS = [
-  { name: "Adidas", logo: "/sponsors/wsu.png" },
-  { name: "Mizuno", logo: "/sponsors/ptc.png" },
-  { name: "Puma", logo: "/sponsors/altium.png" },
-  { name: "Asics", logo: "/sponsors/student-community.png" },
-];
-
-const MarqueePartners = () => {
-  const renderMarqueeItem = (
-    item: { name: string; logo: string },
-    index: number
-  ) => (
-    <div className="relative w-[180px] h-[180px]">
-      <Image
-        src={`${item.logo}`}
-        key={index}
-        className="absolute top-0 left-0 w-full h-full object-contain pr-12"
-        fill
-        alt="logo"
-      />
-    </div>
-  );
+const MarqueePartnersClient = ({ partners }: { partners: Sponsor[] }) => {
+  const renderMarqueeItem = (item: Sponsor, index: number) => {
+    const logoUrl = item.logoSrc ? urlFor(item.logoSrc).url() : item.logoSrc;
+    return (
+      <div className="relative w-[180px] h-[180px]">
+        {logoUrl && (
+          <Image
+            src={logoUrl}
+            key={index}
+            className="absolute top-0 left-0 w-full h-full object-contain pr-12"
+            fill
+            alt="logo"
+          />
+        )}
+      </div>
+    );
+  };
 
   return (
     <section className="wrapper section-padding">
@@ -37,7 +34,7 @@ const MarqueePartners = () => {
           <div className="flex">
             {[0, 0, 0].map((_, index) => (
               <MarqueeContent
-                content={PARTNERS}
+                content={partners}
                 renderItem={renderMarqueeItem}
                 key={index}
               />
@@ -49,4 +46,4 @@ const MarqueePartners = () => {
   );
 };
 
-export default MarqueePartners;
+export default MarqueePartnersClient;

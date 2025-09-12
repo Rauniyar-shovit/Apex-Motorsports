@@ -1,6 +1,5 @@
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import Values from "@/components/features/values/Values";
-import SmoothScroll from "../sponsors/_components/SmoothScroll";
 import JoinUsBanner from "./_components/JoinUsBanner";
 import TeamsMembers from "./_components/TeamsMembers";
 import raceTrack from "../../../../public/race-track.jpg";
@@ -40,8 +39,6 @@ const people = [
 const TeamsPage = () => {
   return (
     <main>
-      <SmoothScroll />
-
       <section className="section-padding wrapper">
         <div className="flex flex-col items-center text-center gap-4 ">
           {/* Heading */}
