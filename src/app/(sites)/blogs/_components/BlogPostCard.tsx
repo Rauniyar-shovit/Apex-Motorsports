@@ -1,7 +1,23 @@
-import { CalendarDays, MessageCircle } from "lucide-react";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { Dot, MoveRight } from "lucide-react";
+import { AnimatePresence, easeIn, LayoutGroup, motion } from "motion/react";
+
+const textVariants = {
+  rest: { x: -8, opacity: 0 },
+  hover: {
+    x: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 300, damping: 22 },
+  },
+};
+
+const iconVariants = {
+  rest: { x: 0 },
+  hover: { x: 6, transition: { type: "spring", stiffness: 300, damping: 22 } },
+};
 
 const BlogPostCard = ({
   title,
@@ -31,7 +47,7 @@ const BlogPostCard = ({
       return date;
     }
   }, [date]);
-
+  const [hovered, setHovered] = useState(false);
   return (
     <article className="group w-full max-w-4xl overflow-hidden">
       {/* Media */}
@@ -51,50 +67,71 @@ const BlogPostCard = ({
       </Link>
 
       {/* Content */}
-      <div className="px-4 sm:px-6 md:px-8 py-5">
+      <div className=" py-6">
         <Link href={href} className="inline-block focus:outline-none">
-          <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight font-barlow group-hover:underline underline-offset-4 decoration-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl  leading-tight tracking-relaxed font-barlow uppercase ">
             {title}
           </h2>
         </Link>
 
         {/* Meta */}
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-500 dark:text-neutral-400">
-          <span className="inline-flex items-center gap-1">
-            <CalendarDays className="h-4 w-4" /> {friendlyDate}
+        <div className="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2 text-muted-primary font-sans text-sm">
+          {friendlyDate}
+          <span>
+            <Dot className="h-4 w-4" />
           </span>
-          <span className="inline-flex items-center gap-1">
-            <MessageCircle className="h-4 w-4" /> {comments} Comments
-          </span>
+          {comments} Comments
         </div>
 
         {/* Excerpt */}
-        <p className="mt-4 text-base leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p className="mt-4 text-lg leading-relaxed  font-sans  text-muted-primary">
           {excerpt}
         </p>
 
         {/* CTA */}
-        <div className="mt-5">
-          <Link
-            href={href}
-            className="inline-flex items-center  border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+        <LayoutGroup>
+          <motion.button
+            onHoverStart={() => setHovered(true)}
+            onHoverEnd={() => setHovered(false)}
+            className="py-4 cursor-pointer flex font-sans uppercase font-[600] text-sm items-center gap-2"
+            type="button"
+            layout // smooth parent layout changes too
           >
-            Read article
-            <svg
-              aria-hidden
-              viewBox="0 0 24 24"
-              className="ml-2 h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <AnimatePresence mode="popLayout">
+              {/* 👈 key to stop jump on unmount */}
+              {hovered && (
+                <motion.span
+                  key="readmore"
+                  initial={{ x: -12, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -12, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 30,
+                    duration: 0.5,
+                  }}
+                  layout // animate position/size while entering/exiting
+                >
+                  Read More
+                </motion.span>
+              )}
+            </AnimatePresence>
+
+            <motion.div
+              animate={hovered ? { x: 6 } : { x: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 30,
+                duration: 0.5,
+              }}
+              layout // arrow smoothly reflows as text enters/exits
             >
-              <path d="M5 12h14" />
-              <path d="M12 5l7 7-7 7" />
-            </svg>
-          </Link>
-        </div>
+              <MoveRight />
+            </motion.div>
+          </motion.button>
+        </LayoutGroup>
       </div>
     </article>
   );

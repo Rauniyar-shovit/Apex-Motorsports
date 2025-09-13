@@ -9,7 +9,6 @@ import BlogPostCard from "./_components/BlogPostCard";
 export default function BlogCardDemo() {
   const post = {
     title: "Discovering the Perfect Running Gear for Your Journey",
-    date: "2025-03-19",
     comments: 0,
     excerpt:
       "Qroin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in consequat. Fusce sodales augue a accumsan. Cras sollicitudin, ipsum eget blandit pulvinar.",
@@ -19,11 +18,11 @@ export default function BlogCardDemo() {
 
   return (
     <main>
-      <div className="wrapper flex gap-10">
-        <section className="section-padding wrapper">
+      <div className=" section-padding wrapper flex gap-10">
+        <section className=" ">
           <BlogPostCard {...post} />
         </section>
-        <section className=" section-padding h-[100vh] sticky  w-100 bg-muted-secondary"></section>
+        <section className="  h-[100vh] sticky  w-100 bg-muted-secondary"></section>
       </div>
     </main>
   );
