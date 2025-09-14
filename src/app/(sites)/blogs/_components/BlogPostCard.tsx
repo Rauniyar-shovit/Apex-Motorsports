@@ -1,23 +1,8 @@
 "use client";
+import { Dot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useMemo, useState } from "react";
-import { Dot, MoveRight } from "lucide-react";
-import { AnimatePresence, easeIn, LayoutGroup, motion } from "motion/react";
-
-const textVariants = {
-  rest: { x: -8, opacity: 0 },
-  hover: {
-    x: 0,
-    opacity: 1,
-    transition: { type: "spring", stiffness: 300, damping: 22 },
-  },
-};
-
-const iconVariants = {
-  rest: { x: 0 },
-  hover: { x: 6, transition: { type: "spring", stiffness: 300, damping: 22 } },
-};
+import ReadMoreBtn from "./ReadMoreBtn";
 
 const BlogPostCard = ({
   title,
@@ -28,26 +13,12 @@ const BlogPostCard = ({
   image,
 }: {
   title: string;
-  date: string; // ISO or plain text
+  date: string;
   comments: number;
   excerpt: string;
   href: string;
   image: string;
 }) => {
-  const friendlyDate = useMemo(() => {
-    try {
-      const d = new Date(date);
-      if (isNaN(d.getTime())) return date;
-      return new Intl.DateTimeFormat(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "2-digit",
-      }).format(d);
-    } catch {
-      return date;
-    }
-  }, [date]);
-  const [hovered, setHovered] = useState(false);
   return (
     <article className="group w-full max-w-4xl overflow-hidden">
       {/* Media */}
@@ -76,7 +47,7 @@ const BlogPostCard = ({
 
         {/* Meta */}
         <div className="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2 text-muted-primary font-sans text-sm">
-          {friendlyDate}
+          {date}
           <span>
             <Dot className="h-4 w-4" />
           </span>
@@ -84,54 +55,12 @@ const BlogPostCard = ({
         </div>
 
         {/* Excerpt */}
-        <p className="mt-4 text-lg leading-relaxed  font-sans  text-muted-primary">
+        <p className="mt-4 text-base md:text-lg leading-relaxed  font-sans  text-muted-primary">
           {excerpt}
         </p>
 
         {/* CTA */}
-        <LayoutGroup>
-          <motion.button
-            onHoverStart={() => setHovered(true)}
-            onHoverEnd={() => setHovered(false)}
-            className="py-4 cursor-pointer flex font-sans uppercase font-[600] text-sm items-center gap-2"
-            type="button"
-            layout // smooth parent layout changes too
-          >
-            <AnimatePresence mode="popLayout">
-              {/* 👈 key to stop jump on unmount */}
-              {hovered && (
-                <motion.span
-                  key="readmore"
-                  initial={{ x: -12, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -12, opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 30,
-                    duration: 0.5,
-                  }}
-                  layout // animate position/size while entering/exiting
-                >
-                  Read More
-                </motion.span>
-              )}
-            </AnimatePresence>
-
-            <motion.div
-              animate={hovered ? { x: 6 } : { x: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 30,
-                duration: 0.5,
-              }}
-              layout // arrow smoothly reflows as text enters/exits
-            >
-              <MoveRight />
-            </motion.div>
-          </motion.button>
-        </LayoutGroup>
+        <ReadMoreBtn href={href} />
       </div>
     </article>
   );
