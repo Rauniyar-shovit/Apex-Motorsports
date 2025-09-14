@@ -1,4 +1,5 @@
 import BlogPostCard from "./_components/BlogPostCard";
+import Sidebar from "./_components/Sidebar";
 
 /**
  * Responsive blog card UI
@@ -10,6 +11,7 @@ export default function BlogCardDemo() {
   const post = {
     title: "Discovering the Perfect Running Gear for Your Journey",
     comments: 0,
+    date: "14 September 2025",
     excerpt:
       "Qroin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in consequat. Fusce sodales augue a accumsan. Cras sollicitudin, ipsum eget blandit pulvinar.",
     href: "/blog/discover-perfect-running-gear",
@@ -18,11 +20,11 @@ export default function BlogCardDemo() {
 
   return (
     <main>
-      <div className=" section-padding wrapper flex gap-10">
+      <div className=" section-padding wrapper flex flex-col lg:flex-row gap-10">
         <section className=" ">
           <BlogPostCard {...post} />
         </section>
-        <section className="  h-[100vh] sticky  w-100 bg-muted-secondary"></section>
+        <Sidebar />
       </div>
     </main>
   );

@@ -17,6 +17,7 @@
   --primary: #5f3cff;
   --secondary: #1d0029;
   --form-background: #f7f9fa;
+  --sidebar-background: #f7f9fa;
 }
 
 @theme inline {
@@ -30,6 +31,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-form-background: var(--form-background);
+  --color-sidebar-background: var(--sidebar-background);
   --breakpoint-3xl: 120rem;
 }
 
