@@ -20,7 +20,7 @@ const BlogPostCard = ({
   image: string;
 }) => {
   return (
-    <article className="group w-full max-w-4xl overflow-hidden">
+    <article className="group w-full max-w-4xl overflow-hidden mb-8">
       {/* Media */}
       <Link href={href} className="block focus:outline-none">
         <div className="relative aspect-[16/9] w-full">

@@ -13,7 +13,7 @@ const ReadMoreBtn = ({ href }: { href: string }) => {
       <motion.button
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
-        className="py-4 cursor-pointer flex font-sans uppercase font-[600] text-sm items-center gap-2"
+        className="py-4 cursor-pointer flex font-sans uppercase font-[600] text-sm items-center gap-2 text-primary"
         type="button"
         onClick={() => router.push(href)}
         // smooth parent layout changes too
