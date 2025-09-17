@@ -1,3 +1,4 @@
+import BlogPagination from "./_components/BlogPagination";
 import BlogPostCard from "./_components/BlogPostCard";
 import Sidebar from "./_components/Sidebar";
 
@@ -20,9 +21,12 @@ export default function BlogCardDemo() {
 
   return (
     <main>
-      <div className=" section-padding wrapper flex flex-col lg:flex-row gap-10">
+      <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
         <section className=" ">
           <BlogPostCard {...post} />
+          <BlogPostCard {...post} />
+          <BlogPostCard {...post} />
+          <BlogPagination />
         </section>
         <Sidebar />
       </div>
