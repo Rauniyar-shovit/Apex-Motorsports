@@ -5,11 +5,13 @@ import { client } from "@/sanity/lib/client";
 import { TIER_SPONSORS_QUERY } from "@/sanity/lib/queries";
 import DiamondSponsor from "./_components/DiamondSponsor";
 import PartnershipBanner from "./_components/PartnershipBanner";
+import raceFinish from "@/../../public/race-finish.jpg";
+
+import mercedesTeam from "@/../../public/mercedes-team.jpg";
+
+import raceTrack from "@/../../public/race-track.jpg";
+import maclarenF1Car from "@/../../public/mclaren-f1-car.webp";
 import SponsorBrand from "./_components/SponsorBrand";
-import raceTrack from "../../../../public/race-track.jpg";
-import mercedesTeam from "../../../../public/mercedes-team.jpg";
-import maclarenF1Car from "../../../../public/mclaren-f1-car.webp";
-import raceFinish from "../../../../public/race-finish.jpg";
 
 const SponsorsPage = async () => {
   const diamondSponsors: Sponsor[] = await client.fetch(TIER_SPONSORS_QUERY, {
