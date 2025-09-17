@@ -79,7 +79,7 @@ const RecentPosts = ({ posts = RECENT_POSTS }) => {
 
               <Link
                 href={p.slug}
-                className="mt-1 block text-lg font-barlow font-extrabold leading-relaxed uppercase  line-clamp-2"
+                className="mt-1 block text-xl font-barlow font-extrabold leading-snug uppercase  line-clamp-2 hover:text-muted-primary transition duration-150"
                 title={p.title}
               >
                 {p.title}

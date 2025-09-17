@@ -2,9 +2,9 @@ import ParallaxContainer from "@/components/features/achievements/ParallaxContai
 import Values from "@/components/features/values/Values";
 import JoinUsBanner from "./_components/JoinUsBanner";
 import TeamsMembers from "./_components/TeamsMembers";
-import raceTrack from "../../../../public/race-track.jpg";
-import mercedesTeam from "../../../../public/mercedes-team.jpg";
+import mercedesTeam from "@/../../public/mercedes-team.jpg";
 
+import raceTrack from "@/../../public/race-track.jpg";
 const people = [
   {
     name: "Sienna Hewitt",

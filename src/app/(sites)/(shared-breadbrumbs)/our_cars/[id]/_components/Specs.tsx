@@ -115,7 +115,7 @@ const Specs = () => {
       <div className="mt-10 md:mt-20 px-5 md:px-10 wrapper">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {specsData.map((section, idx) => (
-            <RevealWrapper key={idx} index={idx}>
+            <RevealWrapper key={idx}>
               <div>
                 <h3 className="text-3xl mb-4 font-barlow uppercase ">
                   {section.title}
