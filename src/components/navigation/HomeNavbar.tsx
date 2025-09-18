@@ -37,7 +37,7 @@ const HomeNavbar = ({ intersectingSectionId = "" }: NavbarProps) => {
 
         <AnimatedNavContainer
           key="sticky"
-          navStyles="fixed top-0 bg-foreground backdrop-blur shadow-sm z-50 h-20"
+          navStyles="fixed top-0 bg-foreground backdrop-blur shadow-sm z-50 h-22"
           motionProps={stickyNavAnimation}
         />
       ) : (

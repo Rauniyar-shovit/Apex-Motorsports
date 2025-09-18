@@ -9,12 +9,14 @@ const SitesNavbar = () => {
 
   if (isMobile)
     return (
-      <MobileNavbar containerStyles="bg-foreground border-muted-primary border-b" />
+      <MobileNavbar
+        containerStyles={`bg-foreground border-muted-primary border-b $`}
+      />
     );
   return (
     <AnimatedNavContainer
       key="floating"
-      navStyles=" top-0 bg-foreground h-20 lg:h-30 border-muted-primary border-b"
+      navStyles={` top-0 bg-foreground h-20 lg:h-30 border-muted-primary border-b `}
     />
   );
 };
