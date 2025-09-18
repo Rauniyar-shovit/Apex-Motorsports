@@ -15,7 +15,7 @@ export default function BlogCardDemo() {
     date: "14 September 2025",
     excerpt:
       "Qroin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in consequat. Fusce sodales augue a accumsan. Cras sollicitudin, ipsum eget blandit pulvinar.",
-    href: "/blog/discover-perfect-running-gear",
+    href: "/blogs/discover-perfect-running-gear",
     image: "/blog.jpg", // put your image under /public
   };
   const post1 = {
@@ -24,7 +24,7 @@ export default function BlogCardDemo() {
     date: "14 September 2025",
     excerpt:
       "Qroin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in consequat. Fusce sodales augue a accumsan. Cras sollicitudin, ipsum eget blandit pulvinar.",
-    href: "/blog/discover-perfect-running-gear",
+    href: "/blogs/discover-perfect-running-gear",
     image: "/race-track.jpg", // put your image under /public
   };
   const post2 = {
@@ -33,7 +33,7 @@ export default function BlogCardDemo() {
     date: "14 September 2025",
     excerpt:
       "Qroin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in consequat. Fusce sodales augue a accumsan. Cras sollicitudin, ipsum eget blandit pulvinar.",
-    href: "/blog/discover-perfect-running-gear",
+    href: "/blogs/discover-perfect-running-gear",
     image: "/race-finish.jpg", // put your image under /public
   };
 
