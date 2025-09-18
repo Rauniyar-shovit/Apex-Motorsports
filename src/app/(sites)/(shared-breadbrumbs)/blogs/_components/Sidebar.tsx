@@ -9,7 +9,7 @@ const Sidebar = () => {
         <aside
           className=" grid grid-cols-1 gap-8
         md:grid-cols-2 lg:grid-cols-1
-        lg:max-h-[calc(100vh-6rem)] lg:overflow-auto"
+       lg:overflow-auto scrollbar-hide"
         >
           <SearchBar />
           <Categories />
