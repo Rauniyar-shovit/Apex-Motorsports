@@ -23,3 +23,25 @@ export const ACHIEVEMENTS_QUERY = defineQuery(`
   order
 }
 `);
+
+export const BLOG_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "blog" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    excerpt,
+    mainImage{
+      asset->{
+        url
+      },
+      alt
+    },
+    authorName,
+    categories[]->{
+      _id,
+      title
+    },
+    publishedAt,
+    body
+  }
+`);
