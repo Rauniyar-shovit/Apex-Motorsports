@@ -13,6 +13,18 @@
  */
 
 // Source: schema.json
+export type Achievements = {
+  _id: string;
+  _type: "achievements";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  ranking?: string;
+  iconName?: string;
+  order?: number;
+};
+
 export type Sponsor = {
   _id: string;
   _type: "sponsor";
@@ -158,6 +170,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Achievements
   | Sponsor
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -184,11 +197,21 @@ export type TIER_SPONSORS_QUERYResult = Array<{
   description: string | null;
   order: number | null;
 }>;
+// Variable: ACHIEVEMENTS_QUERY
+// Query: *[_type == "achievements"] | order(order asc)[0..3] {  _id,  title,  ranking,  iconName,  order}
+export type ACHIEVEMENTS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  ranking: string | null;
+  iconName: string | null;
+  order: number | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n  *[_type == "sponsor" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    "logoSrc": logo.asset->url,\n    "logoAlt": logo.alt,\n    href,\n    description,\n    order\n  }\n': TIER_SPONSORS_QUERYResult;
+    '\n*[_type == "achievements"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n': ACHIEVEMENTS_QUERYResult;
   }
 }

@@ -13,3 +13,13 @@ export const TIER_SPONSORS_QUERY = defineQuery(`
     order
   }
 `);
+
+export const ACHIEVEMENTS_QUERY = defineQuery(`
+*[_type == "achievements"] | order(order asc)[0..3] {
+  _id,
+  title,
+  ranking,
+  iconName,
+  order
+}
+`);
