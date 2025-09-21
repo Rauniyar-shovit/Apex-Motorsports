@@ -1,5 +1,5 @@
 import AboutUs from "@/components/features/about/AboutUs";
-import Achievements from "@/components/features/achievements/Achievements";
+import AchievementsServer from "@/components/features/achievements/AchievementsServer";
 import FormulaSAE from "@/components/features/competition/FormulaSAE";
 import Contact from "@/components/features/contact/Contact";
 import ContactForm from "@/components/features/contact/ContactForm";
@@ -20,7 +20,7 @@ export default function Home() {
       <FormulaSAE />
       <AboutUs />
       <MarqueeText />
-      <Achievements />
+      <AchievementsServer />
       <Contact>
         <ContactForm
           containerStyles={"bg-form-background"}

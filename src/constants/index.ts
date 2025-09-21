@@ -1,5 +1,16 @@
 import { BrandDetails, FormulaSaeDetails } from "@/models";
 import { sub } from "motion/react-client";
+import {
+  IoConstructOutline,
+  IoCheckmarkCircleOutline,
+  IoPersonCircleOutline,
+  IoBriefcaseOutline,
+  IoTrophy,
+  IoMedal,
+  IoStar,
+  IoFlag,
+} from "react-icons/io5";
+import { SiTarget } from "react-icons/si";
 
 export const BRAND_DETAILS: BrandDetails = {
   name: "Apex Motorsports",

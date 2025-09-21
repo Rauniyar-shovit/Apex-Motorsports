@@ -1,7 +1,10 @@
 import { LINKS } from "@/constants";
 import { IconType } from "react-icons";
 import { FORM_FIELDS } from "@/constants";
-import { TIER_SPONSORS_QUERYResult } from "@/sanity/types";
+import {
+  ACHIEVEMENTS_QUERYResult,
+  TIER_SPONSORS_QUERYResult,
+} from "@/sanity/types";
 
 export type Link = {
   title: (typeof LINKS)[keyof typeof LINKS];
@@ -15,12 +18,12 @@ export type Value = {
   description: string;
 };
 
-export type Achievement = {
-  title: string;
-  ranking?: string;
-  description?: string;
-  icon: IconType;
-};
+// export type Achievement = {
+//   title: string;
+//   ranking?: string;
+//   description?: string;
+//   icon: IconType;
+// };
 
 export type Social = {
   title: string;
@@ -110,11 +113,12 @@ export type ContactFormValues = {
 export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
 
 export type Sponsor = TIER_SPONSORS_QUERYResult[number];
+export type Achievement = ACHIEVEMENTS_QUERYResult[number];
 
 export type TeamMemberProfile = {
   name: string;
   role: string;
   bio: string;
   photo: string;
-  email:string
+  email: string;
 };

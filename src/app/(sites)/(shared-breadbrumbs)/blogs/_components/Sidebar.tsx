@@ -7,7 +7,7 @@ const Sidebar = () => {
     <section className=" w-full   lg:max-w-82  ">
       <div className=" lg:sticky lg:top-5 h-fit bg-sidebar-background px-8 md:px-6 py-8">
         <aside
-          className=" grid grid-cols-1 gap-8
+          className="grid grid-cols-1 gap-8
         md:grid-cols-2 lg:grid-cols-1
        lg:overflow-auto scrollbar-hide"
         >
