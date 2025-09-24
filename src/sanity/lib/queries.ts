@@ -46,29 +46,16 @@ export const BLOG_BY_SLUG_QUERY = defineQuery(`
   }
 `);
 
-export const BLOGS_QUERY = defineQuery(`
+export const BLOGS_LIST_QUERY = defineQuery(`
   *[_type == "blog"] | order(publishedAt desc) [$offset...$limit] {
     _id,
     title,
     "slug": slug.current,
     excerpt,
-    mainImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    authorName,
-    categories[]->{
-      _id,
-      title
-    },
-    publishedAt,
-    body
+    mainImage{asset->, alt},
+    publishedAt
   }
 `);
-
 export const BLOGS_COUNT_QUERY = defineQuery(`
   count(*[_type == "blog"])
 `);
