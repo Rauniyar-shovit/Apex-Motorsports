@@ -7,14 +7,12 @@ import ReadMoreBtn from "./ReadMoreBtn";
 const BlogPostCard = ({
   title,
   date,
-  comments,
   excerpt,
   href,
   image,
 }: {
   title: string;
   date: string;
-  comments: number;
   excerpt: string;
   href: string;
   image: string;
@@ -51,7 +49,6 @@ const BlogPostCard = ({
           <span>
             <Dot className="h-4 w-4" />
           </span>
-          {comments} Comments
         </div>
 
         {/* Excerpt */}
