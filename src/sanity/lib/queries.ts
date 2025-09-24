@@ -60,3 +60,15 @@ export const BLOGS_LIST_QUERY = defineQuery(`
 export const BLOGS_COUNT_QUERY = defineQuery(`
   count(*[_type == "blog"])
 `);
+
+export const RECENT_BLOGS_QUERY = defineQuery(`
+  *[_type == "blog" && defined(publishedAt) && publishedAt <= now()]
+  | order(publishedAt desc)[0...2]{
+    _id,
+    title,
+    "slug": slug.current,
+    authorName,
+    mainImage{ asset->, alt },
+    publishedAt
+  }
+`);

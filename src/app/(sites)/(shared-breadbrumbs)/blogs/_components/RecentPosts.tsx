@@ -2,6 +2,10 @@ import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { RECENT_BLOGS_QUERY } from "@/sanity/lib/queries";
+import { format } from "date-fns";
+import { urlFor } from "@/sanity/lib/image";
 
 type Post = {
   id: string;
@@ -31,16 +35,10 @@ const RECENT_POSTS: Post[] = [
   },
 ];
 
-function formatDate(d: string) {
-  const dt = new Date(d);
-  if (Number.isNaN(dt.getTime())) return d;
-  return new Intl.DateTimeFormat(undefined, {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  }).format(dt);
-}
-const RecentPosts = ({ posts = RECENT_POSTS }) => {
+const RecentPosts = async ({ posts = RECENT_POSTS }) => {
+  const recentPosts = await client.fetch(RECENT_BLOGS_QUERY);
+  console.log("🚀 ~ RecentPosts ~ recentPosts:", recentPosts);
+
   return (
     <aside className="w-full">
       <h2 className="text-2xl font-bold mb-4 font-barlow uppercase">
@@ -48,45 +46,58 @@ const RecentPosts = ({ posts = RECENT_POSTS }) => {
       </h2>
 
       <ul className="space-y-8">
-        {posts.map((p) => (
-          <li key={p.id} className="flex items-center justify-cente gap-6">
-            {/* Thumbnail */}
-            <Link
-              href={p.slug}
-              className="relative block h-22 w-22 shrink-0 overflow-hidden"
+        {recentPosts.map((post) => {
+          const formattedDate = format(
+            new Date(post.publishedAt),
+            "dd MMM yyyy"
+          );
+
+          return (
+            <li
+              key={post._id}
+              className="flex items-center justify-cente gap-6"
             >
-              <Image
-                src={"/blog.jpg"}
-                alt={p.title}
-                fill
-                sizes="64px"
-                className="object-cover hover:scale-110 transition-all duration-200"
-                priority
-              />
-            </Link>
-
-            {/* Meta + Title */}
-            <div className="min-w-0 text-sm font-sans">
-              <div className="mb-2">
-                <span className="tracking-widest uppercase font-[600] ">
-                  {p.category}
-                </span>
-                <span className="mx-2 select-none text-muted-primary">•</span>
-                <time dateTime={p.date} className="text-muted-primary">
-                  {formatDate(p.date)}
-                </time>
-              </div>
-
+              {/* Thumbnail */}
               <Link
-                href={p.slug}
-                className="mt-1 block text-xl font-barlow font-extrabold leading-snug uppercase  line-clamp-2 hover:text-muted-primary transition duration-150"
-                title={p.title}
+                href={post.slug}
+                className="relative block h-22 w-22 shrink-0 overflow-hidden"
               >
-                {p.title}
+                <Image
+                  src={urlFor(post.mainImage).url()}
+                  alt={post.title}
+                  fill
+                  sizes="64px"
+                  className="object-cover hover:scale-110 transition-all duration-200"
+                  priority
+                />
               </Link>
-            </div>
-          </li>
-        ))}
+
+              {/* Meta + Title */}
+              <div className="min-w-0 text-sm font-sans">
+                <div className="mb-2">
+                  <span className="tracking-widest uppercase font-[600] ">
+                    {post.authorName}
+                  </span>
+                  <span className="mx-2 select-none text-muted-primary">•</span>
+                  <time
+                    dateTime={post.publishedAt}
+                    className="text-muted-primary"
+                  >
+                    {formattedDate}
+                  </time>
+                </div>
+
+                <Link
+                  href={post.slug}
+                  className="mt-1 block text-xl font-barlow font-extrabold leading-snug uppercase  line-clamp-2 hover:text-muted-primary transition duration-150"
+                  title={post.title}
+                >
+                  {post.title}
+                </Link>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </aside>
   );
