@@ -21,6 +21,7 @@ export default defineType({
       type: "text",
       title: "Excerpt",
       description: "Short summary shown in previews.",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "mainImage",
@@ -28,11 +29,13 @@ export default defineType({
       title: "Main Image",
       options: { hotspot: true },
       fields: [{ name: "alt", type: "string", title: "Alt text" }],
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "authorName", // ✅ just a string
       type: "string",
       title: "Author Name",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "categories",
@@ -42,11 +45,13 @@ export default defineType({
     defineField({
       name: "publishedAt",
       type: "datetime",
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
-      type: "blockContent", // ✅ Portable Text
+      type: "blockContent",
+      validation: (R) => R.required(), // ✅ Portable Text
     }),
   ],
   preview: {

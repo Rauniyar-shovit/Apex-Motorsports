@@ -4,7 +4,7 @@ import BlogPostCard from "./_components/BlogPostCard";
 import Sidebar from "./_components/Sidebar";
 import { BLOGS_COUNT_QUERY, BLOGS_LIST_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
-
+import { format } from "date-fns";
 type Props = {
   searchParams?: { page?: string };
 };
@@ -29,29 +29,28 @@ export default async function BlogCardDemo({ searchParams }: Props) {
       <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
         <section className=" ">
           {blogs?.length ? (
-            blogs.map((b: any) => (
-              <BlogPostCard
-                key={b._id}
-                author={b.authorName}
-                title={b.title}
-                date={
-                  b.publishedAt
-                    ? new Date(b.publishedAt).toLocaleDateString()
-                    : ""
-                }
-                excerpt={b.excerpt}
-                href={`/blogs/${b.slug}`} // detail page by slug
-                image={
-                  b.mainImage
-                    ? urlFor(b.mainImage)
-                        .width(960)
-                        .height(540)
-                        .fit("crop")
-                        .url()
-                    : "/placeholder.jpg"
-                }
-              />
-            ))
+            blogs.map((b: any) => {
+              const formatted = format(new Date(b.publishedAt), "dd/MM/yyyy");
+              return (
+                <BlogPostCard
+                  key={b._id}
+                  author={b.authorName}
+                  title={b.title}
+                  date={formatted}
+                  excerpt={b.excerpt}
+                  href={`/blogs/${b.slug}`} // detail page by slug
+                  image={
+                    b.mainImage
+                      ? urlFor(b.mainImage)
+                          .width(960)
+                          .height(540)
+                          .fit("crop")
+                          .url()
+                      : "/placeholder.jpg"
+                  }
+                />
+              );
+            })
           ) : (
             <p className="text-muted-foreground">No posts yet.</p>
           )}
