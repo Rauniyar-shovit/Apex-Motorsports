@@ -82,6 +82,11 @@ const page = async () => {
       </div>
 
       <PortableContentRenderer value={blog.body} />
+      <div className="wrapper ">
+        <div className="lg:mx-32 2xl:mx-40 3xl:mx-60 bg-transparent my-14">
+          <hr className=" lg:px-32 2xl:px-40 3xl:px-60  mt-4 h-[1px] border-0 bg-primary" />
+        </div>
+      </div>
       <RelatedPosts posts={relatedPosts} />
     </div>
   );
