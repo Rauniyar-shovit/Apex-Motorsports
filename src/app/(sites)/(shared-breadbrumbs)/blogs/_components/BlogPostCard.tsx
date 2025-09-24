@@ -10,12 +10,14 @@ const BlogPostCard = ({
   excerpt,
   href,
   image,
+  author,
 }: {
   title: string;
   date: string;
   excerpt: string;
   href: string;
   image: string;
+  author: string;
 }) => {
   return (
     <article className="group w-full max-w-4xl overflow-hidden mb-8">
@@ -49,6 +51,7 @@ const BlogPostCard = ({
           <span>
             <Dot className="h-4 w-4" />
           </span>
+          <span>{author}</span>
         </div>
 
         {/* Excerpt */}
