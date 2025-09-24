@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default async function BlogCardDemo({ searchParams }: Props) {
-  const pageSize = 1; // ← change as you like
+  const pageSize = 4;
   const page = Math.max(1, Number(searchParams?.page ?? "1") || 1);
 
   const offset = (page - 1) * pageSize;
@@ -22,6 +22,8 @@ export default async function BlogCardDemo({ searchParams }: Props) {
   ]);
 
   const totalPages = Math.max(1, Math.ceil(Number(total) / pageSize));
+  console.log("🚀 ~ BlogCardDemo ~ blogs:", blogs);
+
   return (
     <main>
       <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
@@ -30,6 +32,7 @@ export default async function BlogCardDemo({ searchParams }: Props) {
             blogs.map((b: any) => (
               <BlogPostCard
                 key={b._id}
+                author={b.authorName}
                 title={b.title}
                 date={
                   b.publishedAt

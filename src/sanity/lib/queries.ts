@@ -52,6 +52,7 @@ export const BLOGS_LIST_QUERY = defineQuery(`
     title,
     "slug": slug.current,
     excerpt,
+    authorName,
     mainImage{asset->, alt},
     publishedAt
   }
