@@ -45,3 +45,30 @@ export const BLOG_BY_SLUG_QUERY = defineQuery(`
     body
   }
 `);
+
+export const BLOGS_QUERY = defineQuery(`
+  *[_type == "blog"] | order(publishedAt desc) [$offset...$limit] {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    authorName,
+    categories[]->{
+      _id,
+      title
+    },
+    publishedAt,
+    body
+  }
+`);
+
+export const BLOGS_COUNT_QUERY = defineQuery(`
+  count(*[_type == "blog"])
+`);

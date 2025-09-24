@@ -5,14 +5,13 @@ export default defineType({
   title: "Block Content",
   type: "array",
   of: [
-    // Basic text blocks
     defineArrayMember({
       type: "block",
       styles: [
         { title: "Normal", value: "normal" },
         { title: "H1", value: "h1" },
         { title: "H2", value: "h2" },
-        { title: "Quote", value: "blockquote" },
+        { title: "H3", value: "h3" },
       ],
       lists: [
         { title: "Bullet", value: "bullet" },
@@ -38,17 +37,10 @@ export default defineType({
       },
     }),
 
-    // Images inside Portable Text
     defineArrayMember({
       type: "image",
       options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alt text",
-        },
-      ],
+      fields: [{ name: "alt", type: "string", title: "Alt text" }],
     }),
   ],
 });

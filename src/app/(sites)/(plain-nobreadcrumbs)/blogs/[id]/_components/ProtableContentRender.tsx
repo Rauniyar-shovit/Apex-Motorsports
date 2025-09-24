@@ -21,9 +21,9 @@ const components: PortableTextComponents = {
             sizes="(min-width:1536px) 1200px, (min-width:1280px) 1024px, (min-width:1024px) 896px, (min-width:768px) 704px, 100vw"
             className="w-full h-auto object-cover "
           />
-          {value?.caption && (
+          {value?.alt && (
             <figcaption className="mt-2 text-xs sm:text-sm text-muted-foreground">
-              {value.caption}
+              {value.alt}
             </figcaption>
           )}
         </figure>
@@ -39,7 +39,7 @@ const components: PortableTextComponents = {
     h1: ({ children }) => (
       <h1
         className="font-barlow uppercase tracking-tight mt-10 sm:mt-12 mb-3 sm:mb-4
-                     text-3xl  md:text-4xl leading-tight"
+                     text-2xl  md:text-3xl leading-tight text-foreground"
       >
         {children}
       </h1>
@@ -47,7 +47,7 @@ const components: PortableTextComponents = {
     h2: ({ children }) => (
       <h2
         className="font-barlow uppercase tracking-tight mt-8 sm:mt-10 mb-2 sm:mb-3
-                     text-2xl  md:text-3xl leading-snug"
+                     text-xl  md:text-2xl leading-snug text-foreground"
       >
         {children}
       </h2>
@@ -55,39 +55,26 @@ const components: PortableTextComponents = {
     h3: ({ children }) => (
       <h3
         className="font-barlow uppercase tracking-tight mt-6 sm:mt-8 mb-2
-                     text-xl  md:text-2xl leading-snug"
+                     text-lg  md:text-xl leading-snug text-foreground"
       >
         {children}
       </h3>
     ),
-    blockquote: ({ children }) => (
-      <blockquote className="relative my-12 bg-card px-6 py-10 shadow-sm">
-        {/* Left border */}
-        <span className="absolute left-0 top-0 h-full w-0.5 bg-primary " />
 
-        {/* Content */}
-        <div className="ml-4 flex flex-col gap-3">
-          <Quote className="text-primary w-6 h-6" />
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            {children}
-          </p>
-        </div>
-      </blockquote>
-    ),
     normal: ({ children }) => (
-      <p className="my-4 text-base sm:text-[17px] md:text-lg leading-7 md:leading-8 break-words">
+      <p className="my-4 text-base   leading-7 md:leading-8 break-words text-muted-primary">
         {children}
       </p>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="my-4 list-disc pl-5 sm:pl-6 space-y-1.5 sm:space-y-2 text-base sm:text-[17px] md:text-lg">
+      <ul className="my-4 list-disc pl-5 sm:pl-6 space-y-1.5 sm:space-y-2 text-base text-muted-primary">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="my-4 list-decimal pl-5 sm:pl-6 space-y-1.5 sm:space-y-2 text-base sm:text-[17px] md:text-lg">
+      <ol className="my-4 list-decimal pl-5 sm:pl-6 space-y-1.5 sm:space-y-2 text-base  text-muted-primary">
         {children}
       </ol>
     ),
@@ -107,12 +94,13 @@ const components: PortableTextComponents = {
       );
     },
     code: ({ children }) => (
-      <code className="rounded bg-muted px-1 py-0.5 text-xs sm:text-sm break-words">
+      <code className="rounded bg-muted px-1 py-0.5 text-xs sm:text-sm break-words text-muted-primary">
         {children}
       </code>
     ),
   },
 };
+
 export default function PortableContentRenderer({ value }: { value: any }) {
   if (!value?.length) return null;
   return (
