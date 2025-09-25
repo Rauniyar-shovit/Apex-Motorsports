@@ -1,39 +1,53 @@
 "use client";
 
-import
-  {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-  } from "@/components/ui/pagination";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { useMemo, useCallback } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface BlogPaginationProps {
   currentPage: number;
   totalPages: number;
-  basePath?: string; // default: "/blogs"
+  /** If provided, forces the base path (else uses current pathname) */
 }
 
-const BlogPagination = ({
-  currentPage,
-  totalPages,
-  basePath = "/blogs",
-}: BlogPaginationProps) => {
-  const pageHref = (p: number) => `${basePath}?page=${p}`;
+const BlogPagination = ({ currentPage, totalPages }: BlogPaginationProps) => {
 
-  const window = 2;
-  const start = Math.max(1, currentPage - window);
-  const end = Math.min(totalPages, currentPage + window);
-  const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Helper to build href while preserving existing params
+  const hrefForPage = useCallback(
+    (pageNumber: number) => {
+      const params = new URLSearchParams(searchParams?.toString() ?? "");
+      params.set("page", String(pageNumber));
+
+      const queryString = params.toString();
+      return queryString ? `${pathname}?${queryString}` : pathname;
+    },
+    [searchParams, pathname]
+  );
+
+  const windowSize = 2;
+  const start = Math.max(1, currentPage - windowSize);
+  const end = Math.min(totalPages, currentPage + windowSize);
+  const pages = useMemo(
+    () => Array.from({ length: end - start + 1 }, (_, i) => start + i),
+    [start, end]
+  );
 
   const isLast = currentPage >= totalPages;
   const isFirst = currentPage <= 1;
 
   return (
-    <Pagination className="justify-start font-barlow  ">
+    <Pagination className="justify-start font-barlow">
       <PaginationContent className="flex-wrap">
         <PaginationItem
           className={
@@ -41,8 +55,9 @@ const BlogPagination = ({
           }
         >
           <PaginationPrevious
-            href={isFirst ? undefined : pageHref(currentPage - 1)}
+            href={isFirst ? undefined : hrefForPage(currentPage - 1)}
             aria-disabled={isFirst}
+            onClick={isFirst ? (e) => e.preventDefault() : undefined}
           />
         </PaginationItem>
 
@@ -50,7 +65,7 @@ const BlogPagination = ({
         {start > 1 && (
           <>
             <PaginationItem>
-              <PaginationLink href={pageHref(1)}>1</PaginationLink>
+              <PaginationLink href={hrefForPage(1)}>1</PaginationLink>
             </PaginationItem>
             {start > 2 && <PaginationEllipsis />}
           </>
@@ -63,7 +78,7 @@ const BlogPagination = ({
             className={p === currentPage ? "text-white bg-foreground" : ""}
           >
             <PaginationLink
-              href={pageHref(p)}
+              href={hrefForPage(p)}
               aria-current={p === currentPage ? "page" : undefined}
             >
               {p}
@@ -76,7 +91,7 @@ const BlogPagination = ({
           <>
             {end < totalPages - 1 && <PaginationEllipsis className="mx-2" />}
             <PaginationItem>
-              <PaginationLink href={pageHref(totalPages)}>
+              <PaginationLink href={hrefForPage(totalPages)}>
                 {totalPages}
               </PaginationLink>
             </PaginationItem>
@@ -85,11 +100,11 @@ const BlogPagination = ({
 
         <PaginationItem
           className={
-            isLast ? "pointer-events-none  opacity-50 !hover:bg-white" : ""
+            isLast ? "pointer-events-none opacity-50 !hover:bg-white" : ""
           }
         >
           <PaginationNext
-            href={isLast ? undefined : pageHref(currentPage + 1)}
+            href={isLast ? undefined : hrefForPage(currentPage + 1)}
             aria-disabled={isLast}
             onClick={isLast ? (e) => e.preventDefault() : undefined}
           />

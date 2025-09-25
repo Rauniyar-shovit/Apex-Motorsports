@@ -8,8 +8,22 @@ export default defineType({
     defineField({
       name: "title",
       type: "string",
-      validation: (R) => R.required(),
+      validation: (Rule) => Rule.required(),
     }),
-    defineField({ name: "slug", type: "slug", options: { source: "title" } }),
+    defineField({
+      name: "slug",
+      type: "slug",
+      options: { source: "title" },
+    }),
   ],
+  validation: (Rule) =>
+    Rule.custom(async (_, context) => {
+      const { getClient } = context;
+      const client = getClient({ apiVersion: "2025-09-25" }); // today’s date
+      const count = await client.fetch(`count(*[_type == "category"])`);
+      if (count > 10) {
+        return "You can only add up to 10 categories.";
+      }
+      return true;
+    }),
 });
