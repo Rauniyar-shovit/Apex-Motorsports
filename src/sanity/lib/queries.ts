@@ -45,20 +45,39 @@ export const BLOG_BY_SLUG_QUERY = defineQuery(`
     body
   }
 `);
-
 export const BLOGS_LIST_QUERY = defineQuery(`
-  *[_type == "blog"] | order(publishedAt desc) [$offset...$limit] {
+  *[
+    _type == "blog" &&
+    (
+      !defined($category) || $category == null || $category == "" ||
+      $category in categories[]->slug.current
+    )
+  ]
+  | order(publishedAt desc) [$offset...$limit]{
     _id,
     title,
     "slug": slug.current,
     excerpt,
     authorName,
     mainImage{asset->, alt},
-    publishedAt
+    publishedAt,
+    categories[]->{
+      _id,
+      title,
+      "slug": slug.current
+    }
   }
 `);
+
 export const BLOGS_COUNT_QUERY = defineQuery(`
-  count(*[_type == "blog"])
+  count(
+    *[
+      _type == "blog" &&
+      (
+        !defined($category) || $category in categories[]->slug.current
+      )
+    ]
+  )
 `);
 
 export const RECENT_BLOGS_QUERY = defineQuery(`
@@ -72,3 +91,10 @@ export const RECENT_BLOGS_QUERY = defineQuery(`
     publishedAt
   }
 `);
+
+export const CATEGORY_QUERY =
+  defineQuery(`*[_type == "category"] | order(title asc) {
+  _id,
+  title,
+  "slug": slug.current
+}`);

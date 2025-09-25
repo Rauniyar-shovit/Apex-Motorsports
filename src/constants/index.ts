@@ -116,3 +116,5 @@ export const FORM_FIELDS = {
     placeholder: "How can we help you? Feel free to get in touch!",
   },
 } as const;
+
+export const BLOG_PAGE_SIZE = 1;

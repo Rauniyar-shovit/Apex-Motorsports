@@ -7,37 +7,10 @@ import { RECENT_BLOGS_QUERY } from "@/sanity/lib/queries";
 import { format } from "date-fns";
 import { urlFor } from "@/sanity/lib/image";
 
-type Post = {
-  id: string;
-  title: string;
-  slug: string;
-  category: string;
-  date: string; // ISO or readable
-  image: string; // /public path or full URL
-};
-
-const RECENT_POSTS: Post[] = [
-  {
-    id: "1",
-    title: "Discovering the Perfect Running Gear for Your Journey",
-    slug: "/blog/discover-perfect-running-gear",
-    category: "Standard",
-    date: "2025-03-19",
-    image: "/thumbs/running.jpg",
-  },
-  {
-    id: "2",
-    title: "The Anatomy of Cutting-Edge Sportswear Technology",
-    slug: "/blog/anatomy-of-cutting-edge-sportswear",
-    category: "Standard",
-    date: "2025-03-19",
-    image: "/thumbs/sportswear.jpg",
-  },
-];
-
-const RecentPosts = async ({ posts = RECENT_POSTS }) => {
+const RecentPosts = async () => {
   const recentPosts = await client.fetch(RECENT_BLOGS_QUERY);
-  console.log("🚀 ~ RecentPosts ~ recentPosts:", recentPosts);
+  
+  // console.log("🚀 ~ RecentPosts ~ recentPosts:", recentPosts);
 
   return (
     <aside className="w-full">
@@ -59,7 +32,7 @@ const RecentPosts = async ({ posts = RECENT_POSTS }) => {
             >
               {/* Thumbnail */}
               <Link
-                href={post.slug}
+                href={`/blogs/${post.slug}`}
                 className="relative block h-22 w-22 shrink-0 overflow-hidden"
               >
                 <Image
