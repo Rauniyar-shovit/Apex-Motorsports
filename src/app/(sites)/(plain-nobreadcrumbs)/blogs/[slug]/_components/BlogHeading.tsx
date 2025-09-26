@@ -16,7 +16,7 @@ const BlogHeading = ({ categories, title, date, author }: BlogHeadingProps) => {
     <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center text-white px-6">
       {/* Category */}
 
-      <div className="flex gap-2 flex-wrap mb-4">
+      <div className="flex gap-2 flex-wrap mb-4 items-center justify-center">
         {categories?.map((cat) => (
           <span
             key={cat._id}
