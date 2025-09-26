@@ -2,9 +2,22 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { client } from "@/sanity/lib/client";
+import { RELATED_BLOGS } from "@/sanity/lib/queries";
 
-function RelatedPosts({ posts }: { posts: any }) {
-  console.log(posts);
+async function RelatedPosts({
+  currentPostSlug,
+  categories: catIds = [],
+}: {
+  currentPostSlug: string;
+  categories?: string[];
+}) {
+
+  
+  const relatedPosts = await client.fetch(RELATED_BLOGS, {
+    slug: currentPostSlug,
+    catIds,
+  });
 
   return (
     <section className="mt-16 section-padding wrapper lg:px-32 2xl:px-40 3xl:px-60 font-sans">
@@ -12,7 +25,7 @@ function RelatedPosts({ posts }: { posts: any }) {
         You May Also Like
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {posts.map((post) => {
+        {relatedPosts.map((post) => {
           const blogMainImage = post.mainImage
             ? urlFor(post.mainImage).url()
             : undefined;

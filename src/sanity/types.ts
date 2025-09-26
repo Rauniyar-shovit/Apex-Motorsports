@@ -13,9 +13,86 @@
  */
 
 // Source: schema.json
-export type Achievements = {
+export type Category = {
   _id: string;
-  _type: "achievements";
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+};
+
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3";
+  listItem?: "bullet" | "number";
+  markDefs?: Array<{
+    href?: string;
+    blank?: boolean;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+  _type: "image";
+  _key: string;
+}>;
+
+export type Blog = {
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  excerpt?: string;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  authorName?: string;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: BlockContent;
+};
+
+export type Achievement = {
+  _id: string;
+  _type: "achievement";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -169,20 +246,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes =
-  | Achievements
-  | Sponsor
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
-  | SanityImageMetadata
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: TIER_SPONSORS_QUERY
@@ -199,19 +263,123 @@ export type TIER_SPONSORS_QUERYResult = Array<{
 }>;
 // Variable: ACHIEVEMENTS_QUERY
 // Query: *[_type == "achievements"] | order(order asc)[0..3] {  _id,  title,  ranking,  iconName,  order}
-export type ACHIEVEMENTS_QUERYResult = Array<{
+export type ACHIEVEMENTS_QUERYResult = Array<never>;
+// Variable: BLOG_BY_SLUG_QUERY
+// Query: *[_type == "blog" && slug.current == $slug][0]{    _id,    title,    slug,    excerpt,    mainImage{      asset->{        url      },      alt    },    authorName,    categories[]->{      _id,      title    },    publishedAt,    body  }
+export type BLOG_BY_SLUG_QUERYResult = {
   _id: string;
   title: string | null;
-  ranking: string | null;
-  iconName: string | null;
-  order: number | null;
+  slug: Slug | null;
+  excerpt: string | null;
+  mainImage: {
+    asset: {
+      url: string | null;
+    } | null;
+    alt: string | null;
+  } | null;
+  authorName: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+  publishedAt: string | null;
+  body: BlockContent | null;
+} | null;
+// Variable: BLOGS_LIST_QUERY
+// Query: *[    _type == "blog" &&    (      !defined($category) || $category == null || $category == "" ||      $category in categories[]->slug.current    )  ]  | order(publishedAt desc) [$offset...$limit]{    _id,    title,    "slug": slug.current,    excerpt,    authorName,    mainImage{asset->, alt},    publishedAt,    categories[]->{      _id,      title,      "slug": slug.current    }  }
+export type BLOGS_LIST_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  excerpt: string | null;
+  authorName: string | null;
+  mainImage: {
+    asset: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      metadata?: SanityImageMetadata;
+      source?: SanityAssetSourceData;
+    } | null;
+    alt: string | null;
+  } | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+  }> | null;
+}>;
+// Variable: BLOGS_COUNT_QUERY
+// Query: count(    *[      _type == "blog" &&      (        !defined($category) || $category in categories[]->slug.current      )    ]  )
+export type BLOGS_COUNT_QUERYResult = number;
+// Variable: RECENT_BLOGS_QUERY
+// Query: *[_type == "blog" && defined(publishedAt) && publishedAt <= now()]  | order(publishedAt desc)[0...2]{    _id,    title,    "slug": slug.current,    authorName,    mainImage{ asset->, alt },    publishedAt  }
+export type RECENT_BLOGS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  authorName: string | null;
+  mainImage: {
+    asset: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      metadata?: SanityImageMetadata;
+      source?: SanityAssetSourceData;
+    } | null;
+    alt: string | null;
+  } | null;
+  publishedAt: string | null;
+}>;
+// Variable: CATEGORY_QUERY
+// Query: *[_type == "category"] | order(title asc) {  _id,  title,  "slug": slug.current}
+export type CATEGORY_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "sponsor" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    "logoSrc": logo.asset->url,\n    "logoAlt": logo.alt,\n    href,\n    description,\n    order\n  }\n': TIER_SPONSORS_QUERYResult;
-    '\n*[_type == "achievements"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n': ACHIEVEMENTS_QUERYResult;
+    "\n  *[_type == \"sponsor\" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    \"logoSrc\": logo.asset->url,\n    \"logoAlt\": logo.alt,\n    href,\n    description,\n    order\n  }\n": TIER_SPONSORS_QUERYResult;
+    "\n*[_type == \"achievements\"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n": ACHIEVEMENTS_QUERYResult;
+    "\n  *[_type == \"blog\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    excerpt,\n    mainImage{\n      asset->{\n        url\n      },\n      alt\n    },\n    authorName,\n    categories[]->{\n      _id,\n      title\n    },\n    publishedAt,\n    body\n  }\n": BLOG_BY_SLUG_QUERYResult;
+    "\n  *[\n    _type == \"blog\" &&\n    (\n      !defined($category) || $category == null || $category == \"\" ||\n      $category in categories[]->slug.current\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      \"slug\": slug.current\n    }\n  }\n": BLOGS_LIST_QUERYResult;
+    "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category in categories[]->slug.current\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
+    "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    authorName,\n    mainImage{ asset->, alt },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
+    "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
   }
 }

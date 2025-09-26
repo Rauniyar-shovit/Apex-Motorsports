@@ -1,11 +1,13 @@
+import { BLOG_PAGE_SIZE as pageSize } from "@/constants";
+import { PreviewBlog } from "@/models";
 import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { BLOGS_COUNT_QUERY, BLOGS_LIST_QUERY } from "@/sanity/lib/queries";
+import { format } from "date-fns";
 import BlogPagination from "./_components/BlogPagination";
 import BlogPostCard from "./_components/BlogPostCard";
 import Sidebar from "./_components/Sidebar";
-import { BLOGS_COUNT_QUERY, BLOGS_LIST_QUERY } from "@/sanity/lib/queries";
-import { urlFor } from "@/sanity/lib/image";
-import { format } from "date-fns";
-import { BLOG_PAGE_SIZE as pageSize } from "@/constants";
+import NoPosts from "./_components/NoPosts";
 
 type SearchParams = {
   page?: string;
@@ -17,6 +19,7 @@ const AllBlog = async ({
 }: {
   searchParams: Promise<SearchParams>;
 }) => {
+  // search params
   const { page: currentPage, category } = await searchParams;
 
   const page = Math.max(1, Number(currentPage ?? "1") || 1);
@@ -26,46 +29,59 @@ const AllBlog = async ({
 
   const categoryParam = category?.trim() ? category : null;
 
-  const [blogs, total] = await Promise.all([
-    client.fetch(BLOGS_LIST_QUERY, { offset, limit, category: categoryParam }),
-    client.fetch<number>(BLOGS_COUNT_QUERY, { category: categoryParam }),
-  ]);
+  // fetching the blogs
+  let blogs: PreviewBlog[] = [];
+  let total = 0;
 
+  try {
+    [blogs, total] = await Promise.all([
+      client.fetch<PreviewBlog[]>(BLOGS_LIST_QUERY, {
+        offset,
+        limit,
+        category: categoryParam,
+      }),
+      client.fetch<number>(BLOGS_COUNT_QUERY, { category: categoryParam }),
+    ]);
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
+  }
+
+  // total page to pagination
   const totalPages = Math.max(1, Math.ceil(Number(total) / pageSize));
-
 
   return (
     <main>
       <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
-        <section className=" ">
-          {blogs?.length ? (
-            blogs.map((b: any) => {
-              const formatted = format(new Date(b.publishedAt), "dd/MM/yyyy");
-              return (
-                <BlogPostCard
-                  key={b._id}
-                  author={b.authorName}
-                  title={b.title}
-                  date={formatted}
-                  excerpt={b.excerpt}
-                  href={`/blogs/${b.slug}`} // detail page by slug
-                  image={
-                    b.mainImage
-                      ? urlFor(b.mainImage)
-                          .width(960)
-                          .height(540)
-                          .fit("crop")
-                          .url()
-                      : "/placeholder.jpg"
-                  }
-                />
-              );
-            })
-          ) : (
-            <p className="text-muted-foreground">No posts yet.</p>
-          )}
+        <section className="w-full">
+          {blogs?.length > 0 ? (
+            <>
+              {blogs.map((blog: PreviewBlog) => {
+                const formatted = format(
+                  new Date(blog.publishedAt!),
+                  "dd/MM/yyyy"
+                );
+                return (
+                  <BlogPostCard
+                    key={blog._id}
+                    author={blog.authorName!}
+                    title={blog.title!}
+                    date={formatted}
+                    excerpt={blog.excerpt!}
+                    href={`/blogs/${blog.slug}`}
+                    image={urlFor(blog.mainImage!)
+                      .width(960)
+                      .height(540)
+                      .fit("crop")
+                      .url()}
+                  />
+                );
+              })}
 
-          <BlogPagination currentPage={page} totalPages={totalPages} />
+              <BlogPagination currentPage={page} totalPages={totalPages} />
+            </>
+          ) : (
+            <NoPosts />
+          )}
         </section>
         <Sidebar />
       </div>
