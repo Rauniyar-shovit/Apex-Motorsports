@@ -12,6 +12,7 @@ import NoPosts from "./_components/NoPosts";
 type SearchParams = {
   page?: string;
   category?: string;
+  query?: string;
 };
 
 const AllBlog = async ({
@@ -20,7 +21,7 @@ const AllBlog = async ({
   searchParams: Promise<SearchParams>;
 }) => {
   // search params
-  const { page: currentPage, category } = await searchParams;
+  const { page: currentPage, category, query } = await searchParams;
 
   const page = Math.max(1, Number(currentPage ?? "1") || 1);
 
@@ -39,8 +40,12 @@ const AllBlog = async ({
         offset,
         limit,
         category: categoryParam,
+        search: query?.trim() ? query : null,
       }),
-      client.fetch<number>(BLOGS_COUNT_QUERY, { category: categoryParam }),
+      client.fetch<number>(BLOGS_COUNT_QUERY, {
+        category: categoryParam,
+        search: query?.trim() ? query : null,
+      }),
     ]);
   } catch (error) {
     console.error("Failed to fetch blogs:", error);

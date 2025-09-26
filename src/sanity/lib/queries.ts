@@ -52,6 +52,10 @@ export const BLOGS_LIST_QUERY = defineQuery(`
     (
       !defined($category) || $category == null || $category == "" ||
       $category in categories[]->slug.current
+    ) &&
+    (
+      !defined($search) || $search == null || $search == "" ||
+      lower(coalesce(title, "")) match ("*" + lower($search) + "*")
     )
   ]
   | order(publishedAt desc) [$offset...$limit]{
@@ -75,7 +79,12 @@ export const BLOGS_COUNT_QUERY = defineQuery(`
     *[
       _type == "blog" &&
       (
-        !defined($category) || $category in categories[]->slug.current
+        !defined($category) || $category == null || $category == "" ||
+        $category in categories[]->slug.current
+      ) &&
+      (
+        !defined($search) || $search == null || $search == "" ||
+        lower(title) match ("*" + lower($search) + "*")
       )
     ]
   )

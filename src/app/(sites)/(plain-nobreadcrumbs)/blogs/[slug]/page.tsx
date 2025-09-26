@@ -9,45 +9,6 @@ import RelatedPosts from "./_components/RelatedPosts";
 import { BlogPost } from "@/models";
 import NoPosts from "@/app/(sites)/(shared-breadbrumbs)/blogs/_components/NoPosts";
 
-const relatedPosts = [
-  {
-    categories: [
-      { _id: "4f47151f-d465-4fca-9473-214fb9743f87", title: "Running" },
-    ],
-    excerpt: null,
-    mainImage: {
-      alt: "race-track",
-      asset: {
-        url: "https://cdn.sanity.io/images/zy0u5ye3/production/d821a7b177bf25071a8c32d18638446a7bc3e1b3-1920x1080.jpg",
-      },
-    },
-    publishedAt: "2025-09-21T07:16:00.000Z",
-    slug: {
-      _type: "slug",
-      current: "science-of-high-performance-sportswear-and-shoes",
-    },
-    title: "The Science of High-Performance Sportswear & Shoes",
-  },
-  {
-    categories: [
-      { _id: "4f47151f-d465-4fca-9473-214fb9743f87", title: "Running" },
-    ],
-    excerpt: null,
-    mainImage: {
-      alt: "stretching",
-      asset: {
-        url: "https://cdn.sanity.io/images/zy0u5ye3/production/d821a7b177bf25071a8c32d18638446a7bc3e1b3-1920x1080.jpg",
-      },
-    },
-    publishedAt: "2025-09-20T11:00:00.000Z",
-    slug: {
-      _type: "slug",
-      current: "must-have-sportswear-for-every-fitness-enthusiast",
-    },
-    title: "Our Must-Have Sportswear for Every Fitness Enthusiast",
-  },
-];
-
 const Blog = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
 
@@ -58,7 +19,7 @@ const Blog = async ({ params }: { params: Promise<{ slug: string }> }) => {
     console.error("Error fetching blog:", error);
     return (
       <div className="wrapper py-20 text-center">
-        <h2 className="text-2xl font-semibold">Error loading blog</h2>
+        <h2 className="text-2xl font-sans">Error loading blog</h2>
       </div>
     );
   }
