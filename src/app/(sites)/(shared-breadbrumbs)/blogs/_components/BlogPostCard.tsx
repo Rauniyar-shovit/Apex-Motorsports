@@ -3,6 +3,16 @@ import { Dot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReadMoreBtn from "./ReadMoreBtn";
+import { PreviewBlog } from "@/models";
+
+type BlogPostCardProps = {
+  title: string;
+  date: string;
+  excerpt: string;
+  href: string;
+  image: string;
+  author: string;
+};
 
 const BlogPostCard = ({
   title,
@@ -11,14 +21,7 @@ const BlogPostCard = ({
   href,
   image,
   author,
-}: {
-  title: string;
-  date: string;
-  excerpt: string;
-  href: string;
-  image: string;
-  author: string;
-}) => {
+}: BlogPostCardProps) => {
   return (
     <article className="group w-full max-w-4xl overflow-hidden mb-8">
       {/* Media */}

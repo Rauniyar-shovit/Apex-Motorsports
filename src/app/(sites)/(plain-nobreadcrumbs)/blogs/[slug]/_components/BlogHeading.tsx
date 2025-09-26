@@ -1,21 +1,31 @@
 import { Dot, User } from "lucide-react";
 import React from "react";
 import { format } from "date-fns";
+import { BlogPost } from "@/models";
+
 type BlogHeadingProps = {
-  category: string;
-  title: string;
-  date: string;
-  author: string;
+  categories: NonNullable<BlogPost>["categories"];
+  title: NonNullable<BlogPost>["title"];
+  date: NonNullable<BlogPost>["publishedAt"];
+  author: NonNullable<BlogPost>["authorName"];
 };
 
-const BlogHeading = ({ category, title, date, author }: BlogHeadingProps) => {
-  const formatted = format(new Date(date), "dd MMM yyyy");
+const BlogHeading = ({ categories, title, date, author }: BlogHeadingProps) => {
+  const formatted = format(new Date(date!), "dd MMM yyyy");
   return (
     <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center text-white px-6">
       {/* Category */}
-      <span className="bg-primary text-white text-xs font-sans px-3 py-1  mb-4 uppercase">
-        {category}
-      </span>
+
+      <div className="flex gap-2 flex-wrap mb-4">
+        {categories?.map((cat) => (
+          <span
+            key={cat._id}
+            className="bg-primary text-white text-xs font-sans px-3 py-1 uppercase"
+          >
+            {cat.title}
+          </span>
+        ))}
+      </div>
 
       {/* Title */}
       <h1 className="font-barlow text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold leading-tight max-w-xl lg:max-w-2xl   xl:max-w-3xl  uppercase">

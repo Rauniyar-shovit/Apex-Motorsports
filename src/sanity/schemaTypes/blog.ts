@@ -32,15 +32,17 @@ export default defineType({
       validation: (R) => R.required(),
     }),
     defineField({
-      name: "authorName", // ✅ just a string
+      name: "authorName",
       type: "string",
       title: "Author Name",
       validation: (R) => R.required(),
     }),
+
     defineField({
       name: "categories",
       type: "array",
       of: [{ type: "reference", to: [{ type: "category" }] }],
+      validation: (R) => R.required().unique(),
     }),
     defineField({
       name: "publishedAt",

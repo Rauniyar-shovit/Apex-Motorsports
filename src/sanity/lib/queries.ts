@@ -45,6 +45,7 @@ export const BLOG_BY_SLUG_QUERY = defineQuery(`
     body
   }
 `);
+
 export const BLOGS_LIST_QUERY = defineQuery(`
   *[
     _type == "blog" &&
@@ -98,3 +99,28 @@ export const CATEGORY_QUERY =
   title,
   "slug": slug.current
 }`);
+
+export const RELATED_BLOGS = defineQuery(`
+*[
+  _type == "blog" &&
+  slug.current != $slug &&
+  count(
+    array::intersect(
+      coalesce(categories[]->._id, []),
+      coalesce(*[_type == "blog" && slug.current == $slug][0].categories[]->._id, [])
+    )
+  ) > 0
+] | order(publishedAt desc)[0..1]{
+  _id,
+  title,
+  "slug": { "current": slug.current },
+  excerpt,
+  mainImage{
+    alt,
+    "asset": { "url": asset->url }
+  },
+  authorName,
+  publishedAt,
+  "categories": categories[]->{ _id, title }
+}
+`);
