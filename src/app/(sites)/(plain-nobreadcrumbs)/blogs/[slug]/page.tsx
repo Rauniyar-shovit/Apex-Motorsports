@@ -106,7 +106,7 @@ const Blog = async ({ params }: { params: Promise<{ slug: string }> }) => {
       </div>
       <RelatedPosts
         currentPostSlug={blog.slug?.current ?? ""}
-        categories={blog.categories?.map((cat) => cat._id) ?? []}
+        categories={blog.categories?.map((c) => c._id)}
       />
     </div>
   );

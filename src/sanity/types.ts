@@ -369,6 +369,26 @@ export type CATEGORY_QUERYResult = Array<{
   title: string | null;
   slug: string | null;
 }>;
+// Variable: RELATED_BLOGS
+// Query: *[  _type == "blog" &&  slug.current != $slug &&  references($catIds)] | order(publishedAt desc)[0..1]{  _id,  title,  "slug": slug.current,  excerpt,  mainImage{ alt, "asset": { "url": asset->url } },  authorName,  publishedAt,  "categories": categories[]->{ _id, title }}
+export type RELATED_BLOGSResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: string | null;
+  excerpt: string | null;
+  mainImage: {
+    alt: string | null;
+    asset: {
+      url: string | null;
+    };
+  } | null;
+  authorName: string | null;
+  publishedAt: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -381,5 +401,6 @@ declare module "@sanity/client" {
     "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category in categories[]->slug.current\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
     "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    authorName,\n    mainImage{ asset->, alt },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
     "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
+    "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
   }
 }
