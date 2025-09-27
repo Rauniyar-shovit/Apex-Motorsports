@@ -3,8 +3,8 @@ import IconPicker from "@/components/reusable/IconPicker";
 import { defineType, defineField } from "sanity";
 import { ACHIEVEMENTS_ICONS } from "../constants";
 export default defineType({
-  name: "achievements",
-  title: "Achievements",
+  name: "achievement",
+  title: "Achievement",
   type: "document",
   fields: [
     defineField({

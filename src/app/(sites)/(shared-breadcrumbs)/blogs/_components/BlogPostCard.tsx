@@ -4,21 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import ReadMoreBtn from "./ReadMoreBtn";
 
-const BlogPostCard = ({
-  title,
-  date,
-  comments,
-  excerpt,
-  href,
-  image,
-}: {
+type BlogPostCardProps = {
   title: string;
   date: string;
-  comments: number;
   excerpt: string;
   href: string;
   image: string;
-}) => {
+  author: string;
+};
+
+const BlogPostCard = ({
+  title,
+  date,
+  excerpt,
+  href,
+  image,
+  author,
+}: BlogPostCardProps) => {
   return (
     <article className="group w-full max-w-4xl overflow-hidden mb-8">
       {/* Media */}
@@ -51,7 +53,7 @@ const BlogPostCard = ({
           <span>
             <Dot className="h-4 w-4" />
           </span>
-          {comments} Comments
+          <span>{author}</span>
         </div>
 
         {/* Excerpt */}

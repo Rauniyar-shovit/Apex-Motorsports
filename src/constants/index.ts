@@ -1,16 +1,4 @@
 import { BrandDetails, FormulaSaeDetails } from "@/models";
-import { sub } from "motion/react-client";
-import {
-  IoConstructOutline,
-  IoCheckmarkCircleOutline,
-  IoPersonCircleOutline,
-  IoBriefcaseOutline,
-  IoTrophy,
-  IoMedal,
-  IoStar,
-  IoFlag,
-} from "react-icons/io5";
-import { SiTarget } from "react-icons/si";
 
 export const BRAND_DETAILS: BrandDetails = {
   name: "Apex Motorsports",
@@ -116,3 +104,5 @@ export const FORM_FIELDS = {
     placeholder: "How can we help you? Feel free to get in touch!",
   },
 } as const;
+
+export const BLOG_PAGE_SIZE = 1;

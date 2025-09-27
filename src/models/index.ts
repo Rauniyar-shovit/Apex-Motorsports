@@ -3,7 +3,12 @@ import { IconType } from "react-icons";
 import { FORM_FIELDS } from "@/constants";
 import {
   ACHIEVEMENTS_QUERYResult,
+  BLOG_BY_SLUG_QUERYResult,
+  BLOGS_LIST_QUERYResult,
+  RECENT_BLOGS_QUERYResult,
+  RELATED_BLOGSResult,
   TIER_SPONSORS_QUERYResult,
+  CATEGORY_QUERYResult,
 } from "@/sanity/types";
 
 export type Link = {
@@ -114,6 +119,11 @@ export type FieldId = (typeof FORM_FIELDS)[keyof typeof FORM_FIELDS]["id"];
 
 export type Sponsor = TIER_SPONSORS_QUERYResult[number];
 export type Achievement = ACHIEVEMENTS_QUERYResult[number];
+export type PreviewBlog = BLOGS_LIST_QUERYResult[number];
+export type BlogPost = BLOG_BY_SLUG_QUERYResult;
+export type RelatedPost = RELATED_BLOGSResult[number];
+export type RecentPost = RECENT_BLOGS_QUERYResult[number];
+export type Categories = CATEGORY_QUERYResult[number];
 
 export type TeamMemberProfile = {
   name: string;

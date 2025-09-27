@@ -44,7 +44,7 @@ const RevealWrapper = ({
     if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, mainControls]);
 
   return (
     <motion.div

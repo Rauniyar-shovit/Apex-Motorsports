@@ -47,10 +47,6 @@ export default function CarProfileCard({
   tags = [],
   specs,
   ctaText = "View Details",
-  ctaHref,
-  onCtaClick,
-  icon,
-  theme = "dark",
   className = "",
 }: CarProfileCardProps) {
   const router = useRouter();

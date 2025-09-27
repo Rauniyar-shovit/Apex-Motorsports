@@ -6,6 +6,5 @@ import { Achievement } from "@/models";
 
 export default async function AchievementsServer() {
   const data = await client.fetch<Achievement[]>(ACHIEVEMENTS_QUERY);
-  console.log(data);
   return <AchievementsClient achievements={data} />;
 }
