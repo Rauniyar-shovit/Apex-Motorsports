@@ -12,7 +12,7 @@ const Form = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ContactFormValues>();
 
   const onSubmit: SubmitHandler<ContactFormValues> = (data) => {

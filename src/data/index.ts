@@ -1,5 +1,5 @@
 import { LINKS } from "@/constants";
-import { AboutUs, Achievement, Link, Social, Value } from "@/models";
+import { AboutUs, Link, Social, Value } from "@/models";
 import {
   FaDiscord,
   FaFacebookF,
@@ -7,13 +7,9 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import {
-  IoBriefcaseOutline,
   IoBulbOutline,
   IoChatbubblesOutline,
-  IoCheckmarkCircleOutline,
-  IoConstructOutline,
   IoPeopleOutline,
-  IoPersonCircleOutline,
   IoSpeedometerOutline,
   IoTrendingUpOutline,
 } from "react-icons/io5";
@@ -65,31 +61,6 @@ export const VALUES: Value[] = [
       "Ambition fuels our pursuit of excellence in everything we do. It motivates us to push limits and deliver outstanding results.",
   },
 ];
-
-// export const ACHIEVEMENTS: Achievement[] = [
-//   {
-//     title: "Formula SAE-Australasia Design ",
-//     icon: IoConstructOutline,
-//     ranking: "2nd",
-//     description: "",
-//   },
-//   {
-//     title: "Check-In Champion of the Year 2024",
-//     icon: IoCheckmarkCircleOutline,
-//     description: "",
-//   },
-//   {
-//     title: "Club Leader of the Year 2024",
-//     icon: IoPersonCircleOutline,
-//     description: "",
-//   },
-//   {
-//     title: "Formula SAE-Australasia Business Presentation ",
-//     icon: IoBriefcaseOutline,
-//     ranking: "3rd",
-//     description: "",
-//   },
-// ];
 
 export const SOCAILS: Social[] = [
   {
