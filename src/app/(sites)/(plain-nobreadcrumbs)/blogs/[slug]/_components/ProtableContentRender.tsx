@@ -1,9 +1,9 @@
 "use client";
 
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import type { PortableTextBlock } from "@portabletext/types";
-import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { BlockContent } from "@/sanity/types";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import Image from "next/image";
 
 const components: PortableTextComponents = {
   types: {
@@ -103,7 +103,7 @@ const components: PortableTextComponents = {
 export default function PortableContentRenderer({
   value,
 }: {
-  value: PortableTextBlock[] | null | undefined;
+  value: BlockContent | null;
 }) {
   if (!value?.length) return null;
   if (!value?.length) return null;
