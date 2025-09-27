@@ -286,7 +286,7 @@ export type BLOG_BY_SLUG_QUERYResult = {
   body: BlockContent | null;
 } | null;
 // Variable: BLOGS_LIST_QUERY
-// Query: *[    _type == "blog" &&    (      !defined($category) || $category == null || $category == "" ||      $category in categories[]->slug.current    )  ]  | order(publishedAt desc) [$offset...$limit]{    _id,    title,    "slug": slug.current,    excerpt,    authorName,    mainImage{asset->, alt},    publishedAt,    categories[]->{      _id,      title,      "slug": slug.current    }  }
+// Query: *[    _type == "blog" &&    (      !defined($category) || $category == null || $category == "" ||      $category in categories[]->slug.current    ) &&    (      !defined($search) || $search == null || $search == "" ||      lower(coalesce(title, "")) match ("*" + lower($search) + "*")    )  ]  | order(publishedAt desc) [$offset...$limit]{    _id,    title,    "slug": slug.current,    excerpt,    authorName,    mainImage{asset->, alt},    publishedAt,    categories[]->{      _id,      title,      "slug": slug.current    }  }
 export type BLOGS_LIST_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -326,13 +326,17 @@ export type BLOGS_LIST_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: BLOGS_COUNT_QUERY
-// Query: count(    *[      _type == "blog" &&      (        !defined($category) || $category in categories[]->slug.current      )    ]  )
+// Query: count(    *[      _type == "blog" &&      (        !defined($category) || $category == null || $category == "" ||        $category in categories[]->slug.current      ) &&      (        !defined($search) || $search == null || $search == "" ||        lower(title) match ("*" + lower($search) + "*")      )    ]  )
 export type BLOGS_COUNT_QUERYResult = number;
 // Variable: RECENT_BLOGS_QUERY
-// Query: *[_type == "blog" && defined(publishedAt) && publishedAt <= now()]  | order(publishedAt desc)[0...2]{    _id,    title,    "slug": slug.current,    authorName,    mainImage{ asset->, alt },    publishedAt  }
+// Query: *[_type == "blog" && defined(publishedAt) && publishedAt <= now()]  | order(publishedAt desc)[0...2]{    _id,    title,    "category": categories[0]->{      _id,      title    },    "slug": slug.current,    authorName,    mainImage{      asset->,      alt    },    publishedAt  }
 export type RECENT_BLOGS_QUERYResult = Array<{
   _id: string;
   title: string | null;
+  category: {
+    _id: string;
+    title: string | null;
+  } | null;
   slug: string | null;
   authorName: string | null;
   mainImage: {
@@ -397,9 +401,9 @@ declare module "@sanity/client" {
     "\n  *[_type == \"sponsor\" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    \"logoSrc\": logo.asset->url,\n    \"logoAlt\": logo.alt,\n    href,\n    description,\n    order\n  }\n": TIER_SPONSORS_QUERYResult;
     "\n*[_type == \"achievements\"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n": ACHIEVEMENTS_QUERYResult;
     "\n  *[_type == \"blog\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    excerpt,\n    mainImage{\n      asset->{\n        url\n      },\n      alt\n    },\n    authorName,\n    categories[]->{\n      _id,\n      title\n    },\n    publishedAt,\n    body\n  }\n": BLOG_BY_SLUG_QUERYResult;
-    "\n  *[\n    _type == \"blog\" &&\n    (\n      !defined($category) || $category == null || $category == \"\" ||\n      $category in categories[]->slug.current\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      \"slug\": slug.current\n    }\n  }\n": BLOGS_LIST_QUERYResult;
-    "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category in categories[]->slug.current\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
-    "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    authorName,\n    mainImage{ asset->, alt },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
+    "\n  *[\n    _type == \"blog\" &&\n    (\n      !defined($category) || $category == null || $category == \"\" ||\n      $category in categories[]->slug.current\n    ) &&\n    (\n      !defined($search) || $search == null || $search == \"\" ||\n      lower(coalesce(title, \"\")) match (\"*\" + lower($search) + \"*\")\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      \"slug\": slug.current\n    }\n  }\n": BLOGS_LIST_QUERYResult;
+    "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category == null || $category == \"\" ||\n        $category in categories[]->slug.current\n      ) &&\n      (\n        !defined($search) || $search == null || $search == \"\" ||\n        lower(title) match (\"*\" + lower($search) + \"*\")\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
+    "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"category\": categories[0]->{\n      _id,\n      title\n    },\n    \"slug\": slug.current,\n    authorName,\n    mainImage{\n      asset->,\n      alt\n    },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
     "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
     "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
   }

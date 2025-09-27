@@ -95,9 +95,16 @@ export const RECENT_BLOGS_QUERY = defineQuery(`
   | order(publishedAt desc)[0...2]{
     _id,
     title,
+    "category": categories[0]->{
+      _id,
+      title
+    },
     "slug": slug.current,
     authorName,
-    mainImage{ asset->, alt },
+    mainImage{
+      asset->,
+      alt
+    },
     publishedAt
   }
 `);
