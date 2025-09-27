@@ -106,7 +106,7 @@ export default function PortableContentRenderer({
   value: BlockContent | null;
 }) {
   if (!value?.length) return null;
-  if (!value?.length) return null;
+
   return (
     <div className="section-padding wrapper">
       <div className="lg:px-32 2xl:px-40 3xl:px-60 font-sans">
