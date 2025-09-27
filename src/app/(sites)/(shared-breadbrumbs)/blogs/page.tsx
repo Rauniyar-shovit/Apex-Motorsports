@@ -47,8 +47,9 @@ const AllBlog = async ({
         search: query?.trim() ? query : null,
       }),
     ]);
-  } catch (error) {
-    console.error("Failed to fetch blogs:", error);
+  } catch (error: unknown) {
+    console.error("Error fetching blogs:", error);
+    return <NoPosts />;
   }
 
   // total page to pagination

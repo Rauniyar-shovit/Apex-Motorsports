@@ -5,6 +5,7 @@ import {
   ACHIEVEMENTS_QUERYResult,
   BLOG_BY_SLUG_QUERYResult,
   BLOGS_LIST_QUERYResult,
+  RECENT_BLOGS_QUERYResult,
   RELATED_BLOGSResult,
   TIER_SPONSORS_QUERYResult,
 } from "@/sanity/types";
@@ -120,6 +121,7 @@ export type Achievement = ACHIEVEMENTS_QUERYResult[number];
 export type PreviewBlog = BLOGS_LIST_QUERYResult[number];
 export type BlogPost = BLOG_BY_SLUG_QUERYResult;
 export type RelatedPost = RELATED_BLOGSResult[number];
+export type RecentPost = RECENT_BLOGS_QUERYResult[number];
 
 export type TeamMemberProfile = {
   name: string;
