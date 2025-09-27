@@ -262,8 +262,14 @@ export type TIER_SPONSORS_QUERYResult = Array<{
   order: number | null;
 }>;
 // Variable: ACHIEVEMENTS_QUERY
-// Query: *[_type == "achievements"] | order(order asc)[0..3] {  _id,  title,  ranking,  iconName,  order}
-export type ACHIEVEMENTS_QUERYResult = Array<never>;
+// Query: *[_type == "achievement"] | order(order asc)[0..3] {  _id,  title,  ranking,  iconName,  order}
+export type ACHIEVEMENTS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  ranking: string | null;
+  iconName: string | null;
+  order: number | null;
+}>;
 // Variable: BLOG_BY_SLUG_QUERY
 // Query: *[_type == "blog" && slug.current == $slug][0]{    _id,    title,    slug,    excerpt,    mainImage{      asset->{        url      },      alt    },    authorName,    categories[]->{      _id,      title    },    publishedAt,    body  }
 export type BLOG_BY_SLUG_QUERYResult = {
@@ -399,7 +405,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"sponsor\" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    \"logoSrc\": logo.asset->url,\n    \"logoAlt\": logo.alt,\n    href,\n    description,\n    order\n  }\n": TIER_SPONSORS_QUERYResult;
-    "\n*[_type == \"achievements\"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n": ACHIEVEMENTS_QUERYResult;
+    "\n*[_type == \"achievement\"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n": ACHIEVEMENTS_QUERYResult;
     "\n  *[_type == \"blog\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    excerpt,\n    mainImage{\n      asset->{\n        url\n      },\n      alt\n    },\n    authorName,\n    categories[]->{\n      _id,\n      title\n    },\n    publishedAt,\n    body\n  }\n": BLOG_BY_SLUG_QUERYResult;
     "\n  *[\n    _type == \"blog\" &&\n    (\n      !defined($category) || $category == null || $category == \"\" ||\n      $category in categories[]->slug.current\n    ) &&\n    (\n      !defined($search) || $search == null || $search == \"\" ||\n      lower(coalesce(title, \"\")) match (\"*\" + lower($search) + \"*\")\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      \"slug\": slug.current\n    }\n  }\n": BLOGS_LIST_QUERYResult;
     "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category == null || $category == \"\" ||\n        $category in categories[]->slug.current\n      ) &&\n      (\n        !defined($search) || $search == null || $search == \"\" ||\n        lower(title) match (\"*\" + lower($search) + \"*\")\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
