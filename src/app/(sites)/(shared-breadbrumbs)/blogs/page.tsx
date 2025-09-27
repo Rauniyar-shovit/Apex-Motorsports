@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import BlogPagination from "./_components/BlogPagination";
 import BlogPostCard from "./_components/BlogPostCard";
 import Sidebar from "./_components/Sidebar";
-import NoPosts from "./_components/NoPosts";
+import NoPosts from "@/components/reusable/NoPosts";
 
 type SearchParams = {
   page?: string;
@@ -55,40 +55,37 @@ const AllBlog = async ({
   // total page to pagination
   const totalPages = Math.max(1, Math.ceil(Number(total) / pageSize));
 
+  const renderBlogs =
+    blogs?.length > 0 ? (
+      <>
+        {blogs.map((blog: PreviewBlog) => {
+          const formatted = format(new Date(blog.publishedAt!), "dd/MM/yyyy");
+          return (
+            <BlogPostCard
+              key={blog._id}
+              author={blog.authorName!}
+              title={blog.title!}
+              date={formatted}
+              excerpt={blog.excerpt!}
+              href={`/blogs/${blog.slug}`}
+              image={urlFor(blog.mainImage!)
+                .width(960)
+                .height(540)
+                .fit("crop")
+                .url()}
+            />
+          );
+        })}
+
+        <BlogPagination currentPage={page} totalPages={totalPages} />
+      </>
+    ) : (
+      <NoPosts />
+    );
   return (
     <main>
       <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
-        <section className="w-full">
-          {blogs?.length > 0 ? (
-            <>
-              {blogs.map((blog: PreviewBlog) => {
-                const formatted = format(
-                  new Date(blog.publishedAt!),
-                  "dd/MM/yyyy"
-                );
-                return (
-                  <BlogPostCard
-                    key={blog._id}
-                    author={blog.authorName!}
-                    title={blog.title!}
-                    date={formatted}
-                    excerpt={blog.excerpt!}
-                    href={`/blogs/${blog.slug}`}
-                    image={urlFor(blog.mainImage!)
-                      .width(960)
-                      .height(540)
-                      .fit("crop")
-                      .url()}
-                  />
-                );
-              })}
-
-              <BlogPagination currentPage={page} totalPages={totalPages} />
-            </>
-          ) : (
-            <NoPosts />
-          )}
-        </section>
+        <section className="w-full">{renderBlogs}</section>
         <Sidebar />
       </div>
     </main>
