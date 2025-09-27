@@ -1,9 +1,9 @@
 "use client";
 
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { Quote } from "lucide-react";
 
 const components: PortableTextComponents = {
   types: {
@@ -11,7 +11,7 @@ const components: PortableTextComponents = {
       const url = urlFor(value).fit("max").url();
       const alt = value?.alt || "Image";
       return (
-        <figure className="my-6">
+        <figure className="may-6">
           <Image
             src={url}
             alt={alt}
@@ -100,8 +100,12 @@ const components: PortableTextComponents = {
     ),
   },
 };
-
-export default function PortableContentRenderer({ value }: { value: any }) {
+export default function PortableContentRenderer({
+  value,
+}: {
+  value: PortableTextBlock[] | null | undefined;
+}) {
+  if (!value?.length) return null;
   if (!value?.length) return null;
   return (
     <div className="section-padding wrapper">

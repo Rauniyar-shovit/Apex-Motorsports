@@ -3,7 +3,6 @@ import { Dot } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReadMoreBtn from "./ReadMoreBtn";
-import { PreviewBlog } from "@/models";
 
 type BlogPostCardProps = {
   title: string;

@@ -8,7 +8,7 @@ const SearchBar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [isPending] = useTransition();
 
   const [term, setTerm] = useState(() => searchParams.get("query") ?? "");
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
