@@ -13,11 +13,21 @@ async function RelatedPosts({
   currentPostSlug: string;
   categories?: string[];
 }) {
-  const relatedPosts = await client.fetch(RELATED_BLOGS, {
-    slug: currentPostSlug,
-    catIds,
-  });
-
+  let relatedPosts: RelatedPost[] = [];
+  try {
+    relatedPosts = await client.fetch(RELATED_BLOGS, {
+      slug: currentPostSlug,
+      catIds,
+    });
+    console.log("Related posts:", relatedPosts);
+  } catch (error) {
+    console.error("Error fetching related posts:", {
+      slug: currentPostSlug,
+      catIds,
+      error,
+    });
+    return;
+  }
   if (relatedPosts.length === 0) {
     return;
   }

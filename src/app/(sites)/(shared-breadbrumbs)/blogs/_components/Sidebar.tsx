@@ -1,4 +1,4 @@
-import Categories from "./Categories";
+import Categories from "./CategoriesServer";
 import RecentPosts from "./RecentPosts";
 import SearchBar from "./Search";
 
