@@ -9,6 +9,7 @@ import {
   RELATED_BLOGSResult,
   TIER_SPONSORS_QUERYResult,
   CATEGORY_QUERYResult,
+  ALUMNI_BY_SLUG_QUERYResult,
 } from "@/sanity/types";
 
 export type Link = {
@@ -124,6 +125,7 @@ export type BlogPost = BLOG_BY_SLUG_QUERYResult;
 export type RelatedPost = RELATED_BLOGSResult[number];
 export type RecentPost = RECENT_BLOGS_QUERYResult[number];
 export type Categories = CATEGORY_QUERYResult[number];
+export type Alumni = ALUMNI_BY_SLUG_QUERYResult;
 
 export type TeamMemberProfile = {
   name: string;
