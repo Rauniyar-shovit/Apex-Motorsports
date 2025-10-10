@@ -33,6 +33,16 @@ export default defineType({
       validation: (R) => R.required().email(),
     }),
     defineField({
+      name: "linkedin",
+      type: "url",
+      title: "LinkedIn",
+      description: "Public LinkedIn profile link",
+      validation: (R) =>
+        R.uri({
+          scheme: ["http", "https"],
+        }),
+    }),
+    defineField({
       name: "bio",
       type: "text",
       title: "Short Bio",
