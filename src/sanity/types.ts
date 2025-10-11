@@ -13,6 +13,25 @@
  */
 
 // Source: schema.json
+export type BlockContentParagraph = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal";
+  listItem?: never;
+  markDefs?: Array<{
+    href?: string;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+}>;
+
 export type Alumni = {
   _id: string;
   _type: "alumni";
@@ -36,12 +55,12 @@ export type Alumni = {
   slug?: Slug;
   email?: string;
   linkedin?: string;
-  bio?: string;
-  myStory?: string;
+  bio?: BlockContentParagraph;
+  myStory?: BlockContentParagraph;
   Contributions?: Array<{
     systemTitle?: string;
-    systemDescription?: string;
-    myContribution?: string;
+    systemDescription?: BlockContentParagraph;
+    myContribution?: BlockContentParagraph;
     image?: {
       asset?: {
         _ref: string;
@@ -58,38 +77,7 @@ export type Alumni = {
     _type: "system";
     _key: string;
   }>;
-  learningsAndExperience?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  learningsAndExperience?: BlockContentParagraph;
 };
 
 export type Category = {
@@ -325,7 +313,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = BlockContentParagraph | Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: TIER_SPONSORS_QUERY
@@ -486,7 +474,7 @@ export type ALUMNI_BY_SLUG_QUERYResult = {
   slug: string | null;
   email: string | null;
   linkedin: string | null;
-  bio: string | null;
+  bio: BlockContentParagraph | null;
   profileImage: {
     asset: {
       url: string | null;
@@ -496,43 +484,12 @@ export type ALUMNI_BY_SLUG_QUERYResult = {
     } | null;
     alt: string | null;
   } | null;
-  myStory: string | null;
-  learningsAndExperience: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "h1" | "h2" | "h3" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  myStory: BlockContentParagraph | null;
+  learningsAndExperience: BlockContentParagraph | null;
   Contributions: Array<{
     systemTitle: string | null;
-    systemDescription: string | null;
-    myContribution: string | null;
+    systemDescription: BlockContentParagraph | null;
+    myContribution: BlockContentParagraph | null;
     image: {
       asset: {
         url: string | null;
