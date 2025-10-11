@@ -9,7 +9,6 @@ import NoPosts from "@/components/reusable/NoPosts";
 
 const Alumni = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  console.log("🚀 ~ Alumni ~ slug:", slug);
 
   let alumni;
 

@@ -1,37 +1,28 @@
+import { AlumniPreview } from "@/models";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
-type ProfileCardProps = {
-  image: string;
-  name: string;
-  role: string;
-  experience: string;
-  socials: {
-    linkedin: string;
-    email: string;
-  };
-};
-
 const ProfileCard = ({
-  image,
+  profileImage,
   name,
   role,
+  slug,
   experience,
-  socials,
-}: ProfileCardProps) => {
+  linkedin,
+  email,
+}: AlumniPreview) => {
+  const image = urlFor(profileImage!).url();
   return (
     <div className="flex flex-col items-center text-center font-sans">
       {/* Whole card links to alumni detail page */}
-      <Link
-        href={`/alumni/${encodeURIComponent(name)}`}
-        className="flex items-center flex-col"
-      >
+      <Link href={`/alumni/${slug}`} className="flex items-center flex-col">
         <Image
           src={image}
-          alt={name}
+          alt={name!}
           width={300}
           height={500}
           className="object-cover mb-4 "
@@ -44,9 +35,9 @@ const ProfileCard = ({
 
       {/* Socials stay outside so they’re clickable */}
       <div className="flex items-center justify-center gap-4 mt-4">
-        {socials.linkedin && (
+        {linkedin && (
           <a
-            href={socials.linkedin}
+            href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-700"
@@ -54,9 +45,9 @@ const ProfileCard = ({
             <FaLinkedin size={22} />
           </a>
         )}
-        {socials.email && (
+        {email && (
           <a
-            href={`mailto:${socials.email}`}
+            href={`mailto:${email}`}
             className="text-primary hover:text-muted-primary"
           >
             <IoMail size={25} />

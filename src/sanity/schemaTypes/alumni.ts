@@ -49,6 +49,22 @@ export default defineType({
       description: "A brief intro shown in cards and previews.",
       validation: (R) => R.required(),
     }),
+
+    defineField({
+      name: "role",
+      type: "string",
+      title: "Role / Position",
+      description: "Current or last held professional role.",
+      validation: (R) => R.required(),
+    }),
+    defineField({
+      name: "experience",
+      type: "string",
+      title: "Experience",
+      description:
+        "Years of experience or professional summary (e.g., 5+ years in Web Development).",
+      validation: (R) => R.required(),
+    }),
     defineField({
       name: "myStory",
       type: "blockContentParagraph",

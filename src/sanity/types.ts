@@ -56,6 +56,8 @@ export type Alumni = {
   email?: string;
   linkedin?: string;
   bio?: BlockContentParagraph;
+  role?: string;
+  experience?: string;
   myStory?: BlockContentParagraph;
   Contributions?: Array<{
     systemTitle?: string;
@@ -501,6 +503,26 @@ export type ALUMNI_BY_SLUG_QUERYResult = {
     } | null;
   }> | null;
 } | null;
+// Variable: ALL_ALUMNI_QUERY
+// Query: *[_type == "alumni"] | order(name asc) {  _id,  name,  role,  "slug": slug.current,  experience,  email,  linkedin, profileImage {      asset->{        url,        metadata { dimensions }      },      alt    },}
+export type ALL_ALUMNI_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  role: string | null;
+  slug: string | null;
+  experience: string | null;
+  email: string | null;
+  linkedin: string | null;
+  profileImage: {
+    asset: {
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+    alt: string | null;
+  } | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -515,5 +537,6 @@ declare module "@sanity/client" {
     "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
     "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
     "\n  *[_type == \"alumni\" && slug.current == $slug][0]{\n    _id,\n    name,\n    \"slug\": slug.current,\n    email,\n    linkedin,\n    bio,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    myStory,\n    learningsAndExperience,\n    Contributions[] {\n      systemTitle,\n      systemDescription,\n      myContribution,\n      image {\n        asset->{\n          url,\n          metadata { dimensions }\n        },\n        alt\n      }\n    }\n  }\n": ALUMNI_BY_SLUG_QUERYResult;
+    "\n*[_type == \"alumni\"] | order(name asc) {\n  _id,\n  name,\n  role,\n  \"slug\": slug.current,\n  experience,\n  email,\n  linkedin,\n profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n}\n": ALL_ALUMNI_QUERYResult;
   }
 }

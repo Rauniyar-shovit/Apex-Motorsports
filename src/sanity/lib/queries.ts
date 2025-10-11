@@ -164,3 +164,22 @@ export const ALUMNI_BY_SLUG_QUERY = defineQuery(`
     }
   }
 `);
+
+export const ALL_ALUMNI_QUERY = defineQuery(`
+*[_type == "alumni"] | order(name asc) {
+  _id,
+  name,
+  role,
+  "slug": slug.current,
+  experience,
+  email,
+  linkedin,
+ profileImage {
+      asset->{
+        url,
+        metadata { dimensions }
+      },
+      alt
+    },
+}
+`);

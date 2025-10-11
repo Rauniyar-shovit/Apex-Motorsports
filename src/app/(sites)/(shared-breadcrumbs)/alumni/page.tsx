@@ -1,8 +1,23 @@
 import raceTrack from "@/../../public/race-track.jpg";
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
 import TeamSection from "./_components/TeamsSection";
+import { client } from "@/sanity/lib/client";
+import { ALL_ALUMNI_QUERY } from "@/sanity/lib/queries";
 
-const page = () => {
+const AllAlumni = async () => {
+  let allAlumni;
+
+  try {
+    allAlumni = await client.fetch(ALL_ALUMNI_QUERY);
+  } catch (error) {
+    console.error("Error fetching alumnis:", error);
+    return (
+      <div className="wrapper py-20 text-center">
+        <h2 className="text-2xl font-sans">Error loading Alumni Details</h2>
+      </div>
+    );
+  }
+
   return (
     <>
       <section className="px-6 py-16">
@@ -32,11 +47,11 @@ const page = () => {
 
       <section className="mt-20">
         <div className="section-padding wrapper font-sans">
-          <TeamSection />
+          <TeamSection alumniArray={allAlumni} />
         </div>
       </section>
     </>
   );
 };
 
-export default page;
+export default AllAlumni;
