@@ -15,12 +15,12 @@ export const Contributions = ({
         <p className="font-barlow text-5xl uppercase text-center mb-14">
           My Contributions
         </p>
-        <div className="flex flex-col gap-15">
+        <div className="flex flex-col gap-15 px-5">
           {ContributionsArray?.map((contributionItem, i) => {
             const image = urlFor(contributionItem.image!).url();
             return (
               <div key={i} className="lg:px-20">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
                   {/* Left column: Title + Description */}
                   <div
                     className={`
@@ -41,7 +41,11 @@ export const Contributions = ({
                   >
                     <Image
                       src={image}
-                      alt="race-finish"
+                      alt={
+                        contributionItem.image?.alt ??
+                        contributionItem.systemTitle ??
+                        ""
+                      }
                       fill
                       sizes="(min-width:1280px) 1024px, (min-width:1024px) 896px, (min-width:768px) 704px, 100vw"
                       className="object-cover "
