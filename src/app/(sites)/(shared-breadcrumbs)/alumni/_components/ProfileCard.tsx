@@ -25,7 +25,7 @@ const ProfileCard = ({
           alt={name!}
           width={300}
           height={500}
-          className="object-cover mb-4 "
+          className="object-cover mb-4 max-w-[300px] max-h-[450px] "
         />
         <h3 className="text-xl font-semibold">{name}</h3>
         <p className="text-muted-primary mt-1">
