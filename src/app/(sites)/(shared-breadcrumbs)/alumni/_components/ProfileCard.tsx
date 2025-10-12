@@ -17,16 +17,24 @@ const ProfileCard = ({
 }: AlumniPreview) => {
   const image = urlFor(profileImage!).url();
   return (
-    <div className="flex flex-col items-center text-center font-sans">
+    <div className="flex flex-col items-center text-center font-sans group">
       {/* Whole card links to alumni detail page */}
       <Link href={`/alumni/${slug}`} className="flex items-center flex-col">
-        <Image
-          src={image}
-          alt={name!}
-          width={300}
-          height={500}
-          className="object-cover mb-4 max-w-[300px] max-h-[450px] "
-        />
+        <div className="relative mb-4">
+          <Image
+            src={image}
+            alt={name!}
+            width={300}
+            height={500}
+            className="object-cover  max-w-[300px] max-h-[450px]"
+          />
+          <div className="absolute  inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="text-white h-full w-full flex justify-center items-center">
+              Read My Story
+            </div>
+          </div>
+        </div>
+
         <h3 className="text-xl font-semibold">{name}</h3>
         <p className="text-muted-primary mt-1">
           {role} | {experience}
