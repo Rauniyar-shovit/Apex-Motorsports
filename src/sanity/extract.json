@@ -289,20 +289,6 @@
         },
         "optional": true
       },
-      "role": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "experience": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
       "myStory": {
         "type": "objectAttribute",
         "value": {
