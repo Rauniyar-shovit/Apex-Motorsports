@@ -44,14 +44,14 @@ export default defineType({
     }),
     defineField({
       name: "bio",
-      type: "blockContentParagraph",
+      type: "text",
       title: "Short Bio",
       description: "A brief intro shown in cards and previews.",
       validation: (R) => R.required(),
     }),
     defineField({
       name: "myStory",
-      type: "blockContentParagraph",
+      type: "text",
       title: "My Story",
       validation: (R) => R.required(),
     }),
@@ -73,13 +73,13 @@ export default defineType({
             },
             {
               name: "systemDescription",
-              type: "blockContentParagraph",
+              type: "text",
               title: "System Description",
               description: "Overview of the system itself.",
             },
             {
               name: "myContribution",
-              type: "blockContentParagraph",
+              type: "text",
               title: "My Contribution",
               description:
                 "Explain what you personally contributed to this system.",
@@ -104,7 +104,7 @@ export default defineType({
     }),
     defineField({
       name: "learningsAndExperience",
-      type: "blockContentParagraph",
+      type: "blockContent",
       title: "Learnings and Experience",
       description: "Key takeaways and professional experiences.",
       validation: (R) => R.required(),
