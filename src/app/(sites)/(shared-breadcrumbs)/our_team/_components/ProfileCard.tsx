@@ -6,7 +6,6 @@ import { IoMailOutline } from "react-icons/io5";
 const ProfileCard = ({ name, photo, role, bio, email }: TeamMemberProfile) => {
   return (
     <div className="group md:max-w-[260px] w-full">
-      {/* <div className="relativeh h-64 w-64 rounded-full overflow-hidden"> */}
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={photo}

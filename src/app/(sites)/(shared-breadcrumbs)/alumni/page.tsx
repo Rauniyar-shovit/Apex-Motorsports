@@ -1,6 +1,5 @@
 import raceTrack from "@/../../public/race-track.jpg";
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
-import TeamSection from "./_components/TeamsSection";
 
 const page = () => {
   return (
@@ -29,12 +28,6 @@ const page = () => {
           Meet Our Alumnis
         </div>
       </ParallaxContainer>
-
-      <section className="mt-20">
-        <div className="section-padding wrapper font-sans">
-          <TeamSection />
-        </div>
-      </section>
     </>
   );
 };
