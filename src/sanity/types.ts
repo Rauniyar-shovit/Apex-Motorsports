@@ -13,85 +13,6 @@
  */
 
 // Source: schema.json
-export type Alumni = {
-  _id: string;
-  _type: "alumni";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  profileImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  slug?: Slug;
-  email?: string;
-  linkedin?: string;
-  bio?: string;
-  myStory?: string;
-  Contributions?: Array<{
-    systemTitle?: string;
-    systemDescription?: string;
-    myContribution?: string;
-    image?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-    };
-    _type: "system";
-    _key: string;
-  }>;
-  learningsAndExperience?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-};
-
 export type Category = {
   _id: string;
   _type: "category";
@@ -325,7 +246,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: TIER_SPONSORS_QUERY
@@ -478,72 +399,6 @@ export type RELATED_BLOGSResult = Array<{
     title: string | null;
   }> | null;
 }>;
-// Variable: ALUMNI_BY_SLUG_QUERY
-// Query: *[_type == "alumni" && slug.current == $slug][0]{    _id,    name,    "slug": slug.current,    email,    linkedin,    bio,    profileImage {      asset->{        url,        metadata { dimensions }      },      alt    },    myStory,    learningsAndExperience,    Contributions[] {      systemTitle,      systemDescription,      myContribution,      image {        asset->{          url,          metadata { dimensions }        },        alt      }    }  }
-export type ALUMNI_BY_SLUG_QUERYResult = {
-  _id: string;
-  name: string | null;
-  slug: string | null;
-  email: string | null;
-  linkedin: string | null;
-  bio: string | null;
-  profileImage: {
-    asset: {
-      url: string | null;
-      metadata: {
-        dimensions: SanityImageDimensions | null;
-      } | null;
-    } | null;
-    alt: string | null;
-  } | null;
-  myStory: string | null;
-  learningsAndExperience: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "h1" | "h2" | "h3" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      blank?: boolean;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
-  Contributions: Array<{
-    systemTitle: string | null;
-    systemDescription: string | null;
-    myContribution: string | null;
-    image: {
-      asset: {
-        url: string | null;
-        metadata: {
-          dimensions: SanityImageDimensions | null;
-        } | null;
-      } | null;
-      alt: string | null;
-    } | null;
-  }> | null;
-} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -557,6 +412,5 @@ declare module "@sanity/client" {
     "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"category\": categories[0]->{\n      _id,\n      title\n    },\n    \"slug\": slug.current,\n    authorName,\n    mainImage{\n      asset->,\n      alt\n    },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
     "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
     "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
-    "\n  *[_type == \"alumni\" && slug.current == $slug][0]{\n    _id,\n    name,\n    \"slug\": slug.current,\n    email,\n    linkedin,\n    bio,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    myStory,\n    learningsAndExperience,\n    Contributions[] {\n      systemTitle,\n      systemDescription,\n      myContribution,\n      image {\n        asset->{\n          url,\n          metadata { dimensions }\n        },\n        alt\n      }\n    }\n  }\n": ALUMNI_BY_SLUG_QUERYResult;
   }
 }

@@ -132,35 +132,3 @@ export const RELATED_BLOGS = defineQuery(`
   "categories": categories[]->{ _id, title }
 }
 `);
-
-export const ALUMNI_BY_SLUG_QUERY = defineQuery(`
-  *[_type == "alumni" && slug.current == $slug][0]{
-    _id,
-    name,
-    "slug": slug.current,
-    email,
-    linkedin,
-    bio,
-    profileImage {
-      asset->{
-        url,
-        metadata { dimensions }
-      },
-      alt
-    },
-    myStory,
-    learningsAndExperience,
-    Contributions[] {
-      systemTitle,
-      systemDescription,
-      myContribution,
-      image {
-        asset->{
-          url,
-          metadata { dimensions }
-        },
-        alt
-      }
-    }
-  }
-`);
