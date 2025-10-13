@@ -17,13 +17,7 @@ const Bio = ({ profileImage: image, name, bio, linkedin, email }: BioProps) => {
 
   return (
     <section className="section-padding wrapper font-sans flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
-      <Image
-        src={profileImage}
-        width={350}
-        height={600}
-        alt="name"
-        className="max-w-[350px] max-h-[525px] object-cover"
-      />
+      <Image src={profileImage} width={350} height={600} alt="name" />
       <div className="max-w-md px-5 md:px-0">
         <p className="uppercase text-sm  font-[600] tracking-wider xl:mb-4 text-foreground">
           Hi, I&apos;m
