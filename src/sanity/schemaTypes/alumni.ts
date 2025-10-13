@@ -1,22 +1,5 @@
 import { defineType, defineField } from "sanity";
 
-const pattern = /^image-([a-f\d]+)-(\d+x\d+)-(\w+)$/;
-
-const decodeAssetId = (id: string) => {
-  const match = pattern.exec(id);
-  if (!match) {
-    throw new Error(`Invalid image asset id: ${id}`);
-  }
-  const [, assetId, dimensions, format] = match;
-  const [width, height] = dimensions.split("x").map((v) => parseInt(v, 10));
-
-  return {
-    assetId,
-    dimensions: { width, height },
-    format,
-  };
-};
-
 export default defineType({
   name: "alumni",
   title: "Alumni",
@@ -34,27 +17,7 @@ export default defineType({
       title: "Profile Image",
       options: { hotspot: true },
       fields: [{ name: "alt", type: "string", title: "Alt text" }],
-      validation: (Rule) =>
-        Rule.required().custom((image) => {
-          if (!image) return true; // required() already handles empty case
-
-          if (!image.asset || !image.asset._ref) {
-            return "Image asset reference not found";
-          }
-
-          const { dimensions } = decodeAssetId(image.asset._ref);
-          const { width, height } = dimensions;
-
-          if (width < 400) {
-            return "Image must be at least 500px wide";
-          }
-
-          if (height <= width) {
-            return "Image must be portrait (height should be greater than width)";
-          }
-
-          return true;
-        }),
+      validation: (R) => R.required(),
     }),
     defineField({
       name: "slug",
