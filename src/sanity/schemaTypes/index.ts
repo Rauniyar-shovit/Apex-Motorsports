@@ -5,16 +5,7 @@ import blockContent from "./blockContent";
 import category from "./category";
 import blog from "./blog";
 import alumni from "./alumni";
-import blockContentParagraph from "./blockContentParagraph";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [
-    sponsor,
-    achievement,
-    blog,
-    blockContent,
-    category,
-    alumni,
-    blockContentParagraph,
-  ],
+  types: [sponsor, achievement, blog, blockContent, category, alumni],
 };
