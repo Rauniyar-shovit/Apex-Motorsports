@@ -7,7 +7,7 @@ import { urlFor } from "@/sanity/lib/image";
 import PortableContentRenderer from "./_components/ProtableContentRender";
 import RelatedPosts from "./_components/RelatedPosts";
 import { BlogPost } from "@/models";
-import NoPosts from "@/components/reusable/NoPosts";
+import NoPosts from "@/components/reusable/NotFound";
 
 const Blog = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;

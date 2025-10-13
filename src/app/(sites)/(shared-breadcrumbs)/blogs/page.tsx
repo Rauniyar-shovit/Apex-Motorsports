@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import BlogPagination from "./_components/BlogPagination";
 import BlogPostCard from "./_components/BlogPostCard";
 import Sidebar from "./_components/Sidebar";
-import NoPosts from "@/components/reusable/NoPosts";
+import NotFound from "@/components/reusable/NotFound";
 
 type SearchParams = {
   page?: string;
@@ -49,7 +49,7 @@ const AllBlog = async ({
     ]);
   } catch (error: unknown) {
     console.error("Error fetching blogs:", error);
-    return <NoPosts />;
+    return <NotFound />;
   }
 
   // total page to pagination
@@ -80,7 +80,7 @@ const AllBlog = async ({
         <BlogPagination currentPage={page} totalPages={totalPages} />
       </>
     ) : (
-      <NoPosts />
+      <NotFound />
     );
   return (
     <main>

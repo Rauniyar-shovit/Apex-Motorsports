@@ -1,6 +1,6 @@
 import { SearchX } from "lucide-react";
 import React from "react";
-const NoPosts = ({
+const NotFound = ({
   containerStyles,
   notFoundText = "No Posts Found",
 }: {
@@ -19,4 +19,4 @@ const NoPosts = ({
   );
 };
 
-export default NoPosts;
+export default NotFound;

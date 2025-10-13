@@ -3,6 +3,8 @@ import ParallaxContainer from "@/components/features/achievements/ParallaxContai
 import TeamSection from "./_components/TeamsSection";
 import { client } from "@/sanity/lib/client";
 import { ALL_ALUMNI_QUERY } from "@/sanity/lib/queries";
+import NoPosts from "@/components/reusable/NotFound";
+import NotFound from "@/components/reusable/NotFound";
 
 const AllAlumni = async () => {
   let allAlumni;
@@ -10,12 +12,7 @@ const AllAlumni = async () => {
   try {
     allAlumni = await client.fetch(ALL_ALUMNI_QUERY);
   } catch (error) {
-    console.error("Error fetching alumnis:", error);
-    return (
-      <div className="wrapper py-20 text-center">
-        <h2 className="text-2xl font-sans">Error loading Alumni Details</h2>
-      </div>
-    );
+    return <NotFound notFoundText="Couldnt Fetch Alumnis" />;
   }
 
   return (
