@@ -15,11 +15,11 @@ export const Contributions = ({
         <p className="font-barlow text-5xl uppercase text-center mb-14">
           My Contributions
         </p>
-        <div className="flex flex-col gap-15 ">
+        <div className="flex flex-col gap-15 px-5">
           {ContributionsArray?.map((contributionItem, i) => {
             const image = urlFor(contributionItem.image!).url();
             return (
-              <div key={i} className="lg:px-20 px-5">
+              <div key={i} className="lg:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
                   {/* Left column: Title + Description */}
                   <div
@@ -37,25 +37,19 @@ export const Contributions = ({
 
                   {/* Right column: Image */}
                   <div
-                    className={`${i % 2 === 0 ? "lg:order-2" : "lg:order-1"}`}
+                    className={`w-full h-full aspect-[16/9] relative   ${i % 2 === 0 ? "lg:order-2" : "lg:order-1"}`}
                   >
-                    <div className="w-full h-full aspect-[16/9] relative ">
-                      <Image
-                        src={image}
-                        alt={
-                          contributionItem.image?.alt ??
-                          contributionItem.systemTitle ??
-                          ""
-                        }
-                        fill
-                        sizes="(min-width:1280px) 1024px, (min-width:1024px) 896px, (min-width:768px) 704px, 100vw"
-                        className="object-cover "
-                      />
-                    </div>
-
-                    <div className="text-muted-primary text-xs pt-2 text-center">
-                      figure : {contributionItem.image?.alt || ""}
-                    </div>
+                    <Image
+                      src={image}
+                      alt={
+                        contributionItem.image?.alt ??
+                        contributionItem.systemTitle ??
+                        ""
+                      }
+                      fill
+                      sizes="(min-width:1280px) 1024px, (min-width:1024px) 896px, (min-width:768px) 704px, 100vw"
+                      className="object-cover "
+                    />
                   </div>
                 </div>
 
