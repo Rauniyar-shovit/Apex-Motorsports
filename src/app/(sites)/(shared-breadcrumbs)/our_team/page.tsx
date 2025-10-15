@@ -5,6 +5,9 @@ import TeamsMembers from "./_components/TeamsMembers";
 import mercedesTeam from "@/../../public/mercedes-team.jpg";
 
 import raceTrack from "@/../../public/race-track.jpg";
+import { client } from "@/sanity/lib/client";
+import { ALL_ALUMNI_QUERY, TEAM_MEMBERS_QUERY } from "@/sanity/lib/queries";
+import TeamSection from "../alumni/_components/TeamsSection";
 const people = [
   {
     name: "Sienna Hewitt",
@@ -36,7 +39,26 @@ const people = [
   },
 ];
 
-const TeamsPage = () => {
+const TeamsPage = async () => {
+  let departmentsWithMembers;
+
+  try {
+    departmentsWithMembers = await client.fetch(TEAM_MEMBERS_QUERY);
+  } catch (error) {
+    console.error("Error fetching alumnis:", error);
+    return (
+      <div className="wrapper py-20 text-center">
+        <h2 className="text-2xl font-sans">
+          Error loading Team Members Details
+        </h2>
+      </div>
+    );
+  }
+  console.log(
+    "🚀 ~ TeamsPage ~ departmentsWithMembers:",
+    departmentsWithMembers
+  );
+
   return (
     <main>
       <section className="section-padding wrapper">
@@ -67,7 +89,39 @@ const TeamsPage = () => {
         </div>
       </ParallaxContainer>
 
-      <TeamsMembers members={people} departmentName="Upper Management" />
+      {/* {
+        <section className="mt-20">
+          <div className="section-padding wrapper font-sans">
+            <h1 className="text-5xl font-barlow uppercase text-center ">
+              Executives
+            </h1>
+            <div className="mt-6 border-b-2 border-primary w-40 mx-auto mb-10" />
+
+            <TeamSection alumniArray={allAlumni} />
+          </div>
+        </section>
+      } */}
+
+      <section className="mt-20">
+        <div className="section-padding wrapper font-sans">
+          {departmentsWithMembers.map((department) => {
+            console.log("🚀 ~ department:", department);
+            return (
+              <div key={department._id} className="mb-16">
+                {/* Department Name */}
+                <h1 className="text-5xl font-barlow uppercase text-center">
+                  {department.department}
+                </h1>
+                <div className="mt-6 border-b-2 border-primary w-40 mx-auto mb-10" />
+
+                {/* Render team members using your TeamSection component */}
+                <TeamSection alumniArray={department.members} />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       <TeamsMembers members={people} departmentName="Aerodynamics" />
       <TeamsMembers members={people} departmentName="Business Team" />
       <TeamsMembers members={people} departmentName="Electronics" />

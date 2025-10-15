@@ -1,5 +1,6 @@
-import { AlumniPreview } from "@/models";
+import { AlumniPreview, BaseProfile } from "@/models";
 import { urlFor } from "@/sanity/lib/image";
+import { SanityImageDimensions } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -14,7 +15,9 @@ const ProfileCard = ({
   experience,
   linkedin,
   email,
-}: AlumniPreview) => {
+  bio,
+  enableHoverOverlay = true,
+}: BaseProfile) => {
   const image = urlFor(profileImage!).url();
   return (
     <div className="flex flex-col items-center text-center font-sans group">
@@ -28,17 +31,23 @@ const ProfileCard = ({
             height={500}
             className="object-cover  max-w-[300px] max-h-[450px]"
           />
-          <div className="absolute  inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="text-white h-full w-full flex justify-center items-center">
-              Read My Story
+          {enableHoverOverlay && (
+            <div className="absolute  inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="text-white h-full w-full flex justify-center items-center">
+                Read My Story
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <h3 className="text-xl font-semibold">{name}</h3>
-        <p className="text-muted-primary mt-1">
-          {role} | {experience}
-        </p>
+        {role && experience && (
+          <p className="text-muted-primary mt-1">
+            {role} | {experience}
+          </p>
+        )}
+
+        {bio && <p className="text-muted-primary mt-1 mx-5 text-sm">{bio}</p>}
       </Link>
 
       {/* Socials stay outside so they’re clickable */}

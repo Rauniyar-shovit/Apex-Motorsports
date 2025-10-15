@@ -6,6 +6,8 @@ import category from "./category";
 import blog from "./blog";
 import alumni from "./alumni";
 import blockContentParagraph from "./blockContentParagraph";
+import team from "./team";
+import department from "./department";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,5 +18,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     category,
     alumni,
     blockContentParagraph,
+    team,
+    department,
   ],
 };

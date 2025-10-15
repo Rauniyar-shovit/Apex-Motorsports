@@ -10,4 +10,6 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("blog").title("Blogs"),
       S.documentTypeListItem("category").title("Categories"),
       S.documentTypeListItem("alumni").title("Alumnis"),
+      S.documentTypeListItem("team").title("Team Members"),
+      S.documentTypeListItem("department").title("Departments"),
     ]);

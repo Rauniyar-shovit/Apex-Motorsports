@@ -11,6 +11,7 @@ import {
   CATEGORY_QUERYResult,
   ALUMNI_BY_SLUG_QUERYResult,
   ALL_ALUMNI_QUERYResult,
+  SanityImageDimensions,
 } from "@/sanity/types";
 
 export type Link = {
@@ -129,10 +130,22 @@ export type Categories = CATEGORY_QUERYResult[number];
 export type Alumni = ALUMNI_BY_SLUG_QUERYResult;
 export type AlumniPreview = ALL_ALUMNI_QUERYResult[number];
 
-export type TeamMemberProfile = {
-  name: string;
-  role: string;
-  bio: string;
-  photo: string;
-  email: string;
+export type BaseProfile = {
+  profileImage: {
+    asset: {
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+    alt: string | null;
+  } | null;
+  name: string | null;
+  slug: string | null;
+  role?: string | null;
+  experience?: string | null;
+  linkedin?: string | null;
+  email?: string | null;
+  bio?: string | null;
+  enableHoverOverlay?: boolean;
 };

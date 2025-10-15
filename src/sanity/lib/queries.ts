@@ -183,3 +183,22 @@ export const ALL_ALUMNI_QUERY = defineQuery(`
     },
 }
 `);
+
+export const TEAM_MEMBERS_QUERY = defineQuery(`*[_type == "department"] {
+  _id,
+  "department": name,
+  "members": *[_type == "team" && department._ref == ^._id] {
+    _id,
+    name,
+    bio,
+    email,
+    linkedin,
+   profileImage {
+      asset->{
+        url,
+        metadata { dimensions }
+      },
+      alt
+    },
+  }
+}`);
