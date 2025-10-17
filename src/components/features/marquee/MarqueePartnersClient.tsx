@@ -30,7 +30,7 @@ const MarqueePartnersClient = ({ partners }: { partners: Sponsor[] }) => {
         </h2>
 
         {/* Logos Row (responsive) */}
-        <div className="flex items-center justify-center overflow-hidden  py-8 lg:mx-10">
+        <div className="flex items-center justify-center overflow-hidden  lg:py-8 lg:mx-10">
           <div className="flex">
             {[0, 0, 0].map((_, index) => (
               <MarqueeContent

@@ -13,6 +13,48 @@
  */
 
 // Source: schema.json
+export type Team = {
+  _id: string;
+  _type: "team";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  profileImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  name?: string;
+  bio?: string;
+  linkedin?: string;
+  email?: string;
+  department?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "department";
+  };
+};
+
+export type Department = {
+  _id: string;
+  _type: "department";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  description?: string;
+  order?: number;
+};
+
 export type BlockContentParagraph = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -315,7 +357,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = BlockContentParagraph | Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Team | Department | BlockContentParagraph | Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: TIER_SPONSORS_QUERY
@@ -523,6 +565,28 @@ export type ALL_ALUMNI_QUERYResult = Array<{
     alt: string | null;
   } | null;
 }>;
+// Variable: TEAM_MEMBERS_QUERY
+// Query: *[_type == "department"] | order(order asc) {  _id,  "department": name,  "members": *[_type == "team" && department._ref == ^._id] {    _id,    name,    bio,    email,    linkedin,    profileImage {      asset->{        url,        metadata { dimensions }      },      alt    },  }}
+export type TEAM_MEMBERS_QUERYResult = Array<{
+  _id: string;
+  department: string | null;
+  members: Array<{
+    _id: string;
+    name: string | null;
+    bio: string | null;
+    email: string | null;
+    linkedin: string | null;
+    profileImage: {
+      asset: {
+        url: string | null;
+        metadata: {
+          dimensions: SanityImageDimensions | null;
+        } | null;
+      } | null;
+      alt: string | null;
+    } | null;
+  }>;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -538,5 +602,6 @@ declare module "@sanity/client" {
     "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
     "\n  *[_type == \"alumni\" && slug.current == $slug][0]{\n    _id,\n    name,\n    \"slug\": slug.current,\n    email,\n    linkedin,\n    bio,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    myStory,\n    learningsAndExperience,\n    Contributions[] {\n      systemTitle,\n      systemDescription,\n      myContribution,\n      image {\n        asset->{\n          url,\n          metadata { dimensions }\n        },\n        alt\n      }\n    }\n  }\n": ALUMNI_BY_SLUG_QUERYResult;
     "\n*[_type == \"alumni\"] | order(name asc) {\n  _id,\n  name,\n  role,\n  \"slug\": slug.current,\n  experience,\n  email,\n  linkedin,\n profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n}\n": ALL_ALUMNI_QUERYResult;
+    "*[_type == \"department\"] | order(order asc) {\n  _id,\n  \"department\": name,\n  \"members\": *[_type == \"team\" && department._ref == ^._id] {\n    _id,\n    name,\n    bio,\n    email,\n    linkedin,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n  }\n}": TEAM_MEMBERS_QUERYResult;
   }
 }

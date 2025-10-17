@@ -130,7 +130,7 @@ export type Categories = CATEGORY_QUERYResult[number];
 export type Alumni = ALUMNI_BY_SLUG_QUERYResult;
 export type AlumniPreview = ALL_ALUMNI_QUERYResult[number];
 
-export type BaseProfile = {
+export type MemberProfile = {
   profileImage: {
     asset: {
       url: string | null;
@@ -141,11 +141,13 @@ export type BaseProfile = {
     alt: string | null;
   } | null;
   name: string | null;
-  slug: string | null;
+  slug?: string | null;
   role?: string | null;
   experience?: string | null;
   linkedin?: string | null;
   email?: string | null;
   bio?: string | null;
   enableHoverOverlay?: boolean;
+  disableNavigation?: boolean;
+  link?: string | null;
 };

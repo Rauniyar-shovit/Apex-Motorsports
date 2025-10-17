@@ -17,5 +17,14 @@ export default defineType({
       title: "Description",
       type: "text",
     }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      description: "Lower numbers appear first when listing departments",
+      validation: (Rule) =>
+        Rule.min(1).integer().error("Order must be a positive whole number"),
+      initialValue: 1,
+    }),
   ],
 });

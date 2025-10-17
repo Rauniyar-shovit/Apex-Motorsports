@@ -1,9 +1,7 @@
-import { AlumniPreview, BaseProfile } from "@/models";
+import { MemberProfile as ProfileCardProps } from "@/models";
 import { urlFor } from "@/sanity/lib/image";
-import { SanityImageDimensions } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
@@ -17,12 +15,36 @@ const ProfileCard = ({
   email,
   bio,
   enableHoverOverlay = true,
-}: BaseProfile) => {
+  disableNavigation = false,
+  link,
+}: ProfileCardProps) => {
   const image = urlFor(profileImage!).url();
+
+  const hoverOverlay = enableHoverOverlay && (
+    <div className="absolute  inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <div className="text-white h-full w-full flex justify-center items-center">
+        Read My Story
+      </div>
+    </div>
+  );
+
+  const renderRoleExperience = role && experience && (
+    <p className="text-muted-primary mt-1">
+      {role} | {experience}
+    </p>
+  );
+
+  const renderBio = bio && (
+    <p className="text-muted-primary mt-1 mx-10 md:mx-5 text-sm">{bio}</p>
+  );
+
   return (
     <div className="flex flex-col items-center text-center font-sans group">
       {/* Whole card links to alumni detail page */}
-      <Link href={`/alumni/${slug}`} className="flex items-center flex-col">
+      <Link
+        href={`${link ? link : ""}`}
+        className={`flex items-center flex-col ${disableNavigation ? "pointer-events-none" : ""}`}
+      >
         <div className="relative mb-4">
           <Image
             src={image}
@@ -31,44 +53,33 @@ const ProfileCard = ({
             height={500}
             className="object-cover  max-w-[300px] max-h-[450px]"
           />
-          {enableHoverOverlay && (
-            <div className="absolute  inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="text-white h-full w-full flex justify-center items-center">
-                Read My Story
-              </div>
-            </div>
-          )}
+          {hoverOverlay}
         </div>
 
         <h3 className="text-xl font-semibold">{name}</h3>
-        {role && experience && (
-          <p className="text-muted-primary mt-1">
-            {role} | {experience}
-          </p>
-        )}
+        {renderRoleExperience}
 
-        {bio && <p className="text-muted-primary mt-1 mx-5 text-sm">{bio}</p>}
+        {renderBio}
       </Link>
 
-      {/* Socials stay outside so they’re clickable */}
       <div className="flex items-center justify-center gap-4 mt-4">
         {linkedin && (
-          <a
+          <Link
             href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-700"
           >
             <FaLinkedin size={22} />
-          </a>
+          </Link>
         )}
         {email && (
-          <a
+          <Link
             href={`mailto:${email}`}
             className="text-primary hover:text-muted-primary"
           >
             <IoMail size={25} />
-          </a>
+          </Link>
         )}
       </div>
     </div>

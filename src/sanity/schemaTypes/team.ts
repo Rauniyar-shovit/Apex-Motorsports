@@ -44,7 +44,20 @@ export default defineType({
       name: "bio",
       title: "Bio",
       type: "text",
-      validation: (Rule) => Rule.required().min(10).error("Bio is required"),
+      validation: (Rule) =>
+        Rule.required()
+          .min(10)
+          .custom((value) => {
+            if (!value) return true; // required() already handles empty case
+
+            // Count words
+            const wordCount = value.trim().split(/\s+/).length;
+            if (wordCount > 45) {
+              return "Bio must not exceed 45 words";
+            }
+
+            return true;
+          }),
     }),
     defineField({
       name: "linkedin",

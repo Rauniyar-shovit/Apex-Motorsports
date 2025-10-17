@@ -47,7 +47,7 @@ const AllAlumni = async () => {
 
       <section className="mt-20">
         <div className="section-padding wrapper font-sans">
-          <TeamSection alumniArray={allAlumni} />
+          <TeamSection members={allAlumni} />
         </div>
       </section>
     </>
