@@ -5,13 +5,28 @@ import JoinUsBanner from "./_components/JoinUsBanner";
 import raceTrack from "@/../../public/race-track.jpg";
 import { client } from "@/sanity/lib/client";
 import { TEAM_MEMBERS_QUERY } from "@/sanity/lib/queries";
-import TeamSection from "../../(shared-breadcrumbs)/alumni/_components/TeamsSection";
+import TeamTabs from "./_components/TeamTabs";
+import DepartmentsSection from "./_components/DepartmentSection";
+import { DEPARTMENT_CATEGORIES } from "@/sanity/constants";
+import { DepartmentKey, TeamDepartments } from "@/models";
 
-const TeamsPage = async () => {
-  let departmentsWithMembers;
+const TeamsPage = async ({
+  searchParams,
+}: {
+  searchParams: Record<string, string>;
+}) => {
+  const params = await searchParams;
+
+  const department: DepartmentKey = Object.values(
+    DEPARTMENT_CATEGORIES
+  ).includes(params?.department as DepartmentKey)
+    ? (params.department as DepartmentKey)
+    : DEPARTMENT_CATEGORIES.TECHNICAL;
+
+  let teamMembersbyDepartment: TeamDepartments;
 
   try {
-    departmentsWithMembers = await client.fetch(TEAM_MEMBERS_QUERY);
+    teamMembersbyDepartment = await client.fetch(TEAM_MEMBERS_QUERY);
   } catch (error) {
     console.error("Error fetching alumnis:", error);
     return (
@@ -22,6 +37,10 @@ const TeamsPage = async () => {
       </div>
     );
   }
+
+  const managementDepartments = teamMembersbyDepartment.management;
+
+  const filteredDepartmentMembers = teamMembersbyDepartment[department] || [];
 
   return (
     <main>
@@ -48,7 +67,7 @@ const TeamsPage = async () => {
       </section>
 
       <div className="mb-24">
-        <Values />
+        <Values containerStyles="mt-10" />
       </div>
 
       <ParallaxContainer
@@ -61,29 +80,9 @@ const TeamsPage = async () => {
         </div>
       </ParallaxContainer>
 
-      <div></div>
-      <section className="mt-20">
-        <div className="section-padding wrapper font-sans">
-          {departmentsWithMembers.map((department) => {
-            if (department.members.length === 0) return null;
-            return (
-              <div key={department._id} className="mb-16">
-                {/* Department Name */}
-                <h1 className="text-4xl md:text-5xl font-barlow uppercase text-center">
-                  {department.department}
-                </h1>
-                <div className="mt-4 border-b-2 border-primary w-40 mx-auto mb-10" />
+      <DepartmentsSection departmentsArray={managementDepartments} />
 
-                {/* Render team members using your TeamSection component */}
-                <TeamSection
-                  members={department.members}
-                  enableHoverOverlay={false}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <TeamTabs tabContent={filteredDepartmentMembers} />
     </main>
   );
 };

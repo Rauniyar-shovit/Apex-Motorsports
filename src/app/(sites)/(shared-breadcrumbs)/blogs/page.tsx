@@ -84,7 +84,7 @@ const AllBlog = async ({
     );
   return (
     <main>
-      <div className="section-padding wrapper flex flex-col lg:flex-row gap-10 ">
+      <div className="section-padding wrapper flex flex-col xl:flex-row gap-10 ">
         <section className="w-full">{renderBlogs}</section>
         <Sidebar />
       </div>

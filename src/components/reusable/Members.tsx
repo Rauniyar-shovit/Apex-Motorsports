@@ -1,7 +1,7 @@
 "use client";
 
-import { MemberProfile } from "@/models";
-import ProfileCard from "./ProfileCard";
+import { MemberProfile as MemberProfileType } from "@/models";
+import MemberProfile from "./MemberProfile";
 
 import {
   Carousel,
@@ -11,12 +11,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function TeamSection({
+export default function Members({
   members,
   enableHoverOverlay = true,
   disableNavigation = false,
 }: {
-  members: MemberProfile[];
+  members: MemberProfileType[];
   enableHoverOverlay?: boolean;
   disableNavigation?: boolean;
 }) {
@@ -30,7 +30,7 @@ export default function TeamSection({
           {members.map((member, i) => (
             <CarouselItem key={i} className="pl-1 md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
-                <ProfileCard
+                <MemberProfile
                   key={i}
                   {...member}
                   disableNavigation={disableNavigation}

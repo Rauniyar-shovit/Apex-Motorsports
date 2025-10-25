@@ -184,22 +184,45 @@ export const ALL_ALUMNI_QUERY = defineQuery(`
 }
 `);
 
-export const TEAM_MEMBERS_QUERY =
-  defineQuery(`*[_type == "department"] | order(order asc) {
-  _id,
-  "department": name,
-  "members": *[_type == "team" && department._ref == ^._id] {
+export const TEAM_MEMBERS_QUERY = defineQuery(`{
+  "management": *[_type == "department" && category == "management"] | order(order asc) {
     _id,
     name,
-    bio,
-    email,
-    linkedin,
-    profileImage {
-      asset->{
-        url,
-        metadata { dimensions }
-      },
-      alt
-    },
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "technical": *[_type == "department" && category == "technical"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "operation": *[_type == "department" && category == "operation"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "enterprise": *[_type == "department" && category == "enterprise"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
   }
 }`);

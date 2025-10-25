@@ -1,6 +1,6 @@
 import raceTrack from "@/../../public/race-track.jpg";
 import ParallaxContainer from "@/components/features/achievements/ParallaxContainer";
-import TeamSection from "./_components/TeamsSection";
+import Members from "@/components/reusable/Members";
 import { client } from "@/sanity/lib/client";
 import { ALL_ALUMNI_QUERY } from "@/sanity/lib/queries";
 
@@ -47,7 +47,7 @@ const AllAlumni = async () => {
 
       <section className="mt-20">
         <div className="section-padding wrapper font-sans">
-          <TeamSection members={allAlumni} />
+          <Members members={allAlumni} />
         </div>
       </section>
     </>

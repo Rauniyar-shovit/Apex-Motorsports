@@ -1,11 +1,11 @@
-import { MemberProfile as ProfileCardProps } from "@/models";
+import { MemberProfile as MemberProfileProps } from "@/models";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
-const ProfileCard = ({
+const MemberProfile = ({
   profileImage,
   name,
   role,
@@ -17,7 +17,7 @@ const ProfileCard = ({
   enableHoverOverlay = true,
   disableNavigation = false,
   link,
-}: ProfileCardProps) => {
+}: MemberProfileProps) => {
   const image = urlFor(profileImage!).url();
 
   const hoverOverlay = enableHoverOverlay && (
@@ -86,4 +86,4 @@ const ProfileCard = ({
   );
 };
 
-export default ProfileCard;
+export default MemberProfile;

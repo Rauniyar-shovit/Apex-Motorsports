@@ -212,6 +212,31 @@
         },
         "optional": true
       },
+      "category": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "management"
+            },
+            {
+              "type": "string",
+              "value": "technical"
+            },
+            {
+              "type": "string",
+              "value": "operation"
+            },
+            {
+              "type": "string",
+              "value": "enterprise"
+            }
+          ]
+        },
+        "optional": true
+      },
       "description": {
         "type": "objectAttribute",
         "value": {
