@@ -13,14 +13,14 @@ import { DepartmentKey, TeamDepartments } from "@/models";
 const TeamsPage = async ({
   searchParams,
 }: {
-  searchParams: Record<string, string>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const params = await searchParams;
 
   const department: DepartmentKey = Object.values(
     DEPARTMENT_CATEGORIES
   ).includes(params?.department as DepartmentKey)
-    ? (params.department as DepartmentKey)
+    ? (params?.department as DepartmentKey)
     : DEPARTMENT_CATEGORIES.TECHNICAL;
 
   let teamMembersbyDepartment: TeamDepartments;
