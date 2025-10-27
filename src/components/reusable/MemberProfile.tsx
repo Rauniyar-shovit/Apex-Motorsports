@@ -16,7 +16,6 @@ const MemberProfile = ({
   bio,
   enableHoverOverlay = true,
   disableNavigation = false,
-  link,
 }: MemberProfileProps) => {
   const image = urlFor(profileImage!).url();
 
@@ -42,7 +41,7 @@ const MemberProfile = ({
     <div className="flex flex-col items-center text-center font-sans group">
       {/* Whole card links to alumni detail page */}
       <Link
-        href={`${link ? link : ""}`}
+        href={`${slug ? `/alumni/${slug}` : ""}`}
         className={`flex items-center flex-col ${disableNavigation ? "pointer-events-none" : ""}`}
       >
         <div className="relative mb-4">
