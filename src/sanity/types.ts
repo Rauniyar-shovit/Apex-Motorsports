@@ -135,38 +135,41 @@ export type Category = {
   slug?: Slug;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3";
-  listItem?: "bullet" | "number";
-  markDefs?: Array<{
-    href?: string;
-    blank?: boolean;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
-  _key: string;
-}>;
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        blank?: boolean;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }
+>;
 
 export type Blog = {
   _id: string;
@@ -358,7 +361,27 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Team | Department | BlockContentParagraph | Alumni | Category | BlockContent | Blog | Achievement | Sponsor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes =
+  | Team
+  | Department
+  | BlockContentParagraph
+  | Alumni
+  | Category
+  | BlockContent
+  | Blog
+  | Achievement
+  | Sponsor
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageHotspot
+  | SanityImageCrop
+  | SanityFileAsset
+  | SanityImageAsset
+  | SanityImageMetadata
+  | Geopoint
+  | Slug
+  | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: TIER_SPONSORS_QUERY
@@ -655,16 +678,16 @@ export type TEAM_MEMBERS_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"sponsor\" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    \"logoSrc\": logo.asset->url,\n    \"logoAlt\": logo.alt,\n    href,\n    description,\n    order\n  }\n": TIER_SPONSORS_QUERYResult;
-    "\n*[_type == \"achievement\"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n": ACHIEVEMENTS_QUERYResult;
-    "\n  *[_type == \"blog\" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    excerpt,\n    mainImage{\n      asset->{\n        url\n      },\n      alt\n    },\n    authorName,\n    categories[]->{\n      _id,\n      title\n    },\n    publishedAt,\n    body\n  }\n": BLOG_BY_SLUG_QUERYResult;
-    "\n  *[\n    _type == \"blog\" &&\n    (\n      !defined($category) || $category == null || $category == \"\" ||\n      $category in categories[]->slug.current\n    ) &&\n    (\n      !defined($search) || $search == null || $search == \"\" ||\n      lower(coalesce(title, \"\")) match (\"*\" + lower($search) + \"*\")\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    \"slug\": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      \"slug\": slug.current\n    }\n  }\n": BLOGS_LIST_QUERYResult;
-    "\n  count(\n    *[\n      _type == \"blog\" &&\n      (\n        !defined($category) || $category == null || $category == \"\" ||\n        $category in categories[]->slug.current\n      ) &&\n      (\n        !defined($search) || $search == null || $search == \"\" ||\n        lower(title) match (\"*\" + lower($search) + \"*\")\n      )\n    ]\n  )\n": BLOGS_COUNT_QUERYResult;
-    "\n  *[_type == \"blog\" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    \"category\": categories[0]->{\n      _id,\n      title\n    },\n    \"slug\": slug.current,\n    authorName,\n    mainImage{\n      asset->,\n      alt\n    },\n    publishedAt\n  }\n": RECENT_BLOGS_QUERYResult;
-    "*[_type == \"category\"] | order(title asc) {\n  _id,\n  title,\n  \"slug\": slug.current\n}": CATEGORY_QUERYResult;
-    "\n*[\n  _type == \"blog\" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  \"slug\": slug.current,\n  excerpt,\n  mainImage{ alt, \"asset\": { \"url\": asset->url } },\n  authorName,\n  publishedAt,\n  \"categories\": categories[]->{ _id, title }\n}\n": RELATED_BLOGSResult;
-    "\n  *[_type == \"alumni\" && slug.current == $slug][0]{\n    _id,\n    name,\n    \"slug\": slug.current,\n    email,\n    linkedin,\n    bio,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    myStory,\n    learningsAndExperience,\n    Contributions[] {\n      systemTitle,\n      systemDescription,\n      myContribution,\n      image {\n        asset->{\n          url,\n          metadata { dimensions }\n        },\n        alt\n      }\n    }\n  }\n": ALUMNI_BY_SLUG_QUERYResult;
-    "\n*[_type == \"alumni\"] | order(name asc) {\n  _id,\n  name,\n  role,\n  \"slug\": slug.current,\n  experience,\n  email,\n  linkedin,\n profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n}\n": ALL_ALUMNI_QUERYResult;
-    "{\n  \"management\": *[_type == \"department\" && category == \"management\"] | order(order asc) {\n    _id,\n    name,\n    \"members\": *[_type == \"team\" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  \"technical\": *[_type == \"department\" && category == \"technical\"] | order(order asc) {\n    _id,\n    name,\n    \"members\": *[_type == \"team\" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  \"operation\": *[_type == \"department\" && category == \"operation\"] | order(order asc) {\n    _id,\n    name,\n    \"members\": *[_type == \"team\" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  \"enterprise\": *[_type == \"department\" && category == \"enterprise\"] | order(order asc) {\n    _id,\n    name,\n    \"members\": *[_type == \"team\" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  }\n}": TEAM_MEMBERS_QUERYResult;
+    '\n  *[_type == "sponsor" && tier == $tier]\n  | order(coalesce(order, 999), name asc) {\n    _id,\n    name,\n    tier,\n    "logoSrc": logo.asset->url,\n    "logoAlt": logo.alt,\n    href,\n    description,\n    order\n  }\n': TIER_SPONSORS_QUERYResult;
+    '\n*[_type == "achievement"] | order(order asc)[0..3] {\n  _id,\n  title,\n  ranking,\n  iconName,\n  order\n}\n': ACHIEVEMENTS_QUERYResult;
+    '\n  *[_type == "blog" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    excerpt,\n    mainImage{\n      asset->{\n        url\n      },\n      alt\n    },\n    authorName,\n    categories[]->{\n      _id,\n      title\n    },\n    publishedAt,\n    body\n  }\n': BLOG_BY_SLUG_QUERYResult;
+    '\n  *[\n    _type == "blog" &&\n    (\n      !defined($category) || $category == null || $category == "" ||\n      $category in categories[]->slug.current\n    ) &&\n    (\n      !defined($search) || $search == null || $search == "" ||\n      lower(coalesce(title, "")) match ("*" + lower($search) + "*")\n    )\n  ]\n  | order(publishedAt desc) [$offset...$limit]{\n    _id,\n    title,\n    "slug": slug.current,\n    excerpt,\n    authorName,\n    mainImage{asset->, alt},\n    publishedAt,\n    categories[]->{\n      _id,\n      title,\n      "slug": slug.current\n    }\n  }\n': BLOGS_LIST_QUERYResult;
+    '\n  count(\n    *[\n      _type == "blog" &&\n      (\n        !defined($category) || $category == null || $category == "" ||\n        $category in categories[]->slug.current\n      ) &&\n      (\n        !defined($search) || $search == null || $search == "" ||\n        lower(title) match ("*" + lower($search) + "*")\n      )\n    ]\n  )\n': BLOGS_COUNT_QUERYResult;
+    '\n  *[_type == "blog" && defined(publishedAt) && publishedAt <= now()]\n  | order(publishedAt desc)[0...2]{\n    _id,\n    title,\n    "category": categories[0]->{\n      _id,\n      title\n    },\n    "slug": slug.current,\n    authorName,\n    mainImage{\n      asset->,\n      alt\n    },\n    publishedAt\n  }\n': RECENT_BLOGS_QUERYResult;
+    '*[_type == "category"] | order(title asc) {\n  _id,\n  title,\n  "slug": slug.current\n}': CATEGORY_QUERYResult;
+    '\n*[\n  _type == "blog" &&\n  slug.current != $slug &&\n  references($catIds)\n] | order(publishedAt desc)[0..1]{\n  _id,\n  title,\n  "slug": slug.current,\n  excerpt,\n  mainImage{ alt, "asset": { "url": asset->url } },\n  authorName,\n  publishedAt,\n  "categories": categories[]->{ _id, title }\n}\n': RELATED_BLOGSResult;
+    '\n  *[_type == "alumni" && slug.current == $slug][0]{\n    _id,\n    name,\n    "slug": slug.current,\n    email,\n    linkedin,\n    bio,\n    profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    myStory,\n    learningsAndExperience,\n    Contributions[] {\n      systemTitle,\n      systemDescription,\n      myContribution,\n      image {\n        asset->{\n          url,\n          metadata { dimensions }\n        },\n        alt\n      }\n    }\n  }\n': ALUMNI_BY_SLUG_QUERYResult;
+    '\n*[_type == "alumni"] | order(name asc) {\n  _id,\n  name,\n  role,\n  "slug": slug.current,\n  experience,\n  email,\n  linkedin,\n profileImage {\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n}\n': ALL_ALUMNI_QUERYResult;
+    '{\n  "management": *[_type == "department" && category == "management"] | order(order asc) {\n    _id,\n    name,\n    "members": *[_type == "team" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  "technical": *[_type == "department" && category == "technical"] | order(order asc) {\n    _id,\n    name,\n    "members": *[_type == "team" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  "operation": *[_type == "department" && category == "operation"] | order(order asc) {\n    _id,\n    name,\n    "members": *[_type == "team" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  },\n  "enterprise": *[_type == "department" && category == "enterprise"] | order(order asc) {\n    _id,\n    name,\n    "members": *[_type == "team" && references(^._id)] | order(name asc) {\n      _id, name, bio, email, linkedin, profileImage {\n        asset->{ url, metadata { dimensions } },\n        alt\n      }\n    }\n  }\n}': TEAM_MEMBERS_QUERYResult;
   }
 }
