@@ -132,3 +132,97 @@ export const RELATED_BLOGS = defineQuery(`
   "categories": categories[]->{ _id, title }
 }
 `);
+
+export const ALUMNI_BY_SLUG_QUERY = defineQuery(`
+  *[_type == "alumni" && slug.current == $slug][0]{
+    _id,
+    name,
+    "slug": slug.current,
+    email,
+    linkedin,
+    bio,
+    profileImage {
+      asset->{
+        url,
+        metadata { dimensions }
+      },
+      alt
+    },
+    myStory,
+    learningsAndExperience,
+    Contributions[] {
+      systemTitle,
+      systemDescription,
+      myContribution,
+      image {
+        asset->{
+          url,
+          metadata { dimensions }
+        },
+        alt
+      }
+    }
+  }
+`);
+
+export const ALL_ALUMNI_QUERY = defineQuery(`
+*[_type == "alumni"] | order(name asc) {
+  _id,
+  name,
+  role,
+  "slug": slug.current,
+  experience,
+  email,
+  linkedin,
+ profileImage {
+      asset->{
+        url,
+        metadata { dimensions }
+      },
+      alt
+    },
+}
+`);
+
+export const TEAM_MEMBERS_QUERY = defineQuery(`{
+  "management": *[_type == "department" && category == "management"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "technical": *[_type == "department" && category == "technical"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "operation": *[_type == "department" && category == "operation"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  },
+  "enterprise": *[_type == "department" && category == "enterprise"] | order(order asc) {
+    _id,
+    name,
+    "members": *[_type == "team" && references(^._id)] | order(name asc) {
+      _id, name, bio, email, linkedin, profileImage {
+        asset->{ url, metadata { dimensions } },
+        alt
+      }
+    }
+  }
+}`);

@@ -6,7 +6,7 @@ import { useState } from "react";
 import RevealWrapper from "@/components/reusable/RevealWrapper";
 import { VALUES } from "@/data";
 
-const Values = () => {
+const Values = ({ containerStyles }: { containerStyles?: string }) => {
   const [selectedValueIndex, setSelectedValueIndex] = useState(0);
 
   const value = VALUES[selectedValueIndex];
@@ -14,7 +14,7 @@ const Values = () => {
   return (
     <section id="values">
       <RevealWrapper>
-        <div className="wrapper section-padding">
+        <div className={`wrapper ${containerStyles} `}>
           <div className=" flex flex-col md:flex-row lg:gap-6 md:h-[560px] xl:h-[695px]">
             <ValueShowcase
               valueTitle={value.title}

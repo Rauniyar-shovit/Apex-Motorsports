@@ -9,7 +9,12 @@ import {
   RELATED_BLOGSResult,
   TIER_SPONSORS_QUERYResult,
   CATEGORY_QUERYResult,
+  ALUMNI_BY_SLUG_QUERYResult,
+  ALL_ALUMNI_QUERYResult,
+  SanityImageDimensions,
+  TEAM_MEMBERS_QUERYResult,
 } from "@/sanity/types";
+import { DEPARTMENT_CATEGORIES } from "@/sanity/constants";
 
 export type Link = {
   title: (typeof LINKS)[keyof typeof LINKS];
@@ -124,11 +129,56 @@ export type BlogPost = BLOG_BY_SLUG_QUERYResult;
 export type RelatedPost = RELATED_BLOGSResult[number];
 export type RecentPost = RECENT_BLOGS_QUERYResult[number];
 export type Categories = CATEGORY_QUERYResult[number];
+export type Alumni = ALUMNI_BY_SLUG_QUERYResult;
+export type AlumniPreview = ALL_ALUMNI_QUERYResult[number];
+export type TeamDepartments = TEAM_MEMBERS_QUERYResult;
 
-export type TeamMemberProfile = {
-  name: string;
-  role: string;
-  bio: string;
-  photo: string;
-  email: string;
+export type DepartmentKey = keyof TEAM_MEMBERS_QUERYResult;
+
+type TeamMember = {
+  _id: string;
+  name: string | null;
+  bio: string | null;
+  email: string | null;
+  linkedin: string | null;
+  profileImage: {
+    asset: {
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+    alt: string | null;
+  } | null;
 };
+
+export type Department = {
+  _id: string;
+  name: string | null;
+  members: TeamMember[];
+};
+
+export type MemberProfile = {
+  profileImage: {
+    asset: {
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+    alt: string | null;
+  } | null;
+  name: string | null;
+  slug?: string | null;
+  role?: string | null;
+  experience?: string | null;
+  linkedin?: string | null;
+  email?: string | null;
+  bio?: string | null;
+  enableHoverOverlay?: boolean;
+  disableNavigation?: boolean;
+  link?: string | null;
+};
+
+export type DepartmentCategory =
+  (typeof DEPARTMENT_CATEGORIES)[keyof typeof DEPARTMENT_CATEGORIES];

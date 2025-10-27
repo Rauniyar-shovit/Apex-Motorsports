@@ -21,3 +21,10 @@ export const ACHIEVEMENTS_ICONS: Record<string, React.ElementType> = {
   IoFlag,
   SiTarget,
 };
+
+export const DEPARTMENT_CATEGORIES = {
+  MANAGEMENT: "management",
+  TECHNICAL: "technical",
+  OPERATION: "operation",
+  ENTERPRISE: "enterprise",
+} as const;
