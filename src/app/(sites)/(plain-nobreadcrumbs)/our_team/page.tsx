@@ -40,7 +40,7 @@ const TeamsPage = async ({
 
   const managementDepartments = teamMembersbyDepartment.management;
 
-  const filteredDepartmentMembers = teamMembersbyDepartment[department] || [];
+  const selectedDepartmentMembers = teamMembersbyDepartment[department] || [];
 
   return (
     <main>
@@ -82,7 +82,7 @@ const TeamsPage = async ({
 
       <DepartmentsSection departmentsArray={managementDepartments} />
 
-      <TeamTabs tabContent={filteredDepartmentMembers} />
+      <TeamTabs tabContent={selectedDepartmentMembers} />
     </main>
   );
 };
