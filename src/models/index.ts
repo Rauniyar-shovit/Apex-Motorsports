@@ -62,15 +62,12 @@ export type Address = {
   lng: number;
 };
 
-export type StatKey = "teams" | "countries";
+export type StatKey = "teams" | "countries" | "competition" | "students";
 
 export type Stat = {
   key: StatKey;
   title: string;
   value: number; // numeric part for CountUp
-  suffix?: string; // e.g. "+", "k", etc.
-  prefix?: string; // e.g. "~", "≈"
-  accent?: string;
 };
 
 export type FormulaSaeDetails = {

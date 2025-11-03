@@ -1,45 +1,36 @@
 "use client";
-import Image from "next/image";
-import CompetitionInfo from "./CompetitionInfo";
-import FloatingCard from "./FloatingCard";
 import { FORMULA_SAE_DETAILS } from "@/constants";
+import CompetitionInfo from "./CompetitionInfo";
+import StatsCard from "./StatsCard";
 
 export default function FormulaSAE() {
   return (
     <section className="relative section-padding">
-      <div className="bg-foreground text-white">
-        <div className="wrapper  max-w-7xl py-16 lg:py-24 grid lg:grid-cols-2 gap-20 items-center">
-          {/* formula sae info */}
-          <CompetitionInfo />
+      <div className="wrapper  max-w-7xl ">
+        <CompetitionInfo />
 
-          {/*  image and floating stats*/}
-          <div className="relative ">
-            <div className="relative aspect-[16/11] w-full overflow-hidden ">
-              <Image
-                src={FORMULA_SAE_DETAILS.image} // put your image here
-                alt={FORMULA_SAE_DETAILS.name}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4  gap-3 md:gap-6 lg:gap-3 sm:px-10 md:px-0 lg:px-16 mt-6 ">
+          <StatsCard
+            number={FORMULA_SAE_DETAILS.stats.competition.value}
+            title={FORMULA_SAE_DETAILS.stats.competition.title}
+          />
 
-            <FloatingCard
-              containerStyle={`-bottom-15 lg:bottom-3 lg:-left-16`}
-              number={FORMULA_SAE_DETAILS.stats.teams.value}
-              title={FORMULA_SAE_DETAILS.stats.teams.title}
-              backgroundColor={FORMULA_SAE_DETAILS.stats.teams.accent}
-            />
-
-            <FloatingCard
-              containerStyle={`-bottom-15 left-50 lg:bottom-3 lg:left-40 border border-muted-primary lg:border-none`}
-              number={FORMULA_SAE_DETAILS.stats.countries.value}
-              title={FORMULA_SAE_DETAILS.stats.countries.title}
-              backgroundColor={FORMULA_SAE_DETAILS.stats.countries.accent}
-            />
-          </div>
+          <StatsCard
+            number={FORMULA_SAE_DETAILS.stats.countries.value}
+            title={FORMULA_SAE_DETAILS.stats.countries.title}
+          />
+          <StatsCard
+            number={FORMULA_SAE_DETAILS.stats.teams.value}
+            title={FORMULA_SAE_DETAILS.stats.teams.title}
+          />
+          <StatsCard
+            number={FORMULA_SAE_DETAILS.stats.students.value}
+            title={FORMULA_SAE_DETAILS.stats.students.title}
+          />
         </div>
-        <div className="pt-16"></div>
+        <div>
+
+        </div>
       </div>
     </section>
   );
