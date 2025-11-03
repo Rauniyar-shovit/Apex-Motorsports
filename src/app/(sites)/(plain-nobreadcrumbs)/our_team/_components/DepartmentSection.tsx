@@ -9,7 +9,7 @@ const DepartmentsSection = ({
 }) => {
   return (
     <section className="mt-20">
-      <div className="section-padding wrapper font-sans">
+      <div className="section-padding font-sans">
         {departmentsArray.map((department) => {
           if (department.members.length === 0) return null;
           return (

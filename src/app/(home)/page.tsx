@@ -16,7 +16,7 @@ export default function Home() {
     <main className="overflow-hidden">
       <HomeNavbar intersectingSectionId="hero" />
       <Hero />
-      <Values containerStyles="section-padding" />
+      {/* <Values containerStyles="section-padding" /> */}
       <FormulaSAE />
       <AboutUs />
       <MarqueeText />
