@@ -15,6 +15,7 @@ import {
   TEAM_MEMBERS_QUERYResult,
 } from "@/sanity/types";
 import { DEPARTMENT_CATEGORIES } from "@/sanity/constants";
+import { ChartConfig } from "@/components/ui/chart";
 
 export type Link = {
   title: (typeof LINKS)[keyof typeof LINKS];
@@ -80,6 +81,11 @@ export type FormulaSaeDetails = {
   };
   image: string;
   stats: Record<StatKey, Stat>;
+  pointsPieChart: {
+    chartData: { category: string; points: number; fill: string }[];
+    chartConfig: ChartConfig;
+  };
+  structureDescription: string;
 };
 
 export type InfoItem = {
