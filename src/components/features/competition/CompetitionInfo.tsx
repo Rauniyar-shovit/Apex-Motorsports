@@ -24,15 +24,6 @@ const CompetitionInfo = () => {
       <p className="mt-8 max-w-5xl leading-8 font-sans text-foreground mx-auto text-center">
         {FORMULA_SAE_DETAILS.description}
       </p>
-
-      {/* <Button
-        handleClick={() => window.open(FORMULA_SAE_DETAILS.link, "_blank")}
-        btnStyles={
-          "border border-white bg-foreground hover:text-foreground px-8 py-4 mt-10 tracking-widest text-white "
-        }
-        beforeStyles={"before:bg-background "}
-        title={"Learn More"}
-      /> */}
     </div>
   );
 };
