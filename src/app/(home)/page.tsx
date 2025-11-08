@@ -10,6 +10,7 @@ import Values from "@/components/features/values/Values";
 import Footer from "@/components/footer/Footer";
 import HomeNavbar from "@/components/navigation/HomeNavbar";
 import Hero from "./_components/Hero";
+import AboutUs1 from "@/components/features/about/AboutUs1";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       <Hero />
       {/* <Values containerStyles="section-padding" /> */}
       <FormulaSAE />
-      <AboutUs />
+      <AboutUs1 />
       <MarqueeText />
       <AchievementsServer />
       <Contact>

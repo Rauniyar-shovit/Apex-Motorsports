@@ -99,23 +99,23 @@ export const footerLinks: Link[] = [
 
 export const ABOUT_US: AboutUs = {
   primaryTile: {
-    eyebrow: "Beyond Racing",
-    title: "From Concept to Competition, We Engineer the Future",
+    eyebrow: "Driven by Purpose",
+    title: "At Apex Motorsport, we believe in turning ambition into action.",
     description:
-      "Apex Motorsports turns student ambition into real-world engineering by designing, building, and racing formula-style cars. Through innovation and collaboration, we prepare future engineers to compete today and lead tomorrow.",
+      "Our purpose is to empower students to bridge the gap between theory and real-world engineering through hands-on design, collaboration, and problem-solving.We exist to inspire innovation, nurture leadership, and prepare the next generation of engineers to shape the technologies that define tomorrow’s industries.",
     image: "/model.avif",
   },
   secondaryTile: {
     info: [
       {
-        title: "What We Do",
+        title: "How We Build the Future",
         description:
-          "We design, build, and race formula-style cars, turning classroom learning into real engineering experience.",
+          "Apex Motorsport operates as a student-led engineering organisation that mirrors the processes of industry leaders in design, manufacturing, and systems integration.Our members collaborate across mechanical, electrical, software, and business divisions, managing everything from concept generation and CAD modelling to testing, data analysis, and project delivery.Using tools such as PTC Creo, ANSYS, MATLAB, Windchill, Altium, and Ubuntu, we integrate advanced workflows that reflect real-world engineering environments; fostering teamwork, accountability, and innovation across every discipline.",
       },
       {
-        title: "The Opportunities",
+        title: "What We Compete In",
         description:
-          "  The competition lets us innovate, collaborate, and gain industry-ready skills in engineering, leadership, and teamwork.",
+          "Apex Motorsport competes in the Formula SAE-Australasia competition, one of the world’s most recognised university engineering design challenges.Each year, teams from across the Asia-Pacific region design and manufacture a formula-style vehicle that is evaluated across engineering design, business presentation, cost analysis, and dynamic events such as acceleration, skidpad, autocross, and endurance.Our ultimate goal is to make history by becoming the first team to compete in all three categories of the competition;  Internal Combustion, Electric Vehicle, and Autonomous, within the same year.This milestone represents our team’s deep technical capability, innovation culture, and commitment to advancing sustainable and intelligent mobility.",
       },
     ],
     image: "/engineering-kart.avif",
