@@ -20,6 +20,7 @@ type RevealWrapperProps = {
   index?: number;
   duration?: number;
   variants?: RequiredVariants;
+  isInView?: boolean;
 };
 
 const defaultVariants: RequiredVariants = {
@@ -33,18 +34,19 @@ const RevealWrapper = ({
   index,
   duration = 0.6,
   variants = defaultVariants,
+  isInView,
 }: RevealWrapperProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const isInView = useInView(ref, { once: true });
+  const selfInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
 
   useEffect(() => {
-    if (isInView) {
+    if (isInView || selfInView) {
       mainControls.start("visible");
     }
-  }, [isInView, mainControls]);
+  }, [isInView, selfInView, mainControls]);
 
   return (
     <motion.div

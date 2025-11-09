@@ -7,7 +7,7 @@ import Button from "@/components/reusable/Button";
 
 export default function FormulaSAE() {
   return (
-    <section className="relative section-padding">
+    <section className="relative section-padding" id="formula-sae">
       <div className="wrapper  max-w-7xl ">
         <CompetitionInfo />
 

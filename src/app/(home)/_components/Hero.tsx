@@ -5,25 +5,23 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { IoArrowDown } from "react-icons/io5";
 import hero from "../../../../public/f1_cars.avif";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
+  const isMobile = useIsMobile();
   const handleScroll = () => {
-    const section = document.getElementById("values");
+    const section = document.getElementById("formula-sae");
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      const yOffset = isMobile ? -20 : -105;
+      const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   return (
     <section id="hero">
       <div className="relative w-full h-screen">
-        {/* <Image
-          src={"/f1_cars.avif"}
-          alt="formula one cars"
-          className="absolute w-full h-full object-cover"
-         
-        /> */}
-
         <Image
           src={hero}
           alt="Formula One cars"
