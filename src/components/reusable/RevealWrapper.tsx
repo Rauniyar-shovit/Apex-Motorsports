@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { ReactNode, useEffect, useRef } from "react";
 
+type Direction = "left" | "right" | "up" | "down" | undefined;
 type RequiredVariants = {
   hidden: NonNullable<Variants[string]>;
   visible: NonNullable<Variants[string]>;
@@ -20,7 +21,7 @@ type RevealWrapperProps = {
   index?: number;
   duration?: number;
   variants?: RequiredVariants;
-  isInView?: boolean;
+  direction?: Direction;
 };
 
 const defaultVariants: RequiredVariants = {
@@ -28,30 +29,61 @@ const defaultVariants: RequiredVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const getVariants = (direction: Direction): RequiredVariants => {
+  const distance = 100; // 🔹 distance to move before sliding in
+
+  switch (direction) {
+    case "left":
+      return {
+        hidden: { opacity: 0, x: -distance },
+        visible: { opacity: 1, x: 0 },
+      };
+    case "right":
+      return {
+        hidden: { opacity: 0, x: distance },
+        visible: { opacity: 1, x: 0 },
+      };
+    case "up":
+      return {
+        hidden: { opacity: 0, y: distance },
+        visible: { opacity: 1, y: 0 },
+      };
+    case "down":
+      return {
+        hidden: { opacity: 0, y: -distance },
+        visible: { opacity: 1, y: 0 },
+      };
+    default:
+      return defaultVariants;
+  }
+};
+
 const RevealWrapper = ({
   children,
   styles,
   index,
   duration = 0.6,
-  variants = defaultVariants,
-  isInView,
+  variants,
+  direction,
 }: RevealWrapperProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const selfInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
 
   useEffect(() => {
-    if (isInView || selfInView) {
+    if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView, selfInView, mainControls]);
+  }, [isInView, mainControls]);
+
+  const chosenVariants = getVariants(direction);
 
   return (
     <motion.div
       ref={ref}
-      variants={variants}
+      variants={variants || chosenVariants}
       initial="hidden"
       animate={mainControls}
       transition={{

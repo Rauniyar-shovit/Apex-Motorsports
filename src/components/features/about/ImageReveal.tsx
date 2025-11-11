@@ -17,24 +17,20 @@ const growDownAnimationVariants = {
 };
 
 type ImageRevealProps = {
-  isInView: boolean;
   imgSrc: string;
   imageAltText: string;
   imgStyles?: string;
   wrapperStyles?: string;
 };
 const ImageReveal = ({
-  isInView,
   imgSrc,
   imageAltText,
   imgStyles,
   wrapperStyles,
 }: ImageRevealProps) => {
-    
   return (
     <RevealWrapper
       variants={growDownAnimationVariants}
-      isInView={isInView}
       styles={`${wrapperStyles}`}
     >
       <Image

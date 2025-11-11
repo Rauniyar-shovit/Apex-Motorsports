@@ -1,22 +1,18 @@
 "use client";
 import RevealWrapper from "@/components/reusable/RevealWrapper";
-import { useInView } from "motion/react";
-import { useRef } from "react";
 import ImageReveal from "./ImageReveal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
 
 const AboutUs1 = () => {
   const isMobile = useIsMobile();
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(sectionRef, { once: true });
 
   const containerSizeCenter =
     "w-[90%] 2xl:w-[75%] 3xl:w-[55%] mx-auto  2xl:h-[80vh] 3xl:h-[70vh] ";
   const responsiveGrid =
     "grid grid-cols-2 md:grid-cols-5  gap-x-5 grid-rows-[0.5fr_1fr_1fr] md:grid-rows-2";
   return (
-    <section ref={sectionRef} className=" bg-foreground section-padding">
+    <section className=" bg-foreground section-padding">
       <div
         className={`${containerSizeCenter} py-20 flex items-center justify-center`}
       >
@@ -34,13 +30,7 @@ const AboutUs1 = () => {
 
           <div className="flex h-full col-span-2 md:col-span-3 col-start-1 row-start-1 md:row-start-2 justify-self-center  ">
             <div className="flex h-full flex-col justify-center md:justify-end">
-              <RevealWrapper
-                variants={{
-                  hidden: { opacity: 0, x: -100 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-                isInView={isInView}
-              >
+              <RevealWrapper direction="left">
                 <h1 className="text-6xl md:text-8xl xl:text-[9rem] font-sans font-[500] text-white uppercase tracking-wider mb-10 leading-tight md:pl-10  self-end">
                   About
                   <br />
@@ -66,7 +56,6 @@ const AboutUs1 = () => {
             />
           ) : (
             <ImageReveal
-              isInView={isInView}
               wrapperStyles="col-span-2 md:col-span-1 col-start-1 row-start-2 md:col-start-3 md:row-start-1 w-full h-full"
               imgSrc={"/engineering-kart.avif"}
               imageAltText={"engineering kart"}
@@ -74,7 +63,6 @@ const AboutUs1 = () => {
           )}
 
           <ImageReveal
-            isInView={isInView}
             wrapperStyles="col-span-1 col-start-4 row-start-1 row-span-2 w-full h-full hidden md:block"
             imgSrc={"/blog.jpg"}
             imageAltText={"blog"}
@@ -82,7 +70,6 @@ const AboutUs1 = () => {
 
           <div className="md:flex flex-col col-span-1 col-start-5 row-start-1 row-span-2 h-full w-full hidden ">
             <ImageReveal
-              isInView={isInView}
               imgSrc={"/mclaren-f1-car.webp"}
               wrapperStyles="w-full h-full"
               imageAltText={"mclaren f1 car"}
